@@ -70,6 +70,7 @@ CREATE TABLE IF NOT EXISTS `clan_members_list_view` (
 CREATE TABLE IF NOT EXISTS `messages` (
   `message_id` int(11) NOT NULL AUTO_INCREMENT,
   `from_player_id` int(11) NOT NULL,
+  `to_player_id` int(11) NOT NULL,
   `status` int(1) NOT NULL DEFAULT '0',
   `type` int(1) NOT NULL DEFAULT '0',
   `date_sent` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
