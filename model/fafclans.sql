@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS `clans_list` (
   `create_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `status` int(1) NOT NULL DEFAULT '0',
   `clan_name` varchar(50) NOT NULL,
-  `clan_tag` varchar(16) DEFAULT NULL,
+  `clan_tag` varchar(3) DEFAULT NULL,
   `clan_founder_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`clan_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
