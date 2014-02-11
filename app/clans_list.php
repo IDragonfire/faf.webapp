@@ -30,7 +30,7 @@ class Clans_List extends Controller {
     // add action button HTML for each entry
     foreach( $clans_list_page_view as &$clan ) {
 
-      $action_html = '<a href="/component/_clan_details?clan_id='. $clan['clan_id'] .'" class="btn" data-toggle-extended="modal" data-modal-type="clan_details" >Details</a>';
+      $action_html = '<a href="component/_clan_details?clan_id='. $clan['clan_id'] .'" class="btn" data-toggle-extended="modal" data-modal-type="clan_details" >Details</a>';
       
       // player is logged in but does not have a clan membership
       if( $player && !$players_clan_id ) {
