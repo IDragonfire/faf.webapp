@@ -1,0 +1,43 @@
+   
+      <div class="row">
+        <div class="span11">
+          <h3>Create a new clan</h3>
+          
+          <check if="{{ @allow_create_clan }}">
+          
+          <true>
+
+          <p>
+            We would like to ensure that Forged Alliance Forever Clans are led by experienced and committed players.<br /> 
+            Therefore we have a requirement that new Clan Founders have a minimum number of 250 ranked games played.
+          </p>          
+
+          <hr style="border-top: 1px solid #ccc;">
+          
+          <form name="Create_Clan" method="POST" class="form-horizontal">
+            <fieldset>
+            
+              {{ @form_fields_html|raw }}
+              
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Create Clan</button>
+              </div>
+            </fieldset>          
+          </form>
+          
+          {{ isset( @form_error_js ) ? @form_error_js  : '' | raw }}
+
+          </true>
+          
+          <false>
+          <p>You are not allowed to create a new clan for the following reason:</p>
+          <ul>
+          <li>{{ @disallowed_reason }}</li>
+          </ul>
+          </false>   
+                 
+          </check> 
+                   
+        </div>
+                        
+      </div>

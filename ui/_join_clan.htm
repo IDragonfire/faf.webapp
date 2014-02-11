@@ -1,0 +1,61 @@
+<div id="join_clan-modal">
+  <div class="span9 ">
+  
+    <!-- The async form to send. Content will be replaced with the response -->
+    
+    <check if="isset({{ @join_clan_error_message }})">
+    
+    <true>
+  
+    <p>{{ @join_clan_error_message }}</p>
+  
+    </true>
+    
+    <false>
+    
+    <form class="form" data-async data-target="#join_clan-modal" action="join_clan" method="POST">
+      <fieldset>
+            
+        <input type="hidden" name="join_clan_id" value="{{ @clan.clan_id }}">
+        <input type="hidden" name="join_player_id" value="{{ @logged_in_player.player_id }}">      
+        
+        <label>Request message</label>
+        <span class="span8 uneditable-input" style="color: #52575C;">This is [PLAYERNAME]. Please let me join your clan '{{ @clan.clan_name }}'</span>
+        
+        <label for="inputJoinReason">Additional message (optional)</label>
+        <textarea class="span8" id="inputJoinReason" name="join_reason" rows="7" style="color: #52575C;"></textarea>
+        <br>
+  
+        <button type="submit" class="btn btn-primary">Send</button>
+  
+        
+      </fieldset>
+    </form>
+    
+    <script type="text/javascript">
+    
+    jQuery(function($) {
+      $( 'form[data-async]' ).on( 'submit', function( event)  {
+          var $form = $(this);
+          var $target = $($form.attr('data-target'));
+    
+          $.ajax({
+              type: $form.attr('method'),
+              url: $form.attr('action'),
+              data: $form.serialize(),
+    
+              success: function(data, status) {
+                  $target.html(data);
+              }
+          });
+    
+          event.preventDefault();
+      });
+    });
+    
+    </script>
+    
+    </false>
+    
+  </div>
+</div>

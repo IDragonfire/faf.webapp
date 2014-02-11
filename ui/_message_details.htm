@@ -1,0 +1,56 @@
+<div id="message_details-modal">
+
+  {{ @message_detail.content | raw }}
+    
+  
+</div>
+
+<script type="text/javascript">
+
+  // add any additional action buttons to existing close button and redisplay
+  $('#myClan_ViewMessage_modal_original_buttons').hide();
+  var new_buttons = '{{ @message_detail.actions | raw }} ' + $('#myClan_ViewMessage_modal_original_buttons').html();
+  $('#myClan_ViewMessage_modal_extra_buttons').html( new_buttons );
+
+
+  // wire up additonal action buttons
+  // Accept invitation
+  $('[data-modal-message-action="Accept"]').bind('click',function(e) {
+  	e.preventDefault();
+  	
+  	$(this).text('Processing...');
+  	
+  	var href_arr = $(this).attr('href').split('?');
+  	var href_url = href_arr[0];
+  	var href_params = href_arr[1];
+
+	  $.ajax({
+		  type: "POST",
+		  url:  href_url,
+		  data: href_params
+		})
+		.done( function( data ) {
+		  $('#myClan_ViewMessage_modal').modal('hide');
+		  $('#messages_list_container').html( data );		  
+		});
+  });
+  
+  // Refuse invitation
+  $('[data-modal-message-action="Refuse"]').bind('click',function(e) {
+  	e.preventDefault();
+  	
+  	$(this).text('Processing...');
+
+	  $.ajax({
+		  type: "GET",
+		  url:  $(this).attr('href'),
+
+		})
+		.done( function( data ) {
+      $('#myClan_ViewMessage_modal').modal('hide');
+		  $('#myClan_Reponse_modal').html(data);
+		  $('#myClan_Reponse_modal').modal();
+		});
+  });   
+
+</script>

@@ -1,0 +1,120 @@
+      <div class="row">
+
+        <div class="span11">
+          <h4>Messages Inbox</h3>
+          <div>
+            <table class="span11" cellpadding="5" cellspacing="2">
+              <thead>
+              <th class="span3">Type</th>
+              <th class="span3">From</th>              
+              <th class="span2">Date</th>
+              <th class="span3">Action</th>
+              </thead>
+              <tbody>
+              
+              <repeat group="{{ @inbox_messages }}" value="{{ @inbox_message }}">
+                <tr>
+                  <td>{{ @inbox_message.type }}</td>
+                  <td>{{ @inbox_message.from_name }}</td>
+                  <td>{{ @inbox_message.date }}</td>                                    
+                  <td>{{ @inbox_message.actions | raw }}</td>                  
+                </tr>
+              </repeat>  
+                          
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="span11">
+          <h4>Sent Messages</h3>
+
+         <div>
+            <table class="span11" cellpadding="5" cellspacing="2">
+              <thead>
+              <th class="span3">Type</th>
+              <th class="span3">To</th>              
+              <th class="span2">Date</th>
+              <th class="span3">Action</th>
+              </thead>
+              <tbody>
+              
+              <repeat group="{{ @outbox_messages }}" value="{{ @outbox_message }}">
+                <tr>
+                  <td>{{ @outbox_message.type }}</td>
+                  <td>{{ @outbox_message.to_name }}</td>
+                  <td>{{ @outbox_message.date }}</td>                                    
+                  <td>{{ @outbox_message.actions | raw }}</td>                  
+                </tr>
+              </repeat>  
+                          
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+        
+      </div>
+
+<!-- View Message Popup Modal - initially hidden -->
+<div id="myClan_ViewMessage_modal" class="modal hide span8 " tabindex="-1" >
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">X</button>
+    <h3 id="myClan_ViewMessage_modal_label">Message Details</h3>
+  </div>
+  <div class="modal-body">
+
+    <div class="well" id="myClan_ViewMessage_modal_body">
+
+      View Message ajax response goes here
+  
+    </div>
+    
+  </div>
+  <div class="modal-footer">
+    <div id="myClan_ViewMessage_modal_extra_buttons">
+    </div>    
+    <div id="myClan_ViewMessage_modal_original_buttons">
+      <button class="btn" data-dismiss="modal" >Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Reponse Popup Modal - initially hidden -->
+<div id="myClan_Reponse_modal" class="modal hide span8 " tabindex="-1" >
+
+</div>
+      
+      <script type="text/javascript">
+
+      // wire up the view mesage buttons to ajax request / modal display
+      $('[data-message-action="view"]').bind('click',function(e) {
+      	e.preventDefault();
+      	
+      	var url = $(this).attr('href');
+
+    		$.get(url, function(data) {
+          $('#myClan_ViewMessage_modal_body').html(data);
+          $('#myClan_ViewMessage_modal').modal();
+    		});
+      });
+
+      // wire up the delete buttons into ajax posts which replace the entire message list div
+      $('[data-message-action="delete"]').bind('click',function(e) {
+      	e.preventDefault();
+      	
+      	var href_arr = $(this).attr('href').split('?');
+      	var href_url = href_arr[0];
+      	var href_params = href_arr[1];
+
+   		  $.ajax({
+    		  type: "POST",
+    		  url:  href_url,
+    		  data: href_params
+    		})
+    		.done( function( data ) {
+    		  $('#messages_list_container').html( data );
+    		});
+      });     
+
+      </script>

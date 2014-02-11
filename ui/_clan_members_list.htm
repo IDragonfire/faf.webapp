@@ -1,0 +1,75 @@
+      <div class="row">
+        <div class="span11">
+          <h4>Clan Members</h4>
+        </div>      
+        <div class="span11">
+            <br>
+            <!-- Div to contain the player list datatables --> 
+            <div id="ClanMembersList_datatable_container">
+            </div>
+
+            <!-- Load functionality to power the datatable -->
+            <script src="ui/js/jquery.dataTables.js"></script>
+            <script src="ui/js/datatables_boostrap.js"></script>
+
+            <!-- add datatable specific CSS -->
+            <script type="text/javascript">
+              $(document).ready(function(){
+                if (document.createStyleSheet) { // IE specific
+                  document.createStyleSheet('ui/css/datatables_bootstrap.css');
+                }
+                else { // other browsers
+                  $("head").append($("<link rel='stylesheet' href='ui/css/datatables_bootstrap.css' type='text/css' media='screen' />"));
+                }
+              });
+            </script>
+
+            <!-- configure and initialise the datatable -->
+            <script type="text/javascript">
+
+              var clan_members_list_dataset = [
+
+              <repeat group="{{ @clan_members_list_view_mapper_arr }}" value="{{ @clan_member }}" counter="{{ @ctr }}">
+              {{ @ctr==1?'':',' }}[ 
+                "{{ @clan_member.player_name }}", 
+                "{{ @clan_member.clan_rank }}", 
+                "{{ @clan_member.join_clan_date }}",  
+                "action on {{ @clan_member.player_id }}"
+              ]
+               
+              </repeat> 
+                
+              ];
+
+              var clan_members_list_columns = [
+                { "sTitle" : "Member Name" },
+                { "sTitle" : "Clan Rank" },
+                { "sTitle" : "Date Joined" },
+                { "sTitle" : "Actions" }
+              ];
+
+
+              $(document).ready(function() {
+
+                // dynamically create table
+                $('#ClanMembersList_datatable_container').html( '<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="PlayersList_datatable"></table>' );
+
+                // css class updates to get the layout aligned correctly
+                $.fn.dataTableExt.oStdClasses.sFilter = "dataTables_filter pull-right"; // override default value of "dataTables_filter"
+                $.fn.dataTableExt.oStdClasses.sPaging = "dataTables_paginate pull-right paging_"; // override default value of "dataTables_paginate paging_"
+
+                // configure and initialise
+                $('#PlayersList_datatable').dataTable( {
+                    "sDom": "<'row'<'span5'l><'span5  pull-right'f>r>t<'row'<'span5'i><'span5 pull-right'p>>",
+                    //"sDom": "<'row'<'span5'f><'span5  pull-right'p>r>t<'row'<'span3'i><'span3'l><'span4 pull-right'p>>",                    
+                    "sPaginationType": "bootstrap",
+                    "oLanguage": {
+                      "sLengthMenu": "_MENU_ records per page" },
+                    "aaData" : clan_members_list_dataset,
+                    "aoColumns" : clan_members_list_columns
+                } );
+
+              } );
+            </script>
+        </div> 
+      </div>         

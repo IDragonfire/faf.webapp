@@ -1,0 +1,41 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal">X</button>
+  <h3 id="myClan_ViewMessage_modal_label">Message Response</h3>
+</div>
+<div class="modal-body">
+
+  <div class="well" id="myClan_ViewMessage_modal_body">
+
+    <form id="response_message_form" class="form" action="/component/_message_response" method="POST">
+      <fieldset>
+            
+        <input type="hidden" name="to_player_id" value="{{ @response.to_player_id }}">
+        <input type="hidden" name="type" value="{{ @response.type }}">      
+        
+        <label for='response_message_body'>Response message</label>
+        <textarea class="span6" id="response_message_body" name="response_message_body" rows="7" style="color: #52575C;">{{ @response.body }}</textarea>
+                
+      </fieldset>
+    </form>
+
+  </div>
+  
+</div>
+<div class="modal-footer">
+    <a href="#respond" class="btn" data-modal-message-action="SendResponse" >Send Reponse</a> 
+    <button class="btn" data-dismiss="modal" >Cancel</button>
+</div>
+
+
+<script type="text/javascript">
+
+  // wire up additonal action buttons
+  // Send Response
+  $('[data-modal-message-action="SendResponse"]').bind('click',function(e) {
+  	e.preventDefault();
+  	$(this).unbind('click');
+    $('#response_message_form').submit();
+  });
+
+
+</script>

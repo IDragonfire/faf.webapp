@@ -1,0 +1,38 @@
+   
+      <div class="row">
+        <div class="span11">
+          <h3>My Clan - {{ @clan.clan_name }}</h3>
+          <p>
+            You are a member of clan {{ @clan.clan_name }}. You may take the following actions:
+          </p>
+          <p>
+            <button class="btn btn-large disabled" type="button">Invite Players</button>
+            <button class="btn btn-large disabled" type="button">Update Clan News</button>
+            <button class="btn btn-large disabled" type="button">Edit Clan Details</button>          
+            <button class="btn btn-large " type="button">Resign From Clan</button>
+          </p>
+        </div>
+      </div>
+      
+      <hr style="border-top: 1px solid #ccc;">
+      
+      <div id="messages_list_container">
+      <include href="{{ @messages_list_component_template }}" />
+      </div>
+      
+      <hr style="border-top: 1px solid #ccc;">      
+      
+      <div class="span11">
+        <h4>Clan Details</h4>
+      </div> 
+  
+      <div class="row">
+      
+        <include href="{{ @clan_details_component_template }}" />
+
+      </div>
+
+      <hr style="border-top: 1px solid #ccc;">
+      
+      
+      <include href="{{ @clan_members_list_template }}" />

@@ -1,0 +1,65 @@
+  <div class="span9 ">
+
+    <div id="clan_details" class="span5">
+    
+      <form class="form-horizontal form-horizontal-override">
+
+        <div class="control-group">
+          <label class="control-label " for="inputClanName">Name</label>
+          <div class="controls">
+            <span id="inputClanName" class="input-large uneditable-input uneditable-input-override">{{ @clan_details.clan_name }}</span>
+          </div>
+        </div>          
+
+        <div class="control-group">
+          <label class="control-label " for="inputClanTag">Clan Tag</label>
+          <div class="controls">
+            <span id="inputClanTag" class="input-large uneditable-input uneditable-input-override">{{ @clan_details.clan_tag }}</span>
+          </div>
+        </div>          
+
+        <div class="control-group">
+          <label class="control-label " for="inputClanActiveMembers">Members</label>
+          <div class="controls">
+            <span id="inputClanActiveMembers" class="input-large uneditable-input uneditable-input-override">{{ @clan_details.clan_member_active_total }}</span>
+          </div>
+        </div>     
+
+        <div class="control-group">
+          <label class="control-label " for="inputClanLeader">Leader</label>
+          <div class="controls">
+            <span id="inputClanLeader" class="input-large uneditable-input uneditable-input-override">{{ @clan_details.leader_name }}</span>
+          </div>
+        </div>
+    
+        <div class="control-group">
+          <label class="control-label " for="inputClanFounder">Founder</label>
+          <div class="controls">
+            <span id="inputClanFounder" class="input-large uneditable-input uneditable-input-override">{{ @clan_details.founder_name }}</span>
+          </div>
+        </div>          
+
+        <div class="control-group">
+          <label class="control-label " for="inputClanFoundedDate">Founded Date</label>
+          <div class="controls">
+            <span id="inputClanFoundedDate" class="input-large uneditable-input uneditable-input-override">{{ @clan_details.founded_date }}</span>
+          </div>
+        </div>          
+
+      
+    </div>
+    
+    <div id="clan_logo_image_holder" class="span3 text-center" style="padding-top: 50px; border: 1px solid lightgrey;">
+    
+          <img src="ui/images/no_clan_logo.png"><br>
+          <br>
+          
+    </div>
+    <div id="clan_motto_holder" class="span3 text-center">
+    "Clan Motto goes Here"
+    </div>    
+
+   
+  </div>
+
+

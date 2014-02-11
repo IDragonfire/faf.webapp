@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<base href="<?php echo $SCHEME.'://'.$HOST.$BASE.'/'.$UI; ?>" />
+	<meta charset="<?php echo $ENCODING; ?>" />
+
+	<title>Forged Alliance Forever - Clans</title>
+	
+	<link rel="shortcut icon" href="ui/images/favicon.ico" />
+	
+	<link rel="stylesheet" href="ui/css/bootstrap.css">
+	
+	<script type="text/javascript" src="ui/js/jquery-1.9.1.js"></script>
+	<script type="text/javascript" src="ui/js/bootstrap.js"></script>
+	
+
+</head>
+<body>
+
+
+<div class="container">
+  <!-- Header section -->
+  <div class="well row">
+  
+    <!-- Big Logo image -->
+    <div class="span2">
+      <img src="ui/images/SupComFA-icon.png"> 
+    </div>
+    
+    <!-- Page header text -->
+    <div class="span6">
+      <h1>Forged Alliance Forever</h1>
+      <h3>Clans Management</h3>
+    </div>
+    
+    <!-- Header buttons section -->
+    <div class="span3 ">
+
+      <!-- link to FA Forever website -->
+      <div class="pull-right vert-spacer20px">
+        <a href="#" class="btn"><i class="icon-white icon-share-alt"></i> FA Forever Website</a> 
+      </div>
+      
+      <check if="{{ isset( @logged_in_username )  }}">
+      
+      <true>
+      <div class="pull-right vert-spacer20px">
+        <a href="logout" class="btn login-button"><i class="icon-white icon-remove"></i> Logout</a> 
+      </div>     
+      </true>
+      
+      <false>
+      <include href="_login_form.htm" />
+      </false>
+      
+      </check>
+      
+    </div>
+    <!-- END Header buttons section -->
+    
+  </div>
+  <!-- END Header section -->
+  
+  <!-- Navigation Bar section -->
+  <div class="row ">
+    <div class="navbar">
+      <div class="navbar-inner">
+        <ul class="nav">
+        <repeat group="{{ @nav_menu }}" key="{{ @path }}" value="{{ @menu_item }}">
+          <li <check if="{{ @path == @selected_page }}"> class="active" </check>><a href="{{ @path }}">{{ @menu_item.text_name }}</a></li>
+        </repeat>
+<!--
+          <li <check if="{{ @selected_page == 'home'         }}"> class="active" </check>><a href="/">Home / News</a></li>
+          <li <check if="{{ @selected_page == 'my_clan'      }}"> class="active" </check>><a href="#">My Clan</a></li>
+          <li <check if="{{ @selected_page == 'clans_list'   }}"> class="active" </check>><a href="clans_list">Clans List</a></li>
+          <li <check if="{{ @selected_page == 'players_list' }}"> class="active" </check>><a href="players_list">Players List</a></li>          
+          <li <check if="{{ @selected_page == 'create_clan'  }}"> class="active" </check>><a href="create_clan">Create Clan</a></li> 
+-->      
+        </ul>
+        
+        <check if="{{ isset(@logged_in_username) }}">
+        <p class="nav navbar-text pull-right">
+          <span style="font-weight: normal;">Logged in as</span>
+          <span style="color: white;">{{ @logged_in_username }}</span>          
+        </p>
+        </check>
+        
+      </div>
+    </div>
+  </div>
+
+
+  <div class="well row">
+    <div class="span11 ">
+    
+      <include href="{{ @main_content_template }}" />
+
+    
+    </div>
+  </div>
+
+</div>
+
+
+	</body>
+</html>

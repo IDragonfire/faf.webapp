@@ -1,0 +1,58 @@
+
+<!-- Login button with hidden drop down login box -->
+<div class="pull-right vert-spacer20px">
+  <div class=" btn-group ">
+    <!-- The drop down menu -->
+    <ul class=" ">
+      <li class="dropdown <check if="{{ isset(@login_error_message) }}" >open</check> ">
+        <a id='login_dropdown_button' class="btn dropdown-toggle login-button" href="#" data-toggle="dropdown">Log in <i class="icon-white  icon-arrow-down"></i></a>
+        <script type="text/javascript">
+          // just a little JS to focus on the username input on drop down open, need to delay with the timeout due to some reason ???
+          $( function() { 
+            $('#login_dropdown_button').click( function() { 
+              setTimeout( function() { $('#login_form_username_input').focus(); }, 10 );
+            }); 
+          });
+        </script>
+        <div class="login-box dropdown-menu ">
+
+          <!-- Login form here -->
+          <form name="loginform" id="loginform" action="{{ @login_url }}" method="POST" autocomplete="off">
+            <p class="lead">
+              Use your FA Forever Lobby<br />
+              username and password
+            </p>
+            
+            <check if="{{ isset(@login_error_message) }}" >
+            <div class="alert alert-error" style="font-size: 16px;text-align: center; white-space: normal;">
+              {{ @login_error_message }}
+            </div>
+            </check>
+            
+            <fieldset>
+            
+              <label>FA Forever Username</label>
+              <input id='login_form_username_input' type="text" class="input-medium" name="username">
+              
+              <label style="">Password</label>
+              <input type="password" class="input-medium" name="password"><br /> 
+              
+              <button type="submit" class="btn btn-primary">Log in</button>
+              
+            </fieldset>
+          </form>
+          
+          <hr style="border-top: 1px solid #ccc;">
+          
+          <p class="lead">
+            Don't have a Forged Alliance <br />
+            Forever account yet?
+          </p>
+          <a href="#" class="btn btn-large"><i class="icon-white icon-share-alt"></i> Go to FA Forever Website</a>                 
+
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>  
+<!-- END Login Button and dropdown Form -->

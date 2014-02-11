@@ -1,0 +1,288 @@
+Day 1 (2013-2-21)
+- install virtualbox
+- d/l and install centos 6.3 minimal
+- configure network, port forwarding etc
+- install apache, php, assorted tools in guest
+- get apache up and running, confirm access from browser on host (incl firewall exception)
+- install winscp, editpad on host, get remote file edit working
+- create virtualhost and get working
+
+Day 2
+- installed mysql, setup DBs
+- created table for "logins" to simulate FAF db access
+- installed FatFree framework
+- configured virtual host, mod_rewrite etc to get F3 working
+
+Day 3 
+- solved issue with F3 recommened mod_rewrite commands not working inside VirtualHost config. moved to the .htaccess (as suggested in F3 docs) and works fine.
+- implemented a test page which returns just PHPinfo data
+- installed PDO for php db access (assumed present by F3 for mysql)
+  - yum install php-pdo
+- test pdo
+- setup db accounts
+- write test page which connects to db and returns data
+
+day 4-5-6
+- messing with F3 to implement "template components" a'la symfony style
+- working with F3 templating etc to implement a login form
+- make a FAF-login model to wrap access to the FAF.login table and authentication
+- login form data sanitisation etc
+- implement POST-redirect-GET in F3 paradigm
+
+Day 7
+- create sample page layouts using moqups
+- divshot hartbren+divshot@gmail.com / xxxxservicenamexxxx
+- recreate header layout into bootstrap HTML/CSS using divshot
+- include "slate" bootstrap skin from bootswatch
+- export into F3 template
+- tweak CSS and layout to get what i want
+
+day 8 - 2013-3-7 (details fuzzy)
+- implement clan_list page using Jquery "datatables" plugin
+
+2013-3-10
+- design table schema for clans db tables
+- create sample data loading SQL scripts
+
+2013-3-11
+- modify clans_list page to retrieve data from DB, not hard coded in template
+- add data model classes for player and clan
+- start work on "create if new" for player on login
+
+2013-3-12
+- finalised "player" record creation on first login
+- check for player status on login / error message
+- help usability for login page with auto focus username field on dropdown open
+- add "players list" page
+
+2013-3-13
+- added new menu functions to allow different nav menu for logged in / out
+- added "create clan" page
+
+2013-3-14
+- lost 3 games of supcom, incl. one to noobs :(
+- researched and integrated a form validation class
+- implemented form validation for create clan page
+
+2013-3-15
+- messing with jquery / bootstrap to add error highlighting and error messages to inputs which fail validation in form
+
+2013-3-16
+- added helper classes for html form input generation, moved create_clan form field specification from hardcoded html into generator definition
+- implemented form value prepopulation when form is redisplayed due to validaton error
+
+2013-3-17
+- minor refactor of form post handler to split up monster function
+- added logic to check for duplicate field values and save record to DB
+
+2013-3-18
+- ran into bug in Framework, much time puzzling and debugging
+- finally posted to FatFree google group
+
+2013-3-19
+- tried a suggestion (upgrade F3 version) from group response, no joy 
+- another workaround was succesful
+
+2013-3-20
+- faf game only :)
+
+2013-3-21
+- more feedback from group, responded with sample code that recreates the issue
+- complete create clan page with a "success" route
+- added my clan page
+- added page initial setup/checks
+
+
+2013-3-24
+- editing layout of my clan page / clan details section
+- create db view for clan details page info
+
+2013-3-26
+- implement rest of "my clan" page; clan details, datatables powered members list, main action buttons
+- created a databse view for clan members list data
+
+2013-3-29
+- adding a modal popup for clan details, to be shown from the clan list page
+- playing with bootstrap modal, fixing css, modifying the clan_details component from the my_clan page to fit in the modal and thus reuse across both sections
+
+2013-3-30
+- added ajax content load for clan details popup on the clans list page
+- extended existing clan details component to also be a handler for ajax request
+- added view details action button to clans list display entries and Javascript to trigger modal with ajax data load
+- modified clans_list page controller to use a db view for the clans list data, so we can get leader name and numbers of members with one simple db call (note that attempting to use the F3 mapper->find function on the view did not work)
+- moved the clans_list page per-clan "action" HTML generation to the controller
+
+2013-3-31
+- migrated login handler and internal player identification from using login name to use the Faf "id" value (unchanging, unlike the username) and player_id from the clans db table
+- added "join" action button to clans list page for player not yet in a clan
+- adjusted minor details of player list table (remove sort buttons from action column, added css for horizontal centre and vertical centre)
+
+2013-4-1
+- adding 2nd modal popup to clans_list page to hold the Join Clan request form
+
+2013-4-2
+- working on ajax "join clan" form procesisng
+
+2013-4-4
+- implemented join clan html, form, layout etc
+- did param validation for join clan form GET
+
+2013-4-9
+- took a break for a few days :)
+- worked on handling of ajax post for join clan request: validation, data check, error messages feedback
+- while testing inputting bogus form data, discovered bug in Firefox plugin TamperData v11.0.1 where it inserts a carriage return before the first fieldname if any data is tampered
+
+2013-4-11
+- implemented messages data model
+- finished the join clan ajax dialogue box submission, validation and saving of request messsage
+
+2013-4-13
+- Lan party, played lots of SupcomFA :)
+
+2013-4-15
+- started messages lists componenet and template changes on myclans page
+
+2013-4-21
+- replaced dummy messages contant with real database content in messages list
+- adding ajax powered actions to messages list (view modal, delete ajax panel reload)
+
+2013-4-22
+- minor work on getting message details content to show in te modal
+- trouble with div height not expanding with floated children. learned someting about clearfix :)
+
+2013-4-23
+- implemented delete message functionality on my clans inbox message list
+
+2013-4-24
+- added outbox messages list retrieve from DB
+- added view and delete buttons for outbox messages
+- made message list table styling acceptable
+
+2013-4-25
+- added accept / reject join request buttons on message modal for join request messages
+
+2013-4-26
+- added backend plumbing for "accept join request" button.
+- much pain in making modal close work right, learned that (dur) modal close stuff stops working when you overwrite the div containing the modal 
+
+2013-5-7
+- implementing response message modal dialogue and plumbing
+- initially for refuse join request but is generically usable.
+
+2013-5-15
+- morale is low, the men are revolting (according to my wife)
+- I am going to put this on hold for a while, too busy with life and work
+
+2013-7-18
+- I have let the code go free, passing to ColonelSheppard
+- hopefully someone else will step up and take this project through to completion
+
+2013-8-7
+- I have some more free time again! yay!
+- going to restart work
+- hard thinking about how to refactor the messaging system to get around the user->user design, and allow indirection (i.e. a virtual recipient such as "current clan leader for clan XYZ"). notes appended at end of this doco.
+
+2013-8-8
+- I now have some idea how to design the message system
+- do some implementation: 
+  - new DB tables schema, 
+  - new classes for recipients (mapping virtual recievers -> real players)
+  - modify the "join clan" action page to use the new classes
+
+2013-8-12
+- time to get grown-up and start using a DCVS, i'll go with bitbucket/mercurial just like uncle Zepilot.
+- new bitbucket account is *hartbren*, repo is "faf_clans_webapp"
+- write a readme.txt
+- inital import, scary!
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Notes and musings below here 
+
+
+===============================
+Message indirection thoughts:
+===============================
+* Need to be able to :
+- send message to specific player
+
+- send message to current clan leader of clan XYZ
+  -> active messages available even if leader changes
+  
+- send message to all current clan members of clan XYZ
+  -> players who join clan after message sent do not get message
+  -> players who leave clan after message sent no longer have message in inbox
+
+
+* Need functions which will:
+
+- get all (active) messages for player
+  -> not in a clan                    
+    recipient id -> player id 
+
+select message.*, seen JOIN playerSeenMessages on messageid = seen_message=id and playerid = playerid
+join recipients on message.recipientid = recipient.recipientID and recipient.type = PLAYER and recipient.entity_id = playerid
+where message.status = active
+
+  -> in a clan
+      recipient ids are player id  AND clan id
+
+select message.*, seen 
+JOIN playerSeenMessages on message.messageid = playerSeenMessages.messageid and playerSeenMessages.playerid = playerid
+join recipients 
+  on 
+    message.recipientid = recipient.recipientID 
+    and (
+      ( recipient.type = PLAYER and recipient.entity_id = playerid ) 
+      OR 
+      ( recipient.type = CLAN_ALL and recipient.entity_id = clanid ) 
+    )
+where message.status = active
+    
+  -> in a clan and leader of clan
+      recipient ids are player id  AND clan id and clan leader id
+  
+select message.*, seen 
+JOIN playerSeenMessages on message.messageid = playerSeenMessages.messageid and playerSeenMessages.playerid = playerid
+join recipients 
+  on 
+    message.recipientid = recipient.recipientID 
+    and (
+      ( recipient.type = PLAYER and recipient.entity_id = playerid ) 
+      OR 
+      ( recipient.type = CLAN_ALL and recipient.entity_id = clanid )
+      OR 
+      ( recipient.type = CLAN_LEADER and recipient.entity_id = clanid ) 
+    )
+where message.status = active
+
+
+* Message types
+
+- petition to join        : player -> clan leader
+- invite to join          : clan leader -> player
+- message to clan members : clan member -> clan members except self
+
+The following Actions result in change to messages:
+
+- refuse petition         : update petiton message with response
+- refuse invite           : update invite message with response
+- clan leader change      : new clan leader will see active messages automatically 
+- clan member join        : no change
+- clan member leaves      : close active messages from clan
+
+
+* Need some
+
+--get messageids which are for clan recipients
+update playerSeenMessages set status=HIDE where messageid in (
+select messageid from messages join recipient on message.recipientID = recipient.receipientID and reciepientID.type = CLAN_ALL and enetityID = clanID)
+
+select message.messageID from messages
+where not exists (select * from playerSeenMessages where playerid = X and messages.messageid = playerSeenMessages.messageID) and 
+
+
