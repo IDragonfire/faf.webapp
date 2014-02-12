@@ -32,13 +32,6 @@
               {{ @ctr==1?'':',' }}[ "{{ @clan.clan_name }}", "{{ @clan.clan_tag }}", "{{ @clan.leader_name }}", "{{ @clan.clan_active_members }}",  '{{ @clan.action | raw }}' ]
                
               </repeat> 
-              
-              /* // static test data
-                [ "First Clan", "1ST", "ReneDescartes", 2, "actions" ],
-                [ "Secundo Clan", "SEC", "Enrico_Fermi", 4, "actions" ],
-                [ "Dritten Klan", "DRI", "GottfriedLiebniz", 8, "actions" ],
-                [ "Dai Yon Shizoku", "YON", "thebeej", 16, "actions" ] 
-              */
                 
               ];
 
@@ -114,7 +107,7 @@
 
 
 <!-- Join Clan popup Modal - initially hidden -->
-<div id="clansList_join_clan_modal" class="modal modal-override-clansListPageModal hide " tabindex="-1" >
+<div id="clansList_join_clan_modal" class="modal modal-override-clansListPageModal hide" tabindex="-1" >
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal">X</button>
     <h3>Request to Join Clan</h3>

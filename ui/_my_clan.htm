@@ -66,9 +66,14 @@
 		}
 	});
 
-	$("#inv_players").autocomplete({
+	$("#inv_player").autocomplete({
 		source: "component/_invite_players",
-		minLength: 1
+		minLength: 1,
+		select: function( event, ui ) {
+				$( "#inv_player_id" ).val( ui.item.id );	
+				$( "#inv_player" ).val( ui.item.value );				
+				return false;
+		  }
 	});
 
   } );
@@ -83,10 +88,14 @@
   <div class="modal-body">
 
     <div class="row well" id="myclan_invite_players_modal_body">
-		  <label for="inv_players">Tags: </label>
-		  <input type="text" id="inv_players">
+		  <label for="inv_player">Add a Player: </label>
+		  <input type="text" id="inv_player">
+		  <input type="hidden" id="inv_player_id">
+		  <div>
+			<button class="btn btn-large disabled" href="#">Invite Player</button>   
+		  </div>
     </div>
-    
+	
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" >Close</button>

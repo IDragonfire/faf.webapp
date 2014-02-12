@@ -5,16 +5,19 @@ namespace App;
 class Notifications extends Controller {
 
   function get( $f3 ) {
-
+	// set so nav menu shows correct selected item
+    $f3->set( 'selected_page', 'notifications' );
     
     if( $this->_checkPerm( $f3 ) === FALSE) {
       return;
     }
-      
-    
-    
-    // set so nav menu shows correct selected item
-    $f3->set( 'selected_page', 'notifications' );
+	
+	$invites = new \Model\Clan_Invites( $f3->get( 'DB_CLANS' ) );
+	
+	$username = $f3->get('logged_in_player');
+	$invites = $invites->get_invitations($username->player_id);
+	
+	$f3->set( 'invites', $invites ); 
 
     // page content
     $f3->set('main_content_template', '_notifications.htm');  

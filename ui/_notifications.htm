@@ -1,3 +1,5 @@
-      <div class="row">
-        nothing to show
-      </div>
+<div class="row">
+	<repeat group="{{ @invites }}" value="{{ @inv }}" counter="{{ @ctr }}">
+             <li> You got invited from: {{ @inv.clan_id }}</li>        
+	</repeat> 
+</div>

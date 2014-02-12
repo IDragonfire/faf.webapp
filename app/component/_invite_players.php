@@ -20,7 +20,7 @@ class _Invite_Players extends \App\Controller {
 		$players = $player_list->find( array( "player_name LIKE concat('%',?,'%')", $player) ); 
 		$data = array();
 		foreach($players as $p) {
-			 $data[] = array('id' => $p->player_name, 'value' => $p->player_name, 'label' => $p->player_name);
+			 $data[] = array('id' => $p->player_id, 'value' => $p->player_name, 'label' => $p->player_name);
 		}
 		
 		$json = json_encode($data);
