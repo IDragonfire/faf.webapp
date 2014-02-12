@@ -8,7 +8,7 @@ Clan Details page component
 
 namespace App\Component;
 
-class _Invite_Players extends \App\Controller {
+class _Search_Players extends \App\Controller {
     
     function get($f3, $f3_request_info = null) {
 		$player = $f3->get('GET.term');
