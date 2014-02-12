@@ -26,14 +26,18 @@ class Clans_List extends Controller {
     $db = $f3->get( 'DB_CLANS' );
     
     $clans_list_page_view = $db->exec( 'SELECT * FROM Clans_List_Page_View');
-    
+	
+	 // player is logged in but does not have a clan membership
+	$playerCanJoin = $player && !$players_clan_id;
+	
     // add action button HTML for each entry
+	# TODO: resign/leave button?
     foreach( $clans_list_page_view as &$clan ) {
 
       $action_html = '<a href="component/_clan_details?clan_id='. $clan['clan_id'] .'" class="btn" data-toggle-extended="modal" data-modal-type="clan_details" >Details</a>';
       
       // player is logged in but does not have a clan membership
-      if( $player && !$players_clan_id ) {
+      if( $playerCanJoin ) {
         $action_html .= ' <a href="join_clan?clan_id='. $clan['clan_id'] .'" class="btn" data-toggle-extended="modal" data-modal-type="join_clan">Join</a>';
       }
 
