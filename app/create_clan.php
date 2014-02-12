@@ -196,11 +196,6 @@ class Create_Clan extends Controller {
       $f3->set( 'allow_create_clan', false );
       $f3->set( 'disallowed_reason', 'You are already a member of an existing clan. You must resign from your current clan before you may create a new clan.' );
     }
-    else if( 0 ) // check here if player has sufficient rating / number of games to be allowed to create a clan
-    {
-      $f3->set( 'allow_create_clan', false );
-      $f3->set( 'disallowed_reason', 'Your rating or number of games are too low to become a clan founder.' );
-     }
     else
     {
       $f3->set( 'allow_create_clan', true );
