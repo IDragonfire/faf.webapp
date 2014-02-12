@@ -5,7 +5,10 @@ namespace App;
 class My_Clan extends Controller {
 
   function get( $f3 ) {
-
+    
+	// set so nav menu shows correct selected item
+    $f3->set( 'selected_page', 'my_clan' );
+	
     $player = null;
     $clan = null;
     
@@ -26,14 +29,9 @@ class My_Clan extends Controller {
     
     $_clan_details->get( $f3 );
     
-    
-    // set so nav menu shows correct selected item
-    $f3->set( 'selected_page', 'my_clan' );
 
     // page content
     $f3->set('main_content_template', '_my_clan.htm');  
-    
-
     
     $this->get_clan_members_list_data( $f3, $clan['clan_id'] );
     
@@ -95,9 +93,6 @@ class My_Clan extends Controller {
   private function setup_template_access_error( $f3, $msg ) {
   
     $f3->set( 'my_clan_error_message', $msg );
-
-     // set to nav menu shows correct selected item
-    $f3->set( 'selected_page', 'create_clan' );
 
     // page content
     $f3->set('main_content_template', '_my_clan_access_error.htm'); 
