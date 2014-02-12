@@ -130,7 +130,7 @@ class Create_Clan extends Controller {
 	  // get the ID of the player founding the clan
 	  $player = $f3->get( 'logged_in_player' );
 	  
-	  $clan->founder_id = $player->player_id;
+	  $clan->clan_founder_id = $player->player_id;
 	  
 	  $clan->save(); // object is auto reloaded by framework so autoincrement fields etc are populated
 	  
