@@ -28,6 +28,17 @@ class Clan_Member extends \DB\SQL\Mapper {
 
   }
   
+  function leaveClan($player_id) {
+	$membership = $this->load( array( 'player_id = ?', $player_id ) );
+    
+    if( $this->dry() ) {
+      return FALSE;
+    }
+    else {
+      return $membership->erase();
+    }
+  }
+  
   function get_clan_membership( $player_id ) {
   
     // find existing record for player
