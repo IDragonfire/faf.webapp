@@ -25,7 +25,7 @@
               var players_list_dataset = [
 
               <repeat group="{{ @players_list_arr }}" value="{{ @player }}" counter="{{ @ctr }}">
-              {{ @ctr==1?'':',' }}[ "{{ @player.player_name }}", "Member of Clan", "actions" ]
+              {{ @ctr==1?'':',' }}[ "{{ @player.player_name }}", "{{ @player.clan_name }}", "-" ]
                
               </repeat> 
                 

@@ -11,7 +11,7 @@ class Players_List extends Controller {
 
     $tbl_players_list = new \Model\Players_List( $f3->get( 'DB_CLANS' ) );
     
-    $players_list_mapper_arr = $tbl_players_list->find( array( 'status = ?', \Model\Players_List::PLAYER_STATUS_ACTIVE ) ); 
+     $players_list_mapper_arr =  $f3->get( 'DB_CLANS' )->exec( 'SELECT * FROM Player_List_Page_View');
     
 	  $f3->set( 'players_list_arr', $players_list_mapper_arr );
 	
