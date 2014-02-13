@@ -39,7 +39,6 @@ CREATE TABLE `clan_invites` (
 
 LOCK TABLES `clan_invites` WRITE;
 /*!40000 ALTER TABLE `clan_invites` DISABLE KEYS */;
-INSERT INTO `clan_invites` VALUES (1,51,1,'2014-02-13 13:08:50');
 /*!40000 ALTER TABLE `clan_invites` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -65,7 +64,6 @@ CREATE TABLE `clan_leader` (
 
 LOCK TABLES `clan_leader` WRITE;
 /*!40000 ALTER TABLE `clan_leader` DISABLE KEYS */;
-INSERT INTO `clan_leader` VALUES (1,46,'Gordon','2014-02-11 10:42:00'),(7,43,'dragon','2014-02-12 20:14:53');
 /*!40000 ALTER TABLE `clan_leader` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -92,7 +90,6 @@ CREATE TABLE `clan_members` (
 
 LOCK TABLES `clan_members` WRITE;
 /*!40000 ALTER TABLE `clan_members` DISABLE KEYS */;
-INSERT INTO `clan_members` VALUES (1,44,'2014-02-11 10:26:00','Plebian'),(1,46,'2014-02-11 10:26:00','Plebian'),(1,48,'2014-02-11 10:26:00','Plebian'),(7,43,'2014-02-13 12:00:43','LAB'),(7,45,'2014-02-13 11:04:03','LAB'),(7,441,'2014-02-13 11:00:09','LAB');
 /*!40000 ALTER TABLE `clan_members` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -155,7 +152,6 @@ CREATE TABLE `clans_list` (
 
 LOCK TABLES `clans_list` WRITE;
 /*!40000 ALTER TABLE `clans_list` DISABLE KEYS */;
-INSERT INTO `clans_list` VALUES (1,'2014-02-11 10:22:49',1,'Spearhead','SPQ',2),(2,'2014-02-11 10:22:49',0,'Loyalist','AUS',NULL),(3,'2014-02-11 10:22:49',1,'Percival','DND',NULL),(4,'2014-02-11 10:22:49',1,'Revenant','Pwn',NULL),(5,'2014-02-11 13:51:54',1,'MyCoolClan','MCC',NULL),(6,'2014-02-12 20:09:08',1,'test','t',43),(7,'2014-02-12 20:14:53',1,'dada','dad',43);
 /*!40000 ALTER TABLE `clans_list` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -217,7 +213,6 @@ CREATE TABLE `messages` (
 
 LOCK TABLES `messages` WRITE;
 /*!40000 ALTER TABLE `messages` DISABLE KEYS */;
-INSERT INTO `messages` VALUES (1,50,1,0,'2014-02-12 13:49:35','This is \'d\'. Please let me join your clan \'Spearhead\'.\n\n',''),(2,51,1,0,'2014-02-12 14:20:52','This is \'d1\'. Please let me join your clan \'Spearhead\'.\n\ntest',''),(3,51,1,0,'2014-02-12 14:21:22','This is \'d1\'. Please let me join your clan \'Spearhead\'.\n\n',''),(4,51,1,0,'2014-02-12 14:21:33','This is \'d1\'. Please let me join your clan \'MyCoolClan\'.\n\ndfg',''),(5,51,1,0,'2014-02-12 21:02:24','This is \'d1\'. Please let me join your clan \'Spearhead\'.\n\na',''),(6,50,1,0,'2014-02-13 09:41:21','This is \'d\'. Please let me join your clan \'Spearhead\'.\n\na',''),(7,50,1,0,'2014-02-13 09:41:45','This is \'d\'. Please let me join your clan \'dada\'.\n\na',''),(8,441,1,0,'2014-02-13 09:43:35','This is \'John\'. Please let me join your clan \'dada\'.\n\na',''),(9,51,1,0,'2014-02-13 11:08:39','This is \'d1\'. Please let me join your clan \'dada\'.\n\na',''),(10,51,1,0,'2014-02-13 11:08:43','This is \'d1\'. Please let me join your clan \'dada\'.\n\na',''),(11,51,1,0,'2014-02-13 11:08:44','This is \'d1\'. Please let me join your clan \'dada\'.\n\na',''),(12,51,1,0,'2014-02-13 11:08:44','This is \'d1\'. Please let me join your clan \'dada\'.\n\na',''),(13,51,1,0,'2014-02-13 11:08:45','This is \'d1\'. Please let me join your clan \'dada\'.\n\na',''),(14,51,1,0,'2014-02-13 11:08:46','This is \'d1\'. Please let me join your clan \'dada\'.\n\na',''),(15,51,1,0,'2014-02-13 11:08:46','This is \'d1\'. Please let me join your clan \'dada\'.\n\na',''),(16,51,1,0,'2014-02-13 11:08:46','This is \'d1\'. Please let me join your clan \'dada\'.\n\na',''),(17,51,1,0,'2014-02-13 11:08:50','This is \'d1\'. Please let me join your clan \'Spearhead\'.\n\na',''),(18,51,1,0,'2014-02-13 11:08:53','This is \'d1\'. Please let me join your clan \'dada\'.\n\na',''),(19,51,1,0,'2014-02-13 11:08:57','This is \'d1\'. Please let me join your clan \'dada\'.\n\na',''),(20,51,1,0,'2014-02-13 11:08:58','This is \'d1\'. Please let me join your clan \'dada\'.\n\na',''),(21,51,1,0,'2014-02-13 11:08:58','This is \'d1\'. Please let me join your clan \'dada\'.\n\na','');
 /*!40000 ALTER TABLE `messages` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -275,7 +270,6 @@ CREATE TABLE `players_list` (
 
 LOCK TABLES `players_list` WRITE;
 /*!40000 ALTER TABLE `players_list` DISABLE KEYS */;
-INSERT INTO `players_list` VALUES (43,'2014-02-11 10:25:47',1,1,'dragon'),(45,'2014-02-11 10:25:47',1,3,'Donkey'),(46,'2014-02-11 10:25:47',1,4,'Gordon'),(47,'2014-02-11 10:25:47',1,5,'Adam'),(48,'2014-02-11 10:25:47',1,6,'The Nameless One'),(49,'2014-02-11 10:25:47',1,7,'Guybrush'),(50,'2014-02-12 14:49:24',1,22,'d'),(51,'2014-02-12 15:00:45',1,101,'d1'),(440,'2014-02-11 10:25:47',1,20,'d'),(441,'2014-02-13 10:43:31',1,102,'John');
 /*!40000 ALTER TABLE `players_list` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -302,7 +296,6 @@ CREATE TABLE `recipients` (
 
 LOCK TABLES `recipients` WRITE;
 /*!40000 ALTER TABLE `recipients` DISABLE KEYS */;
-INSERT INTO `recipients` VALUES (1,1,2,1),(2,2,2,1),(3,3,2,1),(4,4,2,5),(5,5,2,1),(6,6,2,1),(7,7,2,7),(8,8,2,7),(9,9,2,7),(10,10,2,7),(11,11,2,7),(12,12,2,7),(13,13,2,7),(14,14,2,7),(15,15,2,7),(16,16,2,7),(17,17,2,1),(18,18,2,7),(19,19,2,7),(20,20,2,7),(21,21,2,7);
 /*!40000 ALTER TABLE `recipients` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -366,7 +359,7 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = utf8_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `clans_details_page_view` AS select `c`.`clan_id` AS `clan_id`,`c`.`clan_name` AS `clan_name`,`c`.`clan_tag` AS `clan_tag`, `l`.`player_name` AS `leader_name`,`f`.`player_name` AS `founder_name`,date_format(`c`.`create_date`,'%Y-%c-%e') AS `founded_date` from ((`clans_list` `c` left join `clan_leader` `l` on((`c`.`clan_id` = `l`.`clan_id`))) left join `players_list` `f` on((`c`.`clan_founder_id` = `f`.`player_id`))) where (`c`.`status` = 1) */;
+/*!50001 VIEW `clans_details_page_view` AS select `c`.`clan_id` AS `clan_id`,`c`.`clan_name` AS `clan_name`,`c`.`clan_tag` AS `clan_tag`,`l`.`player_name` AS `leader_name`,`f`.`player_name` AS `founder_name`,date_format(`c`.`create_date`,'%Y-%c-%e') AS `founded_date` from ((`clans_list` `c` left join `clan_leader` `l` on((`c`.`clan_id` = `l`.`clan_id`))) left join `players_list` `f` on((`c`.`clan_founder_id` = `f`.`player_id`))) where (`c`.`status` = 1) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -456,4 +449,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-02-13 13:09:44
+-- Dump completed on 2014-02-13 18:25:00
