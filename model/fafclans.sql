@@ -142,7 +142,7 @@ CREATE TABLE `clans_list` (
   `clan_id` int(11) NOT NULL AUTO_INCREMENT,
   `create_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `status` int(1) NOT NULL DEFAULT '0',
-  `clan_name` varchar(50) NOT NULL,
+  `clan_name` varchar(40) NOT NULL,
   `clan_tag` varchar(3) DEFAULT NULL,
   `clan_founder_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`clan_id`)
@@ -275,7 +275,7 @@ CREATE TABLE `players_list` (
 
 LOCK TABLES `players_list` WRITE;
 /*!40000 ALTER TABLE `players_list` DISABLE KEYS */;
-INSERT INTO `players_list` VALUES (43,'2014-02-11 10:25:47',1,1,'dragon'),(45,'2014-02-11 10:25:47',1,3,'Donkey Kong'),(46,'2014-02-11 10:25:47',1,4,'Gordon Freeman'),(47,'2014-02-11 10:25:47',1,5,'Adam Jensen'),(48,'2014-02-11 10:25:47',1,6,'The Nameless One'),(49,'2014-02-11 10:25:47',1,7,'Guybrush Threepwood'),(50,'2014-02-12 14:49:24',1,22,'d'),(51,'2014-02-12 15:00:45',1,101,'d1'),(440,'2014-02-11 10:25:47',1,20,'d'),(441,'2014-02-13 10:43:31',1,102,'John');
+INSERT INTO `players_list` VALUES (43,'2014-02-11 10:25:47',1,1,'dragon'),(45,'2014-02-11 10:25:47',1,3,'Donkey'),(46,'2014-02-11 10:25:47',1,4,'Gordon'),(47,'2014-02-11 10:25:47',1,5,'Adam'),(48,'2014-02-11 10:25:47',1,6,'The Nameless One'),(49,'2014-02-11 10:25:47',1,7,'Guybrush'),(50,'2014-02-12 14:49:24',1,22,'d'),(51,'2014-02-12 15:00:45',1,101,'d1'),(440,'2014-02-11 10:25:47',1,20,'d'),(441,'2014-02-13 10:43:31',1,102,'John');
 /*!40000 ALTER TABLE `players_list` ENABLE KEYS */;
 UNLOCK TABLES;
 
