@@ -142,7 +142,7 @@ CREATE TABLE `clans_list` (
   `clan_id` int(11) NOT NULL AUTO_INCREMENT,
   `create_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `status` int(1) NOT NULL DEFAULT '0',
-  `clan_name` varchar(50) NOT NULL,
+  `clan_name` varchar(40) NOT NULL,
   `clan_tag` varchar(3) DEFAULT NULL,
   `clan_founder_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`clan_id`)
