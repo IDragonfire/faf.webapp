@@ -3,6 +3,9 @@
 namespace Model;
 
 class Clan_Invites extends \DB\SQL\Mapper {
+
+    const INVITE_USER_REQUEST = 1;
+    const INVITE_LEADER_REQUEST = 0;
     
     // Instantiate mapper
     function __construct(\DB\SQL $db) {
@@ -18,9 +21,10 @@ class Clan_Invites extends \DB\SQL\Mapper {
         ));       
     }
 	
-	function addInvite($player_id, $clan_id) {
+	function addInvite($player_id, $clan_id, $mode = self::INVITE_USER_REQUEST) {
 		$this->player_id = $player_id;
 		$this->clan_id = $clan_id;
+		$this->user_request = $mode;
 		$this->save();
 	}
 }

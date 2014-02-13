@@ -18,17 +18,19 @@ class My_Clan extends Controller {
     }
     
     $f3->set('clan', $clan);
+	
+	// membership request
+    $_membership_request = new \App\Component\_Membership_Request();
+    $_membership_request->get( $f3 );
 
     // messages list page component
     $_messages_list = new \App\Component\_Messages_List();
-    
     $_messages_list->get( $f3 );
  
     // clan details page component
     $_clan_details = new \App\Component\_Clan_Details();
-    
     $_clan_details->get( $f3 );
-    
+
 
     // page content
     $f3->set('main_content_template', '_my_clan.htm');  

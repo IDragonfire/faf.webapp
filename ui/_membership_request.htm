@@ -1,0 +1,9 @@
+<repeat group="{{ @membership_requests }}" value="{{ @request }}" counter="{{ @ctr }}">
+<div class="control-group">
+	{{ @request.player_name }}
+	<div class="controls" style="float:right;">
+		<button class="btn btn-small" type="button" disabled>Accept Request</button>
+		<button class="btn btn-small" type="button" disabled>Reject Request</button>
+	</div>
+</div>   
+</repeat> 		

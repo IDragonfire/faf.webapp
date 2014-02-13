@@ -22,7 +22,7 @@ class _Invite_Player extends \App\Controller {
 		$clan_id = $result[0]['clan_id'];
 		
 		$clan_member = new \Model\Clan_Invites($db);
-		$clan_member->addInvite($inv_player, $clan_id);
+		$clan_member->addInvite($inv_player, $clan_id, \Model\Clan_Invites::INVITE_LEADER_REQUEST);
 
         die();
     }

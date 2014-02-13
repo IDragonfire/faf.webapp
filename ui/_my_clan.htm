@@ -13,6 +13,12 @@
           </p>
         </div>
       </div>
+	  
+	  <hr style="border-top: 1px solid #ccc;">
+	  <div class="span11">
+        <h4>Membership Request</h4>
+      </div> 
+	  <include href="{{ @membership_request_template }}" />
       
       <hr style="border-top: 1px solid #ccc;">      
       
@@ -74,7 +80,9 @@
 		minLength: 1,
 		select: function( event, ui ) {
 				$( "#inv_player_id" ).val( ui.item.id );	
-				$( "#inv_player" ).val( ui.item.value );				
+				$( "#inv_player" ).val( ui.item.value );
+				$( "#last_player" ).html( ui.item.value );					
+				$( "button[data-modal-type='invite_confirm']" ).attr("disabled",false);;						
 				return false;
 		  }
 	});
@@ -93,9 +101,10 @@
     <div class="row well" id="myclan_invite_players_modal_body">
 		  <label for="inv_player">Add a Player: </label>
 		  <input type="text" id="inv_player">
+		  <span id="last_player" class="input-large uneditable-input uneditable-input-override"></span>
 		  <input type="hidden" id="inv_player_id">
 		  <div>
-			<button class="btn btn-large" data-toggle-extended="modal" data-modal-type="invite_confirm">Invite Player</button>   
+			<button class="btn btn-large" data-toggle-extended="modal" data-modal-type="invite_confirm" disabled>Invite Player</button>   
 		  </div>
     </div>
 	
