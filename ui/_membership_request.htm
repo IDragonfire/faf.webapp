@@ -2,8 +2,8 @@
 <div class="control-group">
 	{{ @request.player_name }}
 	<div class="controls" style="float:right;">
-		<button class="btn btn-small" type="button" disabled>Accept Request</button>
-		<button class="btn btn-small" type="button" disabled>Reject Request</button>
+		<a href="component/_membership_action?player={{ @request.player_id }}&action=accept" class="btn btn-small" type="button">Accept Request</a>
+		<a href="component/_membership_action?player={{ @request.player_id }}" class="btn btn-small" type="button">Reject Request</a>
 	</div>
 </div>   
 </repeat> 		

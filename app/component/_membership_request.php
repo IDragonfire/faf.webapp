@@ -15,7 +15,7 @@ class _Membership_Request extends \App\Controller {
             die();
         }
         
-        $mapper = new \DB\SQL\Mapper($f3->get('DB_CLANS'), 'membership_request_page_view');
+        $mapper = new \DB\SQL\Mapper($db, 'membership_request_page_view');
         $result = $mapper->find(array(
             ' clan_id = ? ',
             $clan_id
