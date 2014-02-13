@@ -12,7 +12,7 @@ class Create_Clan extends Controller {
       'label'       => 'Clan Name',
       'placeholder' => 'e.g. Unpleasant Company',
       'value'       => '',
-      'help'        => '',
+      'help'        => 'Minimum 4 characters',
     ),
 
     'clan_tag' => array (
@@ -20,7 +20,7 @@ class Create_Clan extends Controller {
       'label'       => 'Clan Tag',
       'placeholder' => 'e.g. TMO',
       'value'       => '',
-      'help'        => "Do not include surrounding square brackets,<br> these are added automatically",
+      'help'        => "Do not include surrounding square brackets,<br> maximum 3 characters",
     ),
     
   );
@@ -209,7 +209,7 @@ function _create_clans_success_template_setup( $f3 )
     
     $rules_array = array(
     
-      'clan_name' => array( 'type' => 'string', 'required' => true, 'min' => 1, 'max' => 50, 'trim' => true ),
+      'clan_name' => array( 'type' => 'string', 'required' => true, 'min' => 4, 'max' => 40, 'trim' => true ),
       'clan_tag'  => array( 'type' => 'string', 'required' => true, 'min' => 1, 'max' => 3, 'trim' => true ),
     
     );
