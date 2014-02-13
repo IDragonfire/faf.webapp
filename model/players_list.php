@@ -34,5 +34,7 @@ class Players_List extends \DB\SQL\Mapper {
     $this->save();        
   }
   
-    
+  function __toString() {
+	return $this->faf_id . ':' . $this->player_name . ':' . $this->status;
+  }    
 }

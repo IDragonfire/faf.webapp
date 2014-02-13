@@ -1,5 +1,11 @@
 <div class="row">
 	<repeat group="{{ @invites }}" value="{{ @inv }}" counter="{{ @ctr }}">
-             <li> You got invited from: {{ @inv.clan_id }}</li>        
+	<div class="control-group">
+            You got invited from: {{ @inv.clan_name }}
+			<div class="controls" style="float:right;">
+				<a href="component/_invite_action?clan={{ @inv.clan_id }}&action=accept" class="btn btn-small" type="button">Accept Invite</a>
+				<a href="component/_invite_action?clan={{ @inv.clan_id }}" class="btn btn-small" type="button">Reject Invite</a>
+			</div>		
+	</div>
 	</repeat> 
 </div>

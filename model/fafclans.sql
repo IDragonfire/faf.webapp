@@ -27,7 +27,7 @@ DROP TABLE IF EXISTS `clan_invites`;
 CREATE TABLE `clan_invites` (
   `clan_id` int(11) NOT NULL,
   `player_id` int(11) NOT NULL,
-  `user_request` int(11) NOT NULL DEFAULT '1',
+  `user_request` int(11) NOT NULL,
   `time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`clan_id`,`player_id`,`user_request`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -39,7 +39,7 @@ CREATE TABLE `clan_invites` (
 
 LOCK TABLES `clan_invites` WRITE;
 /*!40000 ALTER TABLE `clan_invites` DISABLE KEYS */;
-INSERT INTO `clan_invites` VALUES (1,50,1,'2014-02-13 11:41:21'),(7,43,1,'2014-02-13 11:00:42'),(7,45,1,'2014-02-13 11:04:01'),(7,46,1,'2014-02-13 11:00:42'),(7,50,1,'2014-02-13 11:41:46'),(7,441,1,'2014-02-13 11:43:35');
+INSERT INTO `clan_invites` VALUES (1,51,1,'2014-02-13 13:08:50');
 /*!40000 ALTER TABLE `clan_invites` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -92,7 +92,7 @@ CREATE TABLE `clan_members` (
 
 LOCK TABLES `clan_members` WRITE;
 /*!40000 ALTER TABLE `clan_members` DISABLE KEYS */;
-INSERT INTO `clan_members` VALUES (1,44,'2014-02-11 10:26:00','Plebian'),(1,46,'2014-02-11 10:26:00','Plebian'),(1,48,'2014-02-11 10:26:00','Plebian'),(7,43,'2014-02-12 20:14:53','ACU');
+INSERT INTO `clan_members` VALUES (1,44,'2014-02-11 10:26:00','Plebian'),(1,46,'2014-02-11 10:26:00','Plebian'),(1,48,'2014-02-11 10:26:00','Plebian'),(7,43,'2014-02-13 12:00:43','LAB'),(7,45,'2014-02-13 11:04:03','LAB'),(7,441,'2014-02-13 11:00:09','LAB');
 /*!40000 ALTER TABLE `clan_members` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -208,7 +208,7 @@ CREATE TABLE `messages` (
   `body` varchar(1024) DEFAULT NULL,
   `to_player_id` varchar(16) NOT NULL,
   PRIMARY KEY (`message_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -217,9 +217,24 @@ CREATE TABLE `messages` (
 
 LOCK TABLES `messages` WRITE;
 /*!40000 ALTER TABLE `messages` DISABLE KEYS */;
-INSERT INTO `messages` VALUES (1,50,1,0,'2014-02-12 13:49:35','This is \'d\'. Please let me join your clan \'Spearhead\'.\n\n',''),(2,51,1,0,'2014-02-12 14:20:52','This is \'d1\'. Please let me join your clan \'Spearhead\'.\n\ntest',''),(3,51,1,0,'2014-02-12 14:21:22','This is \'d1\'. Please let me join your clan \'Spearhead\'.\n\n',''),(4,51,1,0,'2014-02-12 14:21:33','This is \'d1\'. Please let me join your clan \'MyCoolClan\'.\n\ndfg',''),(5,51,1,0,'2014-02-12 21:02:24','This is \'d1\'. Please let me join your clan \'Spearhead\'.\n\na',''),(6,50,1,0,'2014-02-13 09:41:21','This is \'d\'. Please let me join your clan \'Spearhead\'.\n\na',''),(7,50,1,0,'2014-02-13 09:41:45','This is \'d\'. Please let me join your clan \'dada\'.\n\na',''),(8,441,1,0,'2014-02-13 09:43:35','This is \'John\'. Please let me join your clan \'dada\'.\n\na','');
+INSERT INTO `messages` VALUES (1,50,1,0,'2014-02-12 13:49:35','This is \'d\'. Please let me join your clan \'Spearhead\'.\n\n',''),(2,51,1,0,'2014-02-12 14:20:52','This is \'d1\'. Please let me join your clan \'Spearhead\'.\n\ntest',''),(3,51,1,0,'2014-02-12 14:21:22','This is \'d1\'. Please let me join your clan \'Spearhead\'.\n\n',''),(4,51,1,0,'2014-02-12 14:21:33','This is \'d1\'. Please let me join your clan \'MyCoolClan\'.\n\ndfg',''),(5,51,1,0,'2014-02-12 21:02:24','This is \'d1\'. Please let me join your clan \'Spearhead\'.\n\na',''),(6,50,1,0,'2014-02-13 09:41:21','This is \'d\'. Please let me join your clan \'Spearhead\'.\n\na',''),(7,50,1,0,'2014-02-13 09:41:45','This is \'d\'. Please let me join your clan \'dada\'.\n\na',''),(8,441,1,0,'2014-02-13 09:43:35','This is \'John\'. Please let me join your clan \'dada\'.\n\na',''),(9,51,1,0,'2014-02-13 11:08:39','This is \'d1\'. Please let me join your clan \'dada\'.\n\na',''),(10,51,1,0,'2014-02-13 11:08:43','This is \'d1\'. Please let me join your clan \'dada\'.\n\na',''),(11,51,1,0,'2014-02-13 11:08:44','This is \'d1\'. Please let me join your clan \'dada\'.\n\na',''),(12,51,1,0,'2014-02-13 11:08:44','This is \'d1\'. Please let me join your clan \'dada\'.\n\na',''),(13,51,1,0,'2014-02-13 11:08:45','This is \'d1\'. Please let me join your clan \'dada\'.\n\na',''),(14,51,1,0,'2014-02-13 11:08:46','This is \'d1\'. Please let me join your clan \'dada\'.\n\na',''),(15,51,1,0,'2014-02-13 11:08:46','This is \'d1\'. Please let me join your clan \'dada\'.\n\na',''),(16,51,1,0,'2014-02-13 11:08:46','This is \'d1\'. Please let me join your clan \'dada\'.\n\na',''),(17,51,1,0,'2014-02-13 11:08:50','This is \'d1\'. Please let me join your clan \'Spearhead\'.\n\na',''),(18,51,1,0,'2014-02-13 11:08:53','This is \'d1\'. Please let me join your clan \'dada\'.\n\na',''),(19,51,1,0,'2014-02-13 11:08:57','This is \'d1\'. Please let me join your clan \'dada\'.\n\na',''),(20,51,1,0,'2014-02-13 11:08:58','This is \'d1\'. Please let me join your clan \'dada\'.\n\na',''),(21,51,1,0,'2014-02-13 11:08:58','This is \'d1\'. Please let me join your clan \'dada\'.\n\na','');
 /*!40000 ALTER TABLE `messages` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Temporary table structure for view `player_invites_page_view`
+--
+
+DROP TABLE IF EXISTS `player_invites_page_view`;
+/*!50001 DROP VIEW IF EXISTS `player_invites_page_view`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `player_invites_page_view` (
+  `clan_name` tinyint NOT NULL,
+  `player_id` tinyint NOT NULL,
+  `clan_id` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Temporary table structure for view `player_list_page_view`
@@ -278,7 +293,7 @@ CREATE TABLE `recipients` (
   `entity_id` int(11) NOT NULL,
   PRIMARY KEY (`recipient_id`),
   KEY `message_id` (`message_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -287,7 +302,7 @@ CREATE TABLE `recipients` (
 
 LOCK TABLES `recipients` WRITE;
 /*!40000 ALTER TABLE `recipients` DISABLE KEYS */;
-INSERT INTO `recipients` VALUES (1,1,2,1),(2,2,2,1),(3,3,2,1),(4,4,2,5),(5,5,2,1),(6,6,2,1),(7,7,2,7),(8,8,2,7);
+INSERT INTO `recipients` VALUES (1,1,2,1),(2,2,2,1),(3,3,2,1),(4,4,2,5),(5,5,2,1),(6,6,2,1),(7,7,2,7),(8,8,2,7),(9,9,2,7),(10,10,2,7),(11,11,2,7),(12,12,2,7),(13,13,2,7),(14,14,2,7),(15,15,2,7),(16,16,2,7),(17,17,2,1),(18,18,2,7),(19,19,2,7),(20,20,2,7),(21,21,2,7);
 /*!40000 ALTER TABLE `recipients` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -395,6 +410,25 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
+-- Final view structure for view `player_invites_page_view`
+--
+
+/*!50001 DROP TABLE IF EXISTS `player_invites_page_view`*/;
+/*!50001 DROP VIEW IF EXISTS `player_invites_page_view`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `player_invites_page_view` AS select `c`.`clan_name` AS `clan_name`,`i`.`player_id` AS `player_id`,`i`.`clan_id` AS `clan_id` from (`clan_invites` `i` join `clans_list` `c` on((`i`.`clan_id` = `c`.`clan_id`))) where (`i`.`user_request` = 0) order by `i`.`time` desc */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
 -- Final view structure for view `player_list_page_view`
 --
 
@@ -422,4 +456,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-02-13 11:44:19
+-- Dump completed on 2014-02-13 13:09:44
