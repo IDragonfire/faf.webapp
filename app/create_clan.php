@@ -23,14 +23,6 @@ class Create_Clan extends Controller {
       'help'        => "Do not include surrounding square brackets,<br> these are added automatically",
     ),
     
-    'clan_motto' => array (
-      'id_prefix'   => 'create_clan',
-      'label'       => 'Clan Motto',
-      'placeholder' => 'e.g. Veni Vidi Snipey',
-      'value'       => '',
-      'help'        => '',
-    ),
-    
   );
 
 	function get( $f3 ) {
@@ -125,7 +117,6 @@ class Create_Clan extends Controller {
 	  $clan->reset();
 	  $clan->clan_name = $sanitized_fields['clan_name'];
 	  $clan->clan_tag = $sanitized_fields['clan_tag'];
-    $clan->clan_motto = $sanitized_fields['clan_motto'];
 	  $clan->status = \Model\Clans_List::CLAN_STATUS_ACTIVE;
 	  
 	  // get the ID of the player founding the clan
@@ -220,7 +211,6 @@ function _create_clans_success_template_setup( $f3 )
     
       'clan_name' => array( 'type' => 'string', 'required' => true, 'min' => 1, 'max' => 50, 'trim' => true ),
       'clan_tag'  => array( 'type' => 'string', 'required' => true, 'min' => 1, 'max' => 3, 'trim' => true ),
-      'clan_motto' => array( 'type' => 'string', 'required' => true, 'min' => 1, 'max' => 64, 'trim' => true ),
     
     );
     
