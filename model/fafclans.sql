@@ -39,7 +39,7 @@ CREATE TABLE `clan_invites` (
 
 LOCK TABLES `clan_invites` WRITE;
 /*!40000 ALTER TABLE `clan_invites` DISABLE KEYS */;
-INSERT INTO `clan_invites` VALUES (7,43,0,'2014-02-13 11:00:42'),(7,45,0,'2014-02-13 11:04:01'),(7,46,0,'2014-02-13 11:00:42');
+INSERT INTO `clan_invites` VALUES (1,50,1,'2014-02-13 11:41:21'),(7,43,1,'2014-02-13 11:00:42'),(7,45,1,'2014-02-13 11:04:01'),(7,46,1,'2014-02-13 11:00:42'),(7,50,1,'2014-02-13 11:41:46'),(7,441,1,'2014-02-13 11:43:35');
 /*!40000 ALTER TABLE `clan_invites` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -208,7 +208,7 @@ CREATE TABLE `messages` (
   `body` varchar(1024) DEFAULT NULL,
   `to_player_id` varchar(16) NOT NULL,
   PRIMARY KEY (`message_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -217,7 +217,7 @@ CREATE TABLE `messages` (
 
 LOCK TABLES `messages` WRITE;
 /*!40000 ALTER TABLE `messages` DISABLE KEYS */;
-INSERT INTO `messages` VALUES (1,50,1,0,'2014-02-12 13:49:35','This is \'d\'. Please let me join your clan \'Spearhead\'.\n\n',''),(2,51,1,0,'2014-02-12 14:20:52','This is \'d1\'. Please let me join your clan \'Spearhead\'.\n\ntest',''),(3,51,1,0,'2014-02-12 14:21:22','This is \'d1\'. Please let me join your clan \'Spearhead\'.\n\n',''),(4,51,1,0,'2014-02-12 14:21:33','This is \'d1\'. Please let me join your clan \'MyCoolClan\'.\n\ndfg',''),(5,51,1,0,'2014-02-12 21:02:24','This is \'d1\'. Please let me join your clan \'Spearhead\'.\n\na','');
+INSERT INTO `messages` VALUES (1,50,1,0,'2014-02-12 13:49:35','This is \'d\'. Please let me join your clan \'Spearhead\'.\n\n',''),(2,51,1,0,'2014-02-12 14:20:52','This is \'d1\'. Please let me join your clan \'Spearhead\'.\n\ntest',''),(3,51,1,0,'2014-02-12 14:21:22','This is \'d1\'. Please let me join your clan \'Spearhead\'.\n\n',''),(4,51,1,0,'2014-02-12 14:21:33','This is \'d1\'. Please let me join your clan \'MyCoolClan\'.\n\ndfg',''),(5,51,1,0,'2014-02-12 21:02:24','This is \'d1\'. Please let me join your clan \'Spearhead\'.\n\na',''),(6,50,1,0,'2014-02-13 09:41:21','This is \'d\'. Please let me join your clan \'Spearhead\'.\n\na',''),(7,50,1,0,'2014-02-13 09:41:45','This is \'d\'. Please let me join your clan \'dada\'.\n\na',''),(8,441,1,0,'2014-02-13 09:43:35','This is \'John\'. Please let me join your clan \'dada\'.\n\na','');
 /*!40000 ALTER TABLE `messages` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -251,7 +251,7 @@ CREATE TABLE `players_list` (
   `player_name` varchar(50) NOT NULL,
   PRIMARY KEY (`player_id`),
   UNIQUE KEY `faf_id` (`faf_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=441 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=442 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -260,7 +260,7 @@ CREATE TABLE `players_list` (
 
 LOCK TABLES `players_list` WRITE;
 /*!40000 ALTER TABLE `players_list` DISABLE KEYS */;
-INSERT INTO `players_list` VALUES (43,'2014-02-11 10:25:47',1,1,'dragon'),(45,'2014-02-11 10:25:47',1,3,'Donkey Kong'),(46,'2014-02-11 10:25:47',1,4,'Gordon Freeman'),(47,'2014-02-11 10:25:47',1,5,'Adam Jensen'),(48,'2014-02-11 10:25:47',1,6,'The Nameless One'),(49,'2014-02-11 10:25:47',1,7,'Guybrush Threepwood'),(50,'2014-02-12 14:49:24',1,22,'d'),(51,'2014-02-12 15:00:45',1,101,'d1'),(440,'2014-02-11 10:25:47',1,20,'d');
+INSERT INTO `players_list` VALUES (43,'2014-02-11 10:25:47',1,1,'dragon'),(45,'2014-02-11 10:25:47',1,3,'Donkey Kong'),(46,'2014-02-11 10:25:47',1,4,'Gordon Freeman'),(47,'2014-02-11 10:25:47',1,5,'Adam Jensen'),(48,'2014-02-11 10:25:47',1,6,'The Nameless One'),(49,'2014-02-11 10:25:47',1,7,'Guybrush Threepwood'),(50,'2014-02-12 14:49:24',1,22,'d'),(51,'2014-02-12 15:00:45',1,101,'d1'),(440,'2014-02-11 10:25:47',1,20,'d'),(441,'2014-02-13 10:43:31',1,102,'John');
 /*!40000 ALTER TABLE `players_list` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -278,7 +278,7 @@ CREATE TABLE `recipients` (
   `entity_id` int(11) NOT NULL,
   PRIMARY KEY (`recipient_id`),
   KEY `message_id` (`message_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -287,7 +287,7 @@ CREATE TABLE `recipients` (
 
 LOCK TABLES `recipients` WRITE;
 /*!40000 ALTER TABLE `recipients` DISABLE KEYS */;
-INSERT INTO `recipients` VALUES (1,1,2,1),(2,2,2,1),(3,3,2,1),(4,4,2,5),(5,5,2,1);
+INSERT INTO `recipients` VALUES (1,1,2,1),(2,2,2,1),(3,3,2,1),(4,4,2,5),(5,5,2,1),(6,6,2,1),(7,7,2,7),(8,8,2,7);
 /*!40000 ALTER TABLE `recipients` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -389,7 +389,7 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = utf8_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `membership_request_page_view` AS select `i`.`player_id` AS `player_id`,`p`.`player_name` AS `player_name`,`i`.`time` AS `time`,`i`.`clan_id` AS `clan_id` from (`clan_invites` `i` left join `players_list` `p` on((`i`.`player_id` = `p`.`player_id`))) where (`i`.`user_request` = 0) order by `i`.`time` desc */;
+/*!50001 VIEW `membership_request_page_view` AS select `i`.`player_id` AS `player_id`,`p`.`player_name` AS `player_name`,`i`.`time` AS `time`,`i`.`clan_id` AS `clan_id` from (`clan_invites` `i` left join `players_list` `p` on((`i`.`player_id` = `p`.`player_id`))) where (`i`.`user_request` = 1) order by `i`.`time` desc */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -422,4 +422,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-02-13 11:38:53
+-- Dump completed on 2014-02-13 11:44:19
