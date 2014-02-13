@@ -7,9 +7,7 @@ class _Membership_Request extends \App\Controller {
         
         $db = $f3->get('DB_CLANS');
         
-        $player  = $f3->get('logged_in_player');
-        $result  = $db->exec('SELECT clan_id FROM clan_members WHERE player_id = ?', $player->player_id);
-        $clan_id = $result[0]['clan_id'];
+        $clan_id = $this->getClanId($f3);
 
         if (!$clan_id) {
             die();

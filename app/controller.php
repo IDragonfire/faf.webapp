@@ -4,6 +4,12 @@ namespace App;
 
 class Controller {
 
+	function getClanId($f3) {
+		$player  = $f3->get('logged_in_player');
+        $result  = $f3->get( 'DB_CLANS' )->exec('SELECT clan_id FROM clan_members WHERE player_id = ?', $player->player_id);
+        return $result[0]['clan_id'];
+	}
+
 	function beforeroute( $f3 ) {
     
     // logged in status
@@ -34,8 +40,6 @@ class Controller {
       $f3->set('logged_in_player', $player);
       
     }
-    
-    
     
     // login URL as a param
     $f3->set( 'login_url', 'https://' . $f3->get( 'HOST' ) . $f3->get( 'BASE' ) . '/login' );
