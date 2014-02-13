@@ -91,8 +91,19 @@
 	
 	 //turn to inline mode
 	$.fn.editable.defaults.mode = 'inline';
-	$('#inputClanName').editable();
-	$('#inputClanTag').editable();
+
+	$('#inputClanName').editable({
+	    type: 'text',
+		pk: 'clan_name',
+		title: 'Clan Name',
+		url: 'component/_edit_action' 
+	});
+	$('#inputClanTag').editable({
+	    type: 'text',
+		pk: 'clan_tag',
+		title: 'Clan Tag',
+		url: 'component/_edit_action' 
+	});
   } );
 </script>
 
