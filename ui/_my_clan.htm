@@ -43,15 +43,18 @@
 
 <!-- Load functionality to power the datatable -->
 <script src="ui/js/jquery.autocomplete.js"></script>
+<script src="ui/js/bootstrap-editable.js"></script>
 
 <!-- add datatable specific CSS -->
 <script type="text/javascript">
   $(document).ready(function(){
 	if (document.createStyleSheet) { // IE specific
 	  document.createStyleSheet('ui/css/jquery.autocomplete.css');
+	  document.createStyleSheet('ui/css/bootstrap-editable.css');
 	}
 	else { // other browsers
 	  $("head").append($("<link rel='stylesheet' href='ui/css/jquery.autocomplete.css' type='text/css' media='screen' />"));
+	  $("head").append($("<link rel='stylesheet' href='ui/css/bootstrap-editable.css' type='text/css' media='screen' />"));
 	}
   });
 </script>
@@ -85,6 +88,11 @@
 				return false;
 		  }
 	});
+	
+	 //turn to inline mode
+	$.fn.editable.defaults.mode = 'inline';
+	$('#inputClanName').editable();
+	$('#inputClanTag').editable();
   } );
 </script>
 
