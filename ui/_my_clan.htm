@@ -83,7 +83,8 @@
 		minLength: 1,
 		select: function( event, ui ) {
 				$( "#inv_player_id" ).val( ui.item.id );	
-				$( "#inv_player" ).val( ui.item.value );					
+				$( "#inv_player" ).val( ui.item.value );
+				$( "#lastPlayer" ).html( ui.item.value );				
 				$( "button[data-modal-type='invite_confirm']" ).attr("disabled",false);				
 				return false;
 		  }
@@ -114,14 +115,18 @@
     <h3>Invite Players</h3>
   </div>
   <div class="modal-body">
-
     <div class="row well" id="myclan_invite_players_modal_body">
-		  <label for="inv_player">Add a Player: </label>
-		  <input type="text" id="inv_player">
-		  <input type="hidden" id="inv_player_id">
-		  <div>
-			<button class="btn btn-large" data-toggle-extended="modal" data-modal-type="invite_confirm" disabled>Invite Player</button>   
-		  </div>
+		<div class="control-group"> 
+		  <label for="inv_player">Search for a Player: </label>
+		</div>
+		<div class="control-group"> 
+			<input type="text" id="inv_player">
+			<input type="hidden" id="inv_player_id">
+			<span id="lastPlayer" class="input-large uneditable-input uneditable-input-override"></span>
+		</div>
+		<div class="control-group"> 
+			<button class="btn btn-large" data-toggle-extended="modal" data-modal-type="invite_confirm" disabled>Invite Player</button>
+		 </div> 
     </div>
 	
   </div>
