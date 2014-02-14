@@ -34,7 +34,7 @@
                 "{{ @clan_member.player_name }}", 
                 "{{ @clan_member.clan_rank }}", 
                 "{{ @clan_member.join_clan_date }}",  
-                "action on {{ @clan_member.player_id }}"
+                "<a href='component/_clan_action?action=remove&player={{ @clan_member.player_id }}' class='btn'>Remove Member</a>"
               ]
                
               </repeat> 
