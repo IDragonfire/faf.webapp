@@ -17,7 +17,7 @@ class Clans_List extends \DB\SQL\Mapper {
   function checkClanName($newClanName) {
 	$errors = array();
 
-	if(strlen($newClanName) < 8) {
+	if(strlen($newClanName) < 4) {
 		$errors[] = 'Minimum 4 characters!';
 	}
 
@@ -32,7 +32,20 @@ class Clans_List extends \DB\SQL\Mapper {
   }
   
   function checkClanTag($newClanTag) {
-	
+	$errors = array();
+
+	if(strlen($newClanTag) > 3) {
+		$errors[] = 'Maximum 3 characters!';
+	}
+
+	// look for duplicate clan name
+	$this->load( array( 'clan_tag = ?', $newClanTag));
+
+	if( !$this->dry() ) {
+		// error, field is duplicated
+		$errors[] =  'A clan with that tag already exists';
+	}
+	return $errors;
   }
     
 }

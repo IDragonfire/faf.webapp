@@ -11,13 +11,15 @@ class _Edit_Action extends \App\Controller {
 		
 		# TODO; check also on creation, make one unit
 		if($pk == 'clan_tag') {
-			if(strlen($value) > 3) {
-				$this->error('Maximum 3 characters!');
+			$clan = new \Model\Clans_List($db);
+			$errors = $clan->checkClanTag($value);
+			if(count($errors) > 0) {
+				$this->error(implode($errors, '; '));
 			}
-			$mapper = new \Model\Clans_List($db);
-			$mapper->load( array( ' clan_id = ? ', $this->getClanId($f3) ) );
-			$mapper->clan_tag = $value;
-			$mapper->save();
+			$clan = new \Model\Clans_List($db);
+			$clan->load( array( ' clan_id = ? ', $this->getClanId($f3) ) );
+			$clan->clan_tag = $value;
+			$clan->save();
 			die();
 		}
 		# TODO: check also on creation, make one unit
@@ -27,10 +29,9 @@ class _Edit_Action extends \App\Controller {
 			if(count($errors) > 0) {
 				$this->error(implode($errors, '; '));
 			}
-			$mapper = new \Model\Clans_List($db);
-			$mapper->load( array( ' clan_id = ? ', $this->getClanId($f3) ) );
-			$mapper->clan_name = $value;
-			$mapper->save();
+			$clan->load( array( ' clan_id = ? ', $this->getClanId($f3) ) );
+			$clan->clan_name = $value;
+			$clan->save();
 			die();
 		}
 		$this->error('invalid primary key');
