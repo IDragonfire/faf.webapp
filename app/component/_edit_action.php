@@ -22,8 +22,10 @@ class _Edit_Action extends \App\Controller {
 		}
 		# TODO: check also on creation, make one unit
 		if($pk == 'clan_name') {
-			if(strlen($value) < 4) {
-				$this->error('Minimum 4 characters!');
+			$clan = new \Model\Clans_List($db);
+			$errors = $clan->checkClanName($value);
+			if(count($errors) > 0) {
+				$this->error(implode($errors, '; '));
 			}
 			$mapper = new \Model\Clans_List($db);
 			$mapper->load( array( ' clan_id = ? ', $this->getClanId($f3) ) );
