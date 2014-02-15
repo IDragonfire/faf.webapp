@@ -9,6 +9,12 @@ class _Edit_Action extends \App\Controller {
 		
 		$db = $f3->get( 'DB_CLANS');
 		
+		# if player has no permission
+        $perm = new \Model\Permission($db);
+        if(!$perm->hasPerm($f3->get('logged_in_player')->player_id, \Model\Permission::MY_CLAN_EDIT_DETAILS)) {
+            $this->error('no perm');
+        }
+
 		# TODO; check also on creation, make one unit
 		if($pk == 'clan_tag') {
 			$clan = new \Model\Clans_List($db);
