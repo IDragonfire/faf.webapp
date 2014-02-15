@@ -12,6 +12,8 @@ class Notifications extends Controller {
       return;
     }
 	
+  $f3->set('clanmember', ($this->getClanId($f3) > 0)  ? 'true' : 'false');
+
 	$mapper = new \DB\SQL\Mapper( $f3->get( 'DB_CLANS' ),'player_invites_page_view');
 	$invites = $mapper->find(array('player_id = ?', $f3->get('logged_in_player')->player_id)); 
 	$f3->set( 'invites', $invites ); 
