@@ -21,6 +21,14 @@ class Clans_List extends \DB\SQL\Mapper {
 		$errors[] = 'Minimum 4 characters!';
 	}
 
+	if(strlen($newClanName) > 40) {
+		$errors[] = 'Maximum 40 characters!';
+	}
+
+	if(!preg_match('/^[A-Za-z ]+$/', $newClanName)) {
+		$errors[] = 'Only alphabet letters are allowed!';
+	}
+
 	// look for duplicate clan name
 	$this->load( array( 'clan_name = ?', $newClanName));
 
@@ -36,6 +44,14 @@ class Clans_List extends \DB\SQL\Mapper {
 
 	if(strlen($newClanTag) > 3) {
 		$errors[] = 'Maximum 3 characters!';
+	}
+
+	if(strlen($newClanTag) < 1) {
+		$errors[] = 'Minimum 1 character!';
+	}
+
+	if(!preg_match('/^[A-Za-z]+$/', $newClanTag)) {
+		$errors[] = 'Only alphabet letters are allowed!';
 	}
 
 	// look for duplicate clan name
