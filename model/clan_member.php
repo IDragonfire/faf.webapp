@@ -14,6 +14,12 @@ class Clan_Member extends \DB\SQL\Mapper {
   function player_join_clan( $player_id, $clan_id, $rank = 'LAB' )
   {
     _log( "param: player_id : $player_id| clan_id : $clan_id|" );
+
+    $this->load(array('player_id = ?', $player_id));
+    if(!$this->dry()) {
+      // Player has a clan
+      return FALSE;
+    }
   
     // find existing record for player
     $this->load( array( 'player_id = ?', $player_id ) );
@@ -25,7 +31,7 @@ class Clan_Member extends \DB\SQL\Mapper {
     $this->player_id = $player_id;
     $this->clan_rank = $rank;
     $this->save();
-
+    return TRUE;
   }
   
   function leaveClan($player_id) {
