@@ -17,7 +17,7 @@ class Permission  extends \DB\SQL\Mapper {
 	# TODO: imeplement better perm system
 	function getPerms($player_id) {
 		$member = $this->load(array('player_id = ?', $player_id));
-		$perm = $member->clan_rank == 'ACU';
+		$perm = ($member->clan_rank == 'ACU') ? 'true' : 'false';
 		return array(self::MY_CLAN_REMOVE_MEMBER => $perm,
 					self::MY_CLAN_INVITE_PLAYER => $perm,
 					self::MY_CLAN_HANDLE_MEMBERSHIP_REQUEST => $perm,
