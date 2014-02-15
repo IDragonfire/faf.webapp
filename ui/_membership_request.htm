@@ -2,8 +2,17 @@
 <div class="control-group">
 	{{ @request.player_name }}
 	<div class="controls" style="float:right;">
-		<a href="component/_membership_action?player={{ @request.player_id }}&action=accept" class="btn btn-small" type="button">Accept Request</a>
-		<a href="component/_membership_action?player={{ @request.player_id }}" class="btn btn-small" type="button">Reject Request</a>
+		<a href="component/_membership_action?player={{ @request.player_id }}&action=accept" class="btn btn-small disabled" name="membership" type="button">Accept Request</a>
+		<a href="component/_membership_action?player={{ @request.player_id }}" class="btn btn-small disabled" name="membership" type="button">Reject Request</a>
 	</div>
 </div>   
 </repeat> 		
+<script type="text/javascript">
+$(document).ready(function() {
+  if({{@perm.my_clan_handle_membership_request}}) {
+    $('a[name="membership"').each(function(i, obj) {
+       $(this).removeClass('disabled');
+    });
+  }
+}); 
+</script>
