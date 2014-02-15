@@ -18,6 +18,9 @@ class My_Clan extends Controller {
     }
     
     $f3->set('clan', $clan);
+
+    $perms = new \Model\Permission($f3->get( 'DB_CLANS' ));
+    $f3->set('perm', $perms->getPerms( $f3->get('logged_in_player')->player_id) );
 	
 	// membership request
     $_membership_request = new \App\Component\_Membership_Request();
@@ -111,7 +114,6 @@ class My_Clan extends Controller {
 	  $f3->set( 'clan_members_list_view_mapper_arr', $clan_members_list_view_mapper_arr );
 
     $f3->set('clan_members_list_template', '_clan_members_list.htm'); 
-
   }
   
 

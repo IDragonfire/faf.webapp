@@ -11,7 +11,17 @@ class Permission  extends \DB\SQL\Mapper {
 	// Instantiate mapper
 	function __construct( \DB\SQL $db ) {
 		// This is where the mapper and DB structure synchronization occurs
-		parent::__construct( $db, 'clan_member');
+		parent::__construct( $db, 'clan_members');
+	}
+
+	# TODO: imeplement better perm system
+	function getPerms($player_id) {
+		$member = $this->load(array('player_id = ?', $player_id));
+		$perm = $member->clan_rank == 'ACU';
+		return array(self::MY_CLAN_REMOVE_MEMBER => $perm,
+					self::MY_CLAN_INVITE_PLAYER => $perm,
+					self::MY_CLAN_HANDLE_MEMBERSHIP_REQUEST => $perm,
+					self::MY_CLAN_EDIT_DETAILS => $perm);
 	}
 	
 	function hasPerm($player_id, $perm) {

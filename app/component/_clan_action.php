@@ -14,6 +14,11 @@ class _Clan_Action extends \App\Controller {
 		$action = $f3->get( 'GET.action' );	
 		if($action == 'remove') {
 			$player_id = $f3->get( 'GET.player' );
+			// if we try to edit ourself
+			if($player_id == $f3->get( 'logged_in_player' )->player_id) {
+				echo 'you cannot edit yourself';
+				die();
+			}
 			# TODO: check if player exists
 			# TODO: check permission of initiator
 			$clan_members = new \Model\Clan_Member( $f3->get( 'DB_CLANS' ) );

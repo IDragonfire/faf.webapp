@@ -34,7 +34,7 @@
                 "{{ @clan_member.player_name }}", 
                 "{{ @clan_member.clan_rank }}", 
                 "{{ @clan_member.join_clan_date }}",  
-                "<a href='component/_clan_action?action=remove&player={{ @clan_member.player_id }}' class='btn'>Remove Member</a>"
+                "<a href='component/_clan_action?action=remove&player={{ @clan_member.player_id }}' class='btn btn-small disabled' name='removeMember'>Remove Member</a>"
               ]
                
               </repeat> 
@@ -64,7 +64,7 @@
                     //"sDom": "<'row'<'span5'f><'span5  pull-right'p>r>t<'row'<'span3'i><'span3'l><'span4 pull-right'p>>",                    
                     "sPaginationType": "bootstrap",
                     "oLanguage": {
-                      "sLengthMenu": "_MENU_ records per page" },
+                    "sLengthMenu": "_MENU_ records per page" },
                     "aaData" : clan_members_list_dataset,
                     "aoColumns" : clan_members_list_columns
                 } );
@@ -73,3 +73,12 @@
             </script>
         </div> 
       </div>         
+<script type="text/javascript">
+$(document).ready(function() {
+  if({{@perm.my_clan_remove_member}}) {
+    $('a[name="removeMember"').each(function(i, obj) {
+       $(this).removeClass('disabled');
+    });
+  }
+}); 
+</script>
