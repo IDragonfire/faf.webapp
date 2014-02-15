@@ -2,6 +2,8 @@ Forged Alliance Forever (FAF) is a community developed replacement for the defun
 For more information about FAF visit official homepage: 
 http://www.faforever.com
 
+Forum-Thread: http://www.faforever.com/forums/viewtopic.php?f=45&t=6618
+
 This application was orginally designed by Brendan Hart and distributed on Bitbucket: 
 https://bitbucket.org/hartbren/faf_clans_webapp
 Application supposed to fulfill goals of Quest for Webcoders that was organized by Ze_PilOt (main developer of FAF):
