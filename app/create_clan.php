@@ -87,29 +87,19 @@ class Create_Clan extends Controller {
 	
 	function check_and_save( $f3, &$errors, &$sanitized_fields ) {
 	
-	  // check if clan exists with same name or tag
-	  $clan = new \DB\SQL\Mapper( $f3->get( 'DB_CLANS' ), 'clans_list' );
-	  
-	  // look for duplicate clan name
-	  $clan->load( array( ' clan_name = ? ', $sanitized_fields['clan_name'] ) );
-	  
-	  if( !$clan->dry() ) {
-	  
-	    // error, field is duplicated
-	    $errors['clan_name'] = 'A clan with that name already exists';
-	  }
-	  
-	  // look for duplicate clan tag
-	  $clan->load( array( ' clan_tag = ? ',  $sanitized_fields['clan_tag'] ) );
-	  
-	  if( !$clan->dry() ) {
-	  
-	    // error, field is duplicated
-	    $errors['clan_tag'] = 'A clan with that tag already exists';
-	  }	  
+    $clan = new \Model\Clans_List($f3->get( 'DB_CLANS' ));
+
+    $errors = $clan->checkClanName( $sanitized_fields['clan_name']);
+    if(count($errors) > 0) {
+      $errors['clan_name'] = implode($errors, '; ');
+    }
+
+    $errors = $clan->checkClanTag( $sanitized_fields['clan_tag']);
+    if(count($errors) > 0) {
+      $errors['clan_tag'] = implode($errors, '; ');
+    }
 	  
 	  if( count( $errors ) ) {
-	  
 	    return FALSE;
 	  }
 	  	  
