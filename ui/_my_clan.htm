@@ -12,12 +12,12 @@
           </p>
         </div>
       </div>
-	  
-	  <hr style="border-top: 1px solid #ccc;">
-	  <div class="span11">
+      
+      <hr style="border-top: 1px solid #ccc;">
+      <div class="span11">
         <h4>Membership Request</h4>
       </div> 
-	  <include href="{{ @membership_request_template }}" />
+      <include href="{{ @membership_request_template }}" />
       
       <hr style="border-top: 1px solid #ccc;">      
       
@@ -35,8 +35,8 @@
       
       
       <include href="{{ @clan_members_list_template }}" />
-	  
-	  
+      
+      
 <!-- configure and initialise the datatable -->
 
 
@@ -47,64 +47,64 @@
 <!-- add datatable specific CSS -->
 <script type="text/javascript">
   $(document).ready(function(){
-	if (document.createStyleSheet) { // IE specific
-	  document.createStyleSheet('ui/css/jquery.autocomplete.css');
-	  document.createStyleSheet('ui/css/bootstrap-editable.css');
-	}
-	else { // other browsers
-	  $("head").append($("<link rel='stylesheet' href='ui/css/jquery.autocomplete.css' type='text/css' media='screen' />"));
-	  $("head").append($("<link rel='stylesheet' href='ui/css/bootstrap-editable.css' type='text/css' media='screen' />"));
-	}
+    if (document.createStyleSheet) { // IE specific
+      document.createStyleSheet('ui/css/jquery.autocomplete.css');
+      document.createStyleSheet('ui/css/bootstrap-editable.css');
+    }
+    else { // other browsers
+      $("head").append($("<link rel='stylesheet' href='ui/css/jquery.autocomplete.css' type='text/css' media='screen' />"));
+      $("head").append($("<link rel='stylesheet' href='ui/css/bootstrap-editable.css' type='text/css' media='screen' />"));
+    }
   });
 </script>
 
 <script type="text/javascript">
   $(document).ready(function() {
-	$('[data-toggle-extended="modal"]').bind('click',function(e) {
-		e.preventDefault();
-		
-		var url = $(this).attr('href');
-		var modal_type = $(this).attr('data-modal-type');
+    $('[data-toggle-extended="modal"]').bind('click',function(e) {
+        e.preventDefault();
+        
+        var url = $(this).attr('href');
+        var modal_type = $(this).attr('data-modal-type');
 
-		if( modal_type === 'invite_players' ) {
-		  //$('#myclan_invite_players_modal_body').html(data);
-		  $('#myclan_invite_players_modal').modal();
-		} else if( modal_type == 'leave_clan') {
-		  $('#myclan_leave_clan_modal').modal();
-		} else if( modal_type == 'invite_confirm') {
-		  $.get('component/_invite_player?player=' + $( "#inv_player_id" ).val());
-		  $('#myclan_invite_players_modal').modal('hide');
-		}
-	});
+        if( modal_type === 'invite_players' ) {
+          //$('#myclan_invite_players_modal_body').html(data);
+          $('#myclan_invite_players_modal').modal();
+        } else if( modal_type == 'leave_clan') {
+          $('#myclan_leave_clan_modal').modal();
+        } else if( modal_type == 'invite_confirm') {
+          $.get('component/_invite_player?player=' + $( "#inv_player_id" ).val());
+          $('#myclan_invite_players_modal').modal('hide');
+        }
+    });
 
-	$("#inv_player").autocomplete({
-		source: "component/_search_players",
-		minLength: 1,
-		select: function( event, ui ) {
-				$( "#inv_player_id" ).val( ui.item.id );	
-				$( "#inv_player" ).val( ui.item.value );
-				$( "#lastPlayer" ).html( ui.item.value );				
-				$( "button[data-modal-type='invite_confirm']" ).attr("disabled",false);				
-				return false;
-		  }
-	});
-	
-	 //turn to inline mode
-	$.fn.editable.defaults.mode = 'inline';
+    $("#inv_player").autocomplete({
+        source: "component/_search_players",
+        minLength: 1,
+        select: function( event, ui ) {
+                $( "#inv_player_id" ).val( ui.item.id );    
+                $( "#inv_player" ).val( ui.item.value );
+                $( "#lastPlayer" ).html( ui.item.value );               
+                $( "button[data-modal-type='invite_confirm']" ).attr("disabled",false);             
+                return false;
+          }
+    });
+    
+     //turn to inline mode
+    $.fn.editable.defaults.mode = 'inline';
 
-	$('#inputClanName').editable({
-	    type: 'text',
-		pk: 'clan_name',
-		title: 'Clan Name',
-		url: 'component/_edit_action' 
-	});
-	$('#inputClanTag').editable({
-	    type: 'text',
-		pk: 'clan_tag',
-		title: 'Clan Tag',
-		url: 'component/_edit_action' 
-	});
-  } );
+    $('#inputClanName').editable({
+        type: 'text',
+        pk: 'clan_name',
+        title: 'Clan Name',
+        url: 'component/_edit_action' 
+    });
+    $('#inputClanTag').editable({
+        type: 'text',
+        pk: 'clan_tag',
+        title: 'Clan Tag',
+        url: 'component/_edit_action' 
+    });
+  } ); 
 </script>
 
 <!-- Invite Players popup Modal - initially hidden -->
@@ -115,19 +115,26 @@
   </div>
   <div class="modal-body">
     <div class="row well" id="myclan_invite_players_modal_body">
-		<div class="control-group"> 
-		  <label for="inv_player">Search for a Player: </label>
-		</div>
-		<div class="control-group"> 
-			<input type="text" id="inv_player">
-			<input type="hidden" id="inv_player_id">
-			<span id="lastPlayer" class="input-large uneditable-input uneditable-input-override"></span>
-		</div>
-		<div class="control-group"> 
-			<button class="btn btn-large" data-toggle-extended="modal" data-modal-type="invite_confirm" disabled>Invite Player</button>
-		 </div> 
+        <div class="row">
+            <label class="span3" for="inv_player">Search for a Player: </label>
+            <span class="span3" for="lastPlayer">Selected Player:</span>
+        </div>
+        <div class="row"> 
+            <div class="span3">
+                <input type="text" id="inv_player">
+                <input type="hidden" id="inv_player_id">
+             </div>
+             <div class="span3">
+                <span id="lastPlayer" class="input-large uneditable-input uneditable-input-override"></span>
+            </div>  
+        </div>
+        <div class="row"> 
+            <div class="span offset3">
+                <button class="btn btn-large" data-toggle-extended="modal" data-modal-type="invite_confirm" disabled>Invite Player</button>
+            </div>
+         </div> 
     </div>
-	
+    
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" >Close</button>
@@ -142,8 +149,8 @@
   </div>
   <div class="modal-body">
    <div class="row well" id="myclan_invite_players_modal_body">
-		Yes, I want to leave the clan: <a class="btn btn-large" href="component/_leave_clan">Confirm Leave</a>     
-	</div>
+        Yes, I want to leave the clan: <a class="btn btn-large" href="component/_leave_clan">Confirm Leave</a>     
+    </div>
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" >Close</button>
