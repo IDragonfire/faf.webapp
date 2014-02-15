@@ -111,6 +111,10 @@ img {
   -ms-interpolation-mode: bicubic;
 }
 
+#clan_logo_image_holder img {
+  margin-bottom: 23px;
+}
+
 #map_canvas img,
 .google-maps img {
   max-width: none;
