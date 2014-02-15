@@ -25,6 +25,7 @@ class Permission  extends \DB\SQL\Mapper {
 	}
 	
 	function hasPerm($player_id, $perm) {
-		return TRUE;
+		$member = $this->load(array('player_id = ?', $player_id));
+		return  $member->clan_rank == 'ACU';
 	}
 }

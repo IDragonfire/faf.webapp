@@ -15,6 +15,13 @@ class _Membership_Action extends \App\Controller {
             die();
         }
         
+        # if player has no permission
+        $perm = new \Model\Permission($db);
+        if(!$perm->hasPerm($player->player_id, \Model\Permission::MY_CLAN_HANDLE_MEMBERSHIP_REQUEST)) {
+            echo 'no perm';
+            die();
+        }
+
 		$action = $f3->get( 'GET.action' );
 		$player = $f3->get( 'GET.player' );
 		
