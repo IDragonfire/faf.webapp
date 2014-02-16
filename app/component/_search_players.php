@@ -15,9 +15,22 @@ class _Search_Players extends \App\Controller {
 		if(count($player) < 1) {
 			die();
 		}
-		
-		$player_list = new \Model\Players_List( $f3->get( 'DB_CLANS' ) );
-		$players = $player_list->find( array( "player_name LIKE concat('%',?,'%')", $player) ); 
+
+
+		$db = $f3->get( 'DB_CLANS' );
+		$current_player_id = $f3->get( 'logged_in_player' )->player_id;
+
+		// if player has no permission
+        $perm = new \Model\Permission($db);
+        if(!$perm->hasPerm($current_player_id, \Model\Permission::MY_CLAN_CHANGE_LEADER)) {
+            echo 'no perm';
+            die();
+        }
+
+		$clan_id = $this->getClanId($f3);
+
+		$player_list = new \DB\SQL\Mapper($db, 'player_list_page_view');
+		$players = $player_list->find( array( "clan_id != ? AND player_name LIKE concat('%',?,'%')", $clan_id,  $player) ); 
 		$data = array();
 		foreach($players as $p) {
 			 $data[] = array('id' => $p->player_id, 'value' => $p->player_name, 'label' => $p->player_name);
