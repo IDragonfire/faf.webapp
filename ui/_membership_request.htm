@@ -10,11 +10,11 @@
 <script type="text/javascript">
 $(document).ready(function() {
   if({{@perm.my_clan_handle_membership_request}}) {
-    $('button[name="membership"').each(function(i, obj) {
+    $('button[name="membership"]').each(function(i, obj) {
        $(this).removeAttr('disabled');
     });
   }
-	$('button[name="membership"').click(function(){
+	$('button[name="membership"]').click(function(){
   	    window.location = $(this).attr('href');
   });
 }); 

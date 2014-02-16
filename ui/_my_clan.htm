@@ -231,12 +231,12 @@
 <script type="text/javascript">
 $(document).ready(function() {
   if({{@perm.my_clan_invite_member}}) {
-    $('button[data-modal-type="invite_players"').each(function(i, obj) {
+    $('button[data-modal-type="invite_players"]').each(function(i, obj) {
        $(this).removeAttr('disabled');
     });
   }
    if({{@perm.my_clan_change_leader}}) {
-    $('button[data-modal-type="change_leader"').each(function(i, obj) {
+    $('button[data-modal-type="change_leader"]').each(function(i, obj) {
        $(this).removeAttr('disabled');
     });
   }

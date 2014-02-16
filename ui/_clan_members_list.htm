@@ -76,11 +76,11 @@
 <script type="text/javascript">
 $(document).ready(function() {
   if({{@perm.my_clan_remove_member}}) {
-    $('button[name="removeMember"').each(function(i, obj) {
+    $('button[name="removeMember"]').each(function(i, obj) {
        $(this).removeAttr('disabled');
     });
   }
-  $('button[name="removeMember"').click(function(){
+  $('button[name="removeMember"]').click(function(){
        window.location = $(this).attr('href');
   });
 }); 

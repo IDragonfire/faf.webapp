@@ -12,11 +12,11 @@
 <script type="text/javascript">
 $(document).ready(function() {
   if(!{{@clanmember}}) {
-    $('button[name="accept_invite"').each(function(i, obj) {
+    $('button[name="accept_invite"]').each(function(i, obj) {
        $(this).removeAttr('disabled');
     });
   }
-  $('button[name="accept_invite"').click(function(){
+  $('button[name="accept_invite"]').click(function(){
        window.location = $(this).attr('href');
   });
 }); 
