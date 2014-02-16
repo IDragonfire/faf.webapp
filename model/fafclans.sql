@@ -28,7 +28,7 @@ CREATE TABLE `clan_invites` (
   `clan_id` int(11) NOT NULL,
   `player_id` int(11) NOT NULL,
   `user_request` int(11) NOT NULL,
-  `time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`clan_id`,`player_id`,`user_request`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -39,7 +39,7 @@ CREATE TABLE `clan_invites` (
 
 LOCK TABLES `clan_invites` WRITE;
 /*!40000 ALTER TABLE `clan_invites` DISABLE KEYS */;
-INSERT INTO `clan_invites` VALUES (8,0,0,'2014-02-15 23:34:58'),(8,443,1,'2014-02-16 10:54:11'),(8,445,0,'2014-02-16 10:19:31'),(8,445,1,'2014-02-16 10:23:49'),(18,443,1,'2014-02-16 10:53:10');
+INSERT INTO `clan_invites` VALUES (8,0,0,'2014-02-15 22:34:58'),(8,443,1,'2014-02-16 09:54:11'),(8,445,0,'2014-02-16 09:19:31'),(8,445,1,'2014-02-16 09:23:49'),(18,443,1,'2014-02-16 09:53:10');
 /*!40000 ALTER TABLE `clan_invites` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -458,4 +458,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-02-16 14:49:48
+-- Dump completed on 2014-02-16 17:44:40
