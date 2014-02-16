@@ -89,14 +89,15 @@ class Create_Clan extends Controller {
 	
     $clan = new \Model\Clans_List($f3->get( 'DB_CLANS' ));
 
-    $errors = $clan->checkClanName( $sanitized_fields['clan_name']);
-    if(count($errors) > 0) {
-      $errors['clan_name'] = implode($errors, '; ');
+    $tmpErrors = $clan->checkClanName( $sanitized_fields['clan_name']);
+    
+    if(count($tmpErrors) > 0) {
+      $errors['clan_name'] = implode($tmpErrors, '; ');
     }
 
-    $errors = $clan->checkClanTag( $sanitized_fields['clan_tag']);
-    if(count($errors) > 0) {
-      $errors['clan_tag'] = implode($errors, '; ');
+    $tmpErrors = $clan->checkClanTag( $sanitized_fields['clan_tag']);
+    if(count($tmpErrors) > 0) {
+      $errors['clan_tag'] = implode($tmpErrors, '; ');
     }
 	  
 	  if( count( $errors ) ) {
