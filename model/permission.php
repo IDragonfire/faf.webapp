@@ -5,6 +5,7 @@ namespace Model;
 class Permission  extends \DB\SQL\Mapper {
 	const MY_CLAN_REMOVE_MEMBER = 'my_clan_remove_member';
 	const MY_CLAN_INVITE_PLAYER = 'my_clan_invite_member';
+	const MY_CLAN_CHANGE_LEADER = 'my_clan_change_leader';
 	const MY_CLAN_HANDLE_MEMBERSHIP_REQUEST = 'my_clan_handle_membership_request';
 	const MY_CLAN_EDIT_DETAILS = 'my_clan_edit_details';
 
@@ -20,6 +21,7 @@ class Permission  extends \DB\SQL\Mapper {
 		$perm = ($member->clan_rank == 'ACU') ? 'true' : 'false';
 		return array(self::MY_CLAN_REMOVE_MEMBER => $perm,
 					self::MY_CLAN_INVITE_PLAYER => $perm,
+					self::MY_CLAN_CHANGE_LEADER => $perm,
 					self::MY_CLAN_HANDLE_MEMBERSHIP_REQUEST => $perm,
 					self::MY_CLAN_EDIT_DETAILS => $perm);
 	}

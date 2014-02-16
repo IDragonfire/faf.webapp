@@ -7,8 +7,10 @@
           </p>
           <p>
             <button class="btn btn-large" data-toggle-extended="modal" data-modal-type="invite_players" disabled>Invite Players</button>
-            <button class="btn btn-large" type="button" disabled>Update Clan News</button>      
-            <button class="btn btn-large " type="button" data-toggle-extended="modal" data-modal-type="leave_clan">Leave Clan</button>
+            <button class="btn btn-large" type="button" disabled>Update Clan News</button>     
+            <button class="btn btn-large " type="button" data-toggle-extended="modal" data-modal-type="change_leader" disabled>Change Leader</button> 
+            <button class="btn btn-large " type="button" data-toggle-extended="modal" data-modal-type="delete_clan" disabled>Delete Clan</button>
+            <button class="btn btn-large " type="button" data-toggle-extended="modal" data-modal-type="leave_clan" disabled>Leave Clan</button>
           </p>
         </div>
       </div>
@@ -74,6 +76,10 @@
         } else if( modal_type == 'invite_confirm') {
           $.get('component/_invite_player?player=' + $( "#inv_player_id" ).val());
           $('#myclan_invite_players_modal').modal('hide');
+        } else if( modal_type == 'change_leader') {
+          $('#myclan_change_leader_modal').modal();
+        } else if( modal_type == 'leader_confirm') {
+          window.location = 'component/_clan_action?action=changeLeader&player=' + $( "#leader_id" ).val();
         }
     });
 
@@ -85,6 +91,18 @@
                 $( "#inv_player" ).val( ui.item.value );
                 $( "#lastPlayer" ).html( ui.item.value );               
                 $( "button[data-modal-type='invite_confirm']" ).removeClass("disabled");             
+                return false;
+          }
+    });
+
+    $("#leader").autocomplete({
+        source: "component/_search_members",
+        minLength: 1,
+        select: function( event, ui ) {
+                $( "#leader_id" ).val( ui.item.id );    
+                $( "#leader" ).val( ui.item.value );
+                $( "#lastLeader" ).html( ui.item.value );               
+                $( "button[data-modal-type='leader_confirm']" ).removeClass("disabled");             
                 return false;
           }
     });
@@ -108,6 +126,47 @@
     }
   } ); 
 </script>
+
+
+<!-- Change leader - initially hidden -->
+<div id="myclan_change_leader_modal" class="modal modal-override-clansListPageModal hide" tabindex="-1" >
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">X</button>
+    <h3>Change Leader</h3>
+  </div>
+  <div class="modal-body">
+    <div class="row well" id="myclan_invite_players_modal_body">
+        <div class="row">
+          <div class="span6">
+          WARNING: Only one player can be a leder, you lose your position.
+          </div>
+        </div>
+        <hr style="border-top: 1px solid #ccc;">
+        <div class="row">
+            <label class="span3" for="leader">Search for a Member: </label>
+            <span class="span3" for="lastLeader">Selected new Leader:</span>
+        </div>
+        <div class="row"> 
+            <div class="span3">
+                <input type="text" id="leader">
+                <input type="hidden" id="leader_id">
+             </div>
+             <div class="span3">
+                <span id="lastLeader" class="input-large uneditable-input uneditable-input-override"></span>
+            </div>  
+        </div>
+        <div class="row"> 
+            <div class="span offset3">
+                <button class="btn btn-large disabled" data-toggle-extended="modal" data-modal-type="leader_confirm">Change Leader</button>
+            </div>
+         </div> 
+    </div>
+    
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" >Close</button>
+  </div>
+</div>
 
 <!-- Invite Players popup Modal - initially hidden -->
 <div id="myclan_invite_players_modal" class="modal modal-override-clansListPageModal hide" tabindex="-1" >
@@ -162,6 +221,11 @@
 $(document).ready(function() {
   if({{@perm.my_clan_invite_member}}) {
     $('button[data-modal-type="invite_players"').each(function(i, obj) {
+       $(this).removeAttr('disabled');
+    });
+  }
+   if({{@perm.my_clan_change_leader}}) {
+    $('button[data-modal-type="change_leader"').each(function(i, obj) {
        $(this).removeAttr('disabled');
     });
   }

@@ -33,6 +33,16 @@ class Clan_Member extends \DB\SQL\Mapper {
     $this->save();
     return TRUE;
   }
+
+  function setRank($player_id, $new_rank) {
+    $this->load(array('player_id = ?', $player_id));
+    if($this->dry()) {
+      return FALSE;
+    }
+    $this->clan_rank = $new_rank;
+    $this->save();
+    return TRUE;
+  }
   
   function leaveClan($player_id) {
 	$membership = $this->load( array( 'player_id = ?', $player_id ) );
@@ -44,7 +54,7 @@ class Clan_Member extends \DB\SQL\Mapper {
       return $membership->erase();
     }
   }
-  
+
   function get_clan_membership( $player_id ) {
   
     // find existing record for player

@@ -35,5 +35,19 @@ class Clan_Leader extends \DB\SQL\Mapper {
       $clan_leader_mapper->erase();
     }
   }
+
+  function get_clan_leadership( $player_id ) {
+  
+    // find existing record for player
+    $this->load( array( 'player_id = ?', $player_id ) );
+    
+    if( $this->dry() ) {
+      return FALSE;
+    }
+    else {
+      return $this->clan_id;
+    }
+  
+  }
   
 }
