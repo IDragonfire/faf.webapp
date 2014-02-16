@@ -3,9 +3,21 @@
 	<div class="control-group">
             You got invited from: {{ @inv.clan_name }}
 			<div class="controls" style="float:right;">
-				<a href="component/_invite_action?clan={{ @inv.clan_id }}&action=accept" class="btn btn-small" type="button">Accept Invite</a>
+				<button href="component/_invite_action?clan={{ @inv.clan_id }}&action=accept" class="btn btn-small" type="button" name="accept_invite" disabled>Accept Invite</button>
 				<a href="component/_invite_action?clan={{ @inv.clan_id }}" class="btn btn-small" type="button">Reject Invite</a>
 			</div>		
 	</div>
 	</repeat> 
 </div>
+<script type="text/javascript">
+$(document).ready(function() {
+  if(!{{@clanmember}}) {
+    $('button[name="accept_invite"').each(function(i, obj) {
+       $(this).removeAttr('disabled');
+    });
+  }
+  $('button[name="accept_invite"').click(function(){
+       window.location = $(this).attr('href');
+  });
+}); 
+</script>

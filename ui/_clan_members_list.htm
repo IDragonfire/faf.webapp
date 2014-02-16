@@ -34,7 +34,7 @@
                 "{{ @clan_member.player_name }}", 
                 "{{ @clan_member.clan_rank }}", 
                 "{{ @clan_member.join_clan_date }}",  
-                "<a href='component/_clan_action?action=remove&player={{ @clan_member.player_id }}' class='btn btn-small disabled' name='removeMember'>Remove Member</a>"
+                "<button href='component/_clan_action?action=remove&player={{ @clan_member.player_id }}' class='btn btn-small' name='removeMember' disabled>Remove Member</button>"
               ]
                
               </repeat> 
@@ -76,9 +76,12 @@
 <script type="text/javascript">
 $(document).ready(function() {
   if({{@perm.my_clan_remove_member}}) {
-    $('a[name="removeMember"').each(function(i, obj) {
-       $(this).removeClass('disabled');
+    $('button[name="removeMember"').each(function(i, obj) {
+       $(this).removeAttr('disabled');
     });
   }
+  $('button[name="removeMember"').click(function(){
+       window.location = $(this).attr('href');
+  });
 }); 
 </script>
