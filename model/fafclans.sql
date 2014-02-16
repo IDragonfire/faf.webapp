@@ -39,6 +39,7 @@ CREATE TABLE `clan_invites` (
 
 LOCK TABLES `clan_invites` WRITE;
 /*!40000 ALTER TABLE `clan_invites` DISABLE KEYS */;
+INSERT INTO `clan_invites` VALUES (8,0,0,'2014-02-15 23:34:58'),(8,443,1,'2014-02-16 10:54:11'),(8,445,0,'2014-02-16 10:19:31'),(8,445,1,'2014-02-16 10:23:49'),(18,443,1,'2014-02-16 10:53:10');
 /*!40000 ALTER TABLE `clan_invites` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -64,6 +65,7 @@ CREATE TABLE `clan_leader` (
 
 LOCK TABLES `clan_leader` WRITE;
 /*!40000 ALTER TABLE `clan_leader` DISABLE KEYS */;
+INSERT INTO `clan_leader` VALUES (8,442,'dragon','2014-02-13 20:55:48'),(15,444,'d1','2014-02-15 22:36:01'),(18,445,'Zep','2014-02-16 09:23:56'),(19,443,'d','2014-02-16 09:54:40');
 /*!40000 ALTER TABLE `clan_leader` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -90,6 +92,7 @@ CREATE TABLE `clan_members` (
 
 LOCK TABLES `clan_members` WRITE;
 /*!40000 ALTER TABLE `clan_members` DISABLE KEYS */;
+INSERT INTO `clan_members` VALUES (8,442,'2014-02-13 20:55:48','ACU'),(8,444,'2014-02-16 09:10:54','LAB'),(18,445,'2014-02-16 09:23:56','ACU'),(19,443,'2014-02-16 09:54:40','ACU');
 /*!40000 ALTER TABLE `clan_members` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -143,7 +146,7 @@ CREATE TABLE `clans_list` (
   `clan_tag` varchar(3) DEFAULT NULL,
   `clan_founder_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`clan_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -152,6 +155,7 @@ CREATE TABLE `clans_list` (
 
 LOCK TABLES `clans_list` WRITE;
 /*!40000 ALTER TABLE `clans_list` DISABLE KEYS */;
+INSERT INTO `clans_list` VALUES (8,'2014-02-13 20:55:48',1,'Ich mag das','as',442),(9,'2014-02-14 07:33:32',1,'test','t',444),(10,'2014-02-15 17:18:05',1,'Ich mag das','te',445),(11,'2014-02-15 17:20:46',1,'?09ß83943','ad',445),(12,'2014-02-15 18:25:42',1,'myclan','da',445),(13,'2014-02-15 22:33:10',1,'dada','daa',445),(14,'2014-02-15 22:34:11',1,'1234','rtz',445),(15,'2014-02-15 22:36:01',1,'2342','ast',444),(16,'2014-02-16 09:17:09',1,'das234easd','das',445),(17,'2014-02-16 09:19:38',1,'asdf4wa','asd',445),(18,'2014-02-16 09:23:56',1,'sdfg34wetsgd','ert',445),(19,'2014-02-16 09:54:40',1,'asdf32','sf',443);
 /*!40000 ALTER TABLE `clans_list` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -184,7 +188,8 @@ SET character_set_client = utf8;
   `player_id` tinyint NOT NULL,
   `player_name` tinyint NOT NULL,
   `time` tinyint NOT NULL,
-  `clan_id` tinyint NOT NULL
+  `clan_id` tinyint NOT NULL,
+  `clanless` tinyint NOT NULL
 ) ENGINE=MyISAM */;
 SET character_set_client = @saved_cs_client;
 
@@ -204,7 +209,7 @@ CREATE TABLE `messages` (
   `body` varchar(1024) DEFAULT NULL,
   `to_player_id` varchar(16) NOT NULL,
   PRIMARY KEY (`message_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -213,6 +218,7 @@ CREATE TABLE `messages` (
 
 LOCK TABLES `messages` WRITE;
 /*!40000 ALTER TABLE `messages` DISABLE KEYS */;
+INSERT INTO `messages` VALUES (1,444,1,0,'2014-02-14 06:16:14','This is \'d1\'. Please let me join your clan \'FirstClan\'.\n\na',''),(2,444,1,0,'2014-02-15 13:58:23','This is \'d1\'. Please let me join your clan \'Ich mag das\'.\n\n',''),(3,445,1,0,'2014-02-15 14:11:03','This is \'Zep\'. Please let me join your clan \'Ich mag das\'.\n\n',''),(4,445,1,0,'2014-02-15 14:38:02','This is \'Zep\'. Please let me join your clan \'Ich mag das\'.\n\n',''),(5,445,1,0,'2014-02-16 08:10:42','This is \'Zep\'. Please let me join your clan \'Ich mag das\'.\n\n',''),(6,445,1,0,'2014-02-16 08:16:36','This is \'Zep\'. Please let me join your clan \'Ich mag das\'.\n\n',''),(7,445,1,0,'2014-02-16 08:23:49','This is \'Zep\'. Please let me join your clan \'Ich mag das\'.\n\n',''),(8,443,1,0,'2014-02-16 08:37:00','This is \'d\'. Please let me join your clan \'Ich mag das\'.\n\n',''),(9,443,1,0,'2014-02-16 08:50:13','This is \'d\'. Please let me join your clan \'Ich mag das\'.\n\n',''),(10,443,1,0,'2014-02-16 08:50:14','This is \'d\'. Please let me join your clan \'Ich mag das\'.\n\n',''),(11,443,1,0,'2014-02-16 08:50:15','This is \'d\'. Please let me join your clan \'Ich mag das\'.\n\n',''),(12,443,1,0,'2014-02-16 08:50:18','This is \'d\'. Please let me join your clan \'Ich mag das\'.\n\nasdf',''),(13,443,1,0,'2014-02-16 08:50:18','This is \'d\'. Please let me join your clan \'Ich mag das\'.\n\nasdf',''),(14,443,1,0,'2014-02-16 08:50:24','This is \'d\'. Please let me join your clan \'Ich mag das\'.\n\n',''),(15,443,1,0,'2014-02-16 08:50:25','This is \'d\'. Please let me join your clan \'Ich mag das\'.\n\n',''),(16,443,1,0,'2014-02-16 08:50:25','This is \'d\'. Please let me join your clan \'Ich mag das\'.\n\n',''),(17,443,1,0,'2014-02-16 08:50:38','This is \'d\'. Please let me join your clan \'Ich mag das\'.\n\n',''),(18,443,1,0,'2014-02-16 08:50:38','This is \'d\'. Please let me join your clan \'Ich mag das\'.\n\n',''),(19,443,1,0,'2014-02-16 08:50:39','This is \'d\'. Please let me join your clan \'Ich mag das\'.\n\n',''),(20,443,1,0,'2014-02-16 08:50:39','This is \'d\'. Please let me join your clan \'Ich mag das\'.\n\n',''),(21,443,1,0,'2014-02-16 08:50:43','This is \'d\'. Please let me join your clan \'Ich mag das\'.\n\n',''),(22,443,1,0,'2014-02-16 08:50:43','This is \'d\'. Please let me join your clan \'Ich mag das\'.\n\n',''),(23,443,1,0,'2014-02-16 08:53:05','This is \'d\'. Please let me join your clan \'Ich mag das\'.\n\nadfaf',''),(24,443,1,0,'2014-02-16 08:53:10','This is \'d\'. Please let me join your clan \'sdfg34wetsgd\'.\n\nasdf',''),(25,443,1,0,'2014-02-16 08:53:13','This is \'d\'. Please let me join your clan \'Ich mag das\'.\n\nasdf',''),(26,443,1,0,'2014-02-16 08:53:14','This is \'d\'. Please let me join your clan \'Ich mag das\'.\n\nasdf',''),(27,443,1,0,'2014-02-16 08:53:14','This is \'d\'. Please let me join your clan \'Ich mag das\'.\n\nasdf',''),(28,443,1,0,'2014-02-16 08:54:11','This is \'d\'. Please let me join your clan \'Ich mag das\'.\n\n','');
 /*!40000 ALTER TABLE `messages` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -261,7 +267,7 @@ CREATE TABLE `players_list` (
   `player_name` varchar(50) NOT NULL,
   PRIMARY KEY (`player_id`),
   UNIQUE KEY `faf_id` (`faf_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=442 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=446 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -270,6 +276,7 @@ CREATE TABLE `players_list` (
 
 LOCK TABLES `players_list` WRITE;
 /*!40000 ALTER TABLE `players_list` DISABLE KEYS */;
+INSERT INTO `players_list` VALUES (442,'2014-02-13 20:53:33',1,1,'dragon'),(443,'2014-02-13 20:55:31',1,22,'d'),(444,'2014-02-14 06:45:52',1,101,'d1'),(445,'2014-02-15 15:10:57',1,103,'Zep');
 /*!40000 ALTER TABLE `players_list` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -287,7 +294,7 @@ CREATE TABLE `recipients` (
   `entity_id` int(11) NOT NULL,
   PRIMARY KEY (`recipient_id`),
   KEY `message_id` (`message_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -296,6 +303,7 @@ CREATE TABLE `recipients` (
 
 LOCK TABLES `recipients` WRITE;
 /*!40000 ALTER TABLE `recipients` DISABLE KEYS */;
+INSERT INTO `recipients` VALUES (1,1,2,8),(2,2,2,8),(3,3,2,8),(4,4,2,8),(5,5,2,8),(6,6,2,8),(7,7,2,8),(8,8,2,8),(9,9,2,8),(10,10,2,8),(11,11,2,8),(12,12,2,8),(13,13,2,8),(14,14,2,8),(15,15,2,8),(16,16,2,8),(17,17,2,8),(18,18,2,8),(19,19,2,8),(20,20,2,8),(21,21,2,8),(22,22,2,8),(23,23,2,8),(24,24,2,18),(25,25,2,8),(26,26,2,8),(27,27,2,8),(28,28,2,8);
 /*!40000 ALTER TABLE `recipients` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -397,7 +405,7 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = utf8_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `membership_request_page_view` AS select `i`.`player_id` AS `player_id`,`p`.`player_name` AS `player_name`,`i`.`time` AS `time`,`i`.`clan_id` AS `clan_id` from (`clan_invites` `i` left join `players_list` `p` on((`i`.`player_id` = `p`.`player_id`))) where (`i`.`user_request` = 1) order by `i`.`time` desc */;
+/*!50001 VIEW `membership_request_page_view` AS select `i`.`player_id` AS `player_id`,`p`.`player_name` AS `player_name`,`i`.`time` AS `time`,`i`.`clan_id` AS `clan_id`,`c`.`clan_id` AS `clanless` from ((`clan_invites` `i` left join `players_list` `p` on((`i`.`player_id` = `p`.`player_id`))) left join `clan_members` `c` on((`p`.`player_id` = `c`.`player_id`))) where (`i`.`user_request` = 1) order by `i`.`time` desc */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -449,4 +457,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-02-13 18:25:00
+-- Dump completed on 2014-02-16 12:36:14
