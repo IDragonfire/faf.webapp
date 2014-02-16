@@ -9,7 +9,7 @@
             <button class="btn btn-large" data-toggle-extended="modal" data-modal-type="invite_players" disabled>Invite Players</button>
             <button class="btn btn-large" type="button" disabled>Update Clan News</button>     
             <button class="btn btn-large " type="button" data-toggle-extended="modal" data-modal-type="change_leader" disabled>Change Leader</button> 
-            <button class="btn btn-large " type="button" data-toggle-extended="modal" data-modal-type="leave_clan" disabled>Leave Clan</button>
+            <button class="btn btn-large " type="button" data-toggle-extended="modal" data-modal-type="leave_clan"><check if="{{ @clanleader }}"><true>Delete Clan</true><false>Leave Clan</false></check></button>
           </p>
         </div>
       </div>
@@ -205,12 +205,24 @@
 <div id="myclan_leave_clan_modal" class="modal modal-override-clansListPageModal hide" tabindex="-1" >
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal">X</button>
-    <h3>Leave Clan</h3>
-  </div>
-  <div class="modal-body">
-   <div class="row well" id="myclan_invite_players_modal_body">
-        Yes, I want to leave the clan: <a class="btn btn-large" href="component/_leave_clan">Confirm Leave</a>     
+   <check if="{{ @clanleader }}">
+   <true>
+      <h3>Delete Clan</h3>
     </div>
+    <div class="modal-body">
+     <div class="row well" id="myclan_invite_players_modal_body">
+          Yes, I want to delete the clan: <a class="btn btn-large" href="component/_delete_clan">Confirm Clan Deletion</a>     
+      </div>
+    </true>
+    <false>
+      <h3>Leave Clan</h3>
+    </div>
+    <div class="modal-body">
+     <div class="row well" id="myclan_invite_players_modal_body">
+          Yes, I want to leave the clan: <a class="btn btn-large" href="component/_leave_clan">Confirm Leave</a>     
+      </div>
+    </false>
+    </check>
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" >Close</button>

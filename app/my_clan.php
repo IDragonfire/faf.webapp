@@ -20,7 +20,8 @@ class My_Clan extends Controller {
     $f3->set('clan', $clan);
 
     $perms = new \Model\Permission($f3->get( 'DB_CLANS' ));
-    $f3->set('perm', $perms->getPerms( $f3->get('logged_in_player')->player_id) );
+    $f3->set('perm', $perms->getPerms( $player->player_id));
+    $f3->set('clanleader', $perms->hasPerm($player->player_id, \Model\Permission::MY_CLAN_CHANGE_LEADER) ? '1' : '0');
 	
 	// membership request
     $_membership_request = new \App\Component\_Membership_Request();

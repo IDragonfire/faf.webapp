@@ -18,7 +18,10 @@ class Permission  extends \DB\SQL\Mapper {
 	# TODO: imeplement better perm system
 	function getPerms($player_id) {
 		$member = $this->load(array('player_id = ?', $player_id));
-		$perm = ($member->clan_rank == 'ACU') ? 'true' : 'false';
+		$perm = false;
+		if(!$this->dry()) {
+			$perm = ($this->clan_rank == 'ACU') ? 'true' : 'false';
+		}
 		return array(self::MY_CLAN_REMOVE_MEMBER => $perm,
 					self::MY_CLAN_INVITE_PLAYER => $perm,
 					self::MY_CLAN_CHANGE_LEADER => $perm,
@@ -27,7 +30,10 @@ class Permission  extends \DB\SQL\Mapper {
 	}
 	
 	function hasPerm($player_id, $perm) {
-		$member = $this->load(array('player_id = ?', $player_id));
-		return  $member->clan_rank == 'ACU';
+		$this->load(array('player_id = ?', $player_id));
+		if($this->dry()) {
+			return FALSE;
+		}
+		return  $this->clan_rank == 'ACU';
 	}
 }

@@ -63,5 +63,18 @@ class Clans_List extends \DB\SQL\Mapper {
 	}
 	return $errors;
   }
+
+  function deleteClan($clan_id) {
+  	$db = $this->db;
+  	$params = array('1' => $clan_id);
+  	// delete all invites
+  	$db->exec('DELETE FROM `clan_invites` WHERE `clan_id`= ?', $params);
+  	// delete all members
+  	$db->exec('DELETE FROM `clan_members` WHERE `clan_id`= ?', $params);
+  	// delete all leaders
+  	$db->exec('DELETE FROM `clan_leader` WHERE `clan_id`= ?', $params);
+  	// delete clan
+  	$db->exec('DELETE FROM `clans_list` WHERE `clan_id`= ?', $params);
+  }
     
 }
