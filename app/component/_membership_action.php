@@ -27,7 +27,10 @@ class _Membership_Action extends \App\Controller {
 		
 		if($action == 'accept') {
 			$mapper = new \Model\Clan_Member($db);
-			$mapper->player_join_clan($player, $clan_id);
+			if(!$mapper->player_join_clan($player, $clan_id)) {
+                echo 'Player is already in a clan';
+                die();
+            }
 		}
 		$mapper = new \Model\Clan_Invites($db);
 		$result = $mapper->load(array(

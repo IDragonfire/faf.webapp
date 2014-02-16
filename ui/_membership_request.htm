@@ -2,7 +2,7 @@
 <div class="control-group">
 	{{ @request.player_name }}
 	<div class="controls" style="float:right;">
-		<button href="component/_membership_action?player={{ @request.player_id }}&action=accept" class="btn btn-small" name="membership" type="button" disabled>Accept Request</button>
+		<button href="component/_membership_action?player={{ @request.player_id }}&action=accept" class="btn btn-small" <check if="!{{ @request.clanless }}">name="membership"</check> type="button" disabled>Accept Request</button>
 		<button href="component/_membership_action?player={{ @request.player_id }}" class="btn btn-small" name="membership" type="button" disabled>Reject Request</nutton>
 	</div>
 </div>   
