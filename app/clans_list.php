@@ -38,7 +38,7 @@ class Clans_List extends Controller {
       
       // player is logged in but does not have a clan membership
       if( $playerCanJoin ) {
-        $action_html .= ' <a href="join_clan?clan_id='. $clan['clan_id'] .'" class="btn btn-small" data-toggle-extended="modal" data-modal-type="join_clan">Join</a>';
+        $action_html .= ' <button href="join_clan?clan_id='. $clan['clan_id'] .'" class="btn btn-small" data-toggle-extended="modal" data-modal-type="join_clan">Join</button>';
       }
 
       $clan['action'] = $action_html;

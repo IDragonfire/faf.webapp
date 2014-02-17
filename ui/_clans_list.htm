@@ -1,15 +1,15 @@
 
-            <!-- Div to contain the clans list datatables --> 
-            <div id="ClansList_datatable_container">
-            </div>
+<!-- Div to contain the clans list datatables --> 
+<div id="ClansList_datatable_container">
+</div>
 
-            <!-- Load functionality to power the datatable -->
-            <script src="ui/js/jquery.dataTables.js"></script>
-            <script src="ui/js/datatables_boostrap.js"></script>
+<!-- Load functionality to power the datatable -->
+<script src="ui/js/jquery.dataTables.js"></script>
+<script src="ui/js/datatables_boostrap.js"></script>
 
-            <!-- add datatable specific CSS -->
-            <script type="text/javascript">
-              $(document).ready(function(){
+<!-- add datatable specific CSS -->
+<script type="text/javascript">
+$(document).ready(function(){
                 if (document.createStyleSheet) { // IE specific
                   document.createStyleSheet('ui/css/datatables_bootstrap.css');
                 }
@@ -17,10 +17,10 @@
                   $("head").append($("<link rel='stylesheet' href='ui/css/datatables_bootstrap.css' type='text/css' media='screen' />"));
                 }
               });
-            </script>
+</script>
 
-            <!-- configure and initialise the datatable -->
-            <script type="text/javascript">
+<!-- configure and initialise the datatable -->
+<script type="text/javascript">
 
               /*
               {{ print_r( @clans_list_arr, true) }}
@@ -33,18 +33,18 @@
               "{{ @clan.clan_tag }}",
               "{{ @clan.leader_name }}",
               "{{ @clan.clan_active_members }}", 
-              '<a href="component/_clan_details?clan_id={{@clan.clan_id}}" class="btn btn-small" data-toggle-extended="modal" data-modal-type="clan_details" >Details</a> <a href="clan_{{@clan.clan_id}}" class="btn btn-small">Page</a>{{ @clan.action | raw }}' ]
-               
+              '<button href="component/_clan_details?clan_id={{@clan.clan_id}}" class="btn btn-small" data-toggle-extended="modal" data-modal-type="clan_details" >Details</button> <a href="clan_{{@clan.clan_id}}" class="btn btn-small">Page</a>{{ @clan.action | raw }}' ]
+
               </repeat> 
-                
+
               ];
 
               var clans_list_columns = [
-                { "sTitle" : "Clan Name" },
-                { "sTitle" : "Clan Tag", "sClass": "center" },
-                { "sTitle" : "Clan Leader", "sClass": "center" },
-                { "sTitle" : "Members", "sClass": "center" },
-                { "sTitle" : "Actions", "sClass": "center", "sWidth" : "25%", "bSortable": false }
+              { "sTitle" : "Clan Name" },
+              { "sTitle" : "Clan Tag", "sClass": "center" },
+              { "sTitle" : "Clan Leader", "sClass": "center" },
+              { "sTitle" : "Members", "sClass": "center" },
+              { "sTitle" : "Actions", "sClass": "center", "sWidth" : "25%", "bSortable": false }
               ];
 
 
@@ -59,36 +59,35 @@
 
                 // configure and initialise
                 $('#ClansList_datatable').dataTable( {
-                    "sDom": "<'row'<'span5'l><'span5  pull-right'f>r>t<'row'<'span5'i><'span5 pull-right'p>>",
-                    "sPaginationType": "bootstrap",
-                    "oLanguage": {
-                      "sLengthMenu": "_MENU_ records per page" },
+                  "sDom": "<'row'<'span5'l><'span5  pull-right'f>r>t<'row'<'span5'i><'span5 pull-right'p>>",
+                  "sPaginationType": "bootstrap",
+                  "oLanguage": {
+                    "sLengthMenu": "_MENU_ records per page" },
                     "aaData" : clans_list_dataset,
                     "aoColumns" : clans_list_columns
-                } );
+                  } );
                 
-                $('[data-toggle-extended="modal"]').bind('click',function(e) {
-                	e.preventDefault();
-                	
-                	var url = $(this).attr('href');
-                	var modal_type = $(this).attr('data-modal-type');
-
-              		$.get(url, function(data) {
-                    if( modal_type === 'clan_details' ) {
-                      $('#clansList_clanDetails_modal_body').html(data);
-                      $('#clansList_clanDetails_modal').modal();
-                    }
-                    else if( modal_type === 'join_clan' ) {
-                      $('#clansList_join_clan_modal_body').html(data);
-                      $('#clansList_join_clan_modal').modal();
-                    }
-              		});
+                $('#ClansList_datatable_container').on('click', 'button[data-modal-type="join_clan"]', function(e){
+                  var url = $(this).attr('href');
+                  $.get(url, function(data) {
+                    $('#clansList_join_clan_modal_body').html(data);
+                    $('#clansList_join_clan_modal').modal();
+                  });
                 });
 
+                $('#ClansList_datatable_container').on('click', 'button[data-modal-type="clan_details"]', function(e){
+                  var url = $(this).attr('href');
+                  $.get(url, function(data) {
+                    $('#clansList_clanDetails_modal_body').html(data);
+                    $('#clansList_clanDetails_modal').modal();
+                  });
+                });
               } );
-            </script>
 
-    
+
+</script>
+
+
 <!-- Clan Details popup Modal - initially hidden -->
 <div id="clansList_clanDetails_modal" class="modal modal-override-clansListPageModal hide " tabindex="-1" >
   <div class="modal-header">
@@ -100,9 +99,9 @@
     <div class="row well" id="clansList_clanDetails_modal_body">
 
       clan details ajax response goes here
-  
+
     </div>
-    
+
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" >Close</button>
@@ -121,9 +120,9 @@
     <div class="row well" id="clansList_join_clan_modal_body">
 
       ajax response goes here
-  
+
     </div>
-    
+
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" >Close</button>
