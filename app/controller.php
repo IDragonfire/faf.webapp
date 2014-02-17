@@ -20,11 +20,11 @@ class Controller {
     if( $username ) {
     
       // if request is for a logged in user, check that we are on a secure HTTPS connection
-      if( empty( $_SERVER[ 'HTTPS' ] ) || $_SERVER[ 'HTTPS' ] !== 'on' ) {
+      if(FALSE /* empty( $_SERVER[ 'HTTPS' ] ) || $_SERVER[ 'HTTPS' ] !== 'on' */) {
       
         // not secure, clear session, return to home page
         $f3->clear( 'SESSION' );
-        $f3->reroute( 'https://' . $f3->get( 'HOST' ) . $f3->get( 'BASE' ) );
+        $f3->reroute( 'http://' . $f3->get( 'HOST' ) . $f3->get( 'BASE' ) );
       }    
     
       $f3->set('logged_in_username', $username);
@@ -42,7 +42,7 @@ class Controller {
     }
     
     // login URL as a param
-    $f3->set( 'login_url', 'https://' . $f3->get( 'HOST' ) . $f3->get( 'BASE' ) . '/login' );
+    $f3->set( 'login_url', 'http://' . $f3->get( 'HOST' ) . $f3->get( 'BASE' ) . '/login' );
     
     // setup menu items
     $nav_menu = array();

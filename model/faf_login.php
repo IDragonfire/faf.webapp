@@ -2,20 +2,18 @@
 
 namespace Model;
 
-class FAF_Login extends \DB\SQL\Mapper {
+class FAF_Login {
 
     // Instantiate mapper
     function __construct( \DB\SQL $db ) {
-    
-        // This is where the mapper and DB structure synchronization occurs
-        parent::__construct( $db,'login' );
+       $this->db = $db;
     }
 
     // Specialized query
     function authenticate_user( $username, $password ) {
     
     	$user = $this->db->exec(
-    	    'SELECT * FROM login WHERE login=?',
+    	    'SELECT id, login, password, email, validated FROM login WHERE login=?',
     	    $username
     	);
     	
@@ -26,29 +24,18 @@ class FAF_Login extends \DB\SQL\Mapper {
     	}
     	
     	_log( print_r( $user ,true ) );
-    	
     	if( strcmp( $this->FAF_pw_hash( $password ), $user[0]['password'] ) )
     	{
     		_log( 'hashed password does not match password field in faf.login table' );	
     		return false;
-    	}
-    	
-    	$this->load( array( 'login = ?', $username ) );
-    	
+    	}    	
+        $this->id = $user[0]['id'];
     	return true;
     }
     
     private function FAF_pw_hash( $cleartext_pw )
     {
-    	// needs details from Ze_Pilot
-    	
-    	return $cleartext_pw;
-    
-    }
-    
-    public function load_user( $username )
-    {
-    	$this->load( array( 'login = ?', $username ) );
+    	return hash('sha256', $cleartext_pw);
     }
 
 }

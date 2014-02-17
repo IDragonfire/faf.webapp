@@ -19,7 +19,7 @@ class Login extends Controller {
   function post( $f3 ) {
 
     // login attempts must be made over HTTPS  
-    if( empty( $_SERVER[ 'HTTPS' ] ) || $_SERVER[ 'HTTPS' ] !== 'on' ) {
+    if( FALSE /* empty( $_SERVER[ 'HTTPS' ] ) || $_SERVER[ 'HTTPS' ] !== 'on' */) {
     
       // not secure, return with error
       $f3->set( 'login_error_message', 'Secure login only' );
@@ -66,7 +66,7 @@ class Login extends Controller {
 			$f3->set( 'SESSION.logged_in_player_id', $player->player_id );
 			
 			// 303 redirect to app home page on the secure connection
-			$f3->reroute( 'https://' . $f3->get( 'HOST' ) . $f3->get( 'BASE' ) );
+			$f3->reroute( 'http://' . $f3->get( 'HOST' ) . $f3->get( 'BASE' ) );
 			
 		}	else {
 		
