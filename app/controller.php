@@ -4,6 +4,9 @@ namespace App;
 
 class Controller {
 
+  // hold current db
+  protected $db;
+
   function getClanId($f3) {
     $player  = $f3->get('logged_in_player');
     $result  = $f3->get( 'DB_CLANS' )->exec('SELECT clan_id FROM clan_members WHERE player_id = ?', $player->player_id);
@@ -36,9 +39,7 @@ class Controller {
         $f3->clear( 'SESSION' );
         die( 'player record not found even though supposed to be logged in' );
       }
-      
       $f3->set('logged_in_player', $player);
-      
     }
     
     // login URL as a param
@@ -58,7 +59,8 @@ class Controller {
     }
     
     $f3->set( 'nav_menu', $nav_menu );
-    
+    // set global values
+    $this->db = $f3->get( 'DB_CLANS' );
 	}
 
 	function afterroute() {

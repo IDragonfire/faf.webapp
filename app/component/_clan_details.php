@@ -14,7 +14,7 @@ class _Clan_Details extends \App\Controller {
   
     $clan = $f3->get( 'clan' );
     
-    if( $clan ) {
+    if( !$f3->get( 'GET.clan_id' ) ) {
     
       $clan_id = $clan['clan_id'];
     }

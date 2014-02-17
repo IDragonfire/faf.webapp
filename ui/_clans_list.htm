@@ -29,7 +29,11 @@
               var clans_list_dataset = [
 
               <repeat group="{{ @clans_list_arr }}" value="{{ @clan }}" counter="{{ @ctr }}">
-              {{ @ctr==1?'':',' }}[ "{{ @clan.clan_name }}", "{{ @clan.clan_tag }}", "{{ @clan.leader_name }}", "{{ @clan.clan_active_members }}",  '{{ @clan.action | raw }}' ]
+              {{ @ctr==1?'':',' }}[ "{{ @clan.clan_name }}",
+              "{{ @clan.clan_tag }}",
+              "{{ @clan.leader_name }}",
+              "{{ @clan.clan_active_members }}", 
+              '<a href="component/_clan_details?clan_id={{@clan.clan_id}}" class="btn btn-small" data-toggle-extended="modal" data-modal-type="clan_details" >Details</a> <a href="clan_{{@clan.clan_id}}" class="btn btn-small">Page</a>{{ @clan.action | raw }}' ]
                
               </repeat> 
                 
