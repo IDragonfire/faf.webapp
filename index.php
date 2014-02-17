@@ -9,18 +9,10 @@ $f3->set('DEBUG',3);
 $f3->set('UI','ui/');
 
 /* setup common DB connection */
-$db_faf = new \DB\SQL( 
-	'mysql:host=localhost;dbname=faf',
-	'fafclans',
-	'fafclans' 
-);
-$f3->set('DB_FAF', $db_faf);
-
-/* setup common DB connection */
 $db_clans = new \DB\SQL( 
-	'mysql:host=localhost;dbname=clans',
-	'fafclans',
-	'fafclans' 
+	'mysql:host=localhost;dbname=fafclans',
+	'root',
+	'' 
 );
 $f3->set('DB_CLANS', $db_clans);
 

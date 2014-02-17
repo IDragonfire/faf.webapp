@@ -38,7 +38,7 @@ class Login extends Controller {
 		$username = $f3->get( 'POST.username' );
 		$password = $f3->get( 'POST.password' );
 			
-		$db_faf = $f3->get('DB_FAF');
+		$db_faf = $f3->get('DB_CLANS');
 		
 		$faf_login = new \Model\FAF_Login( $db_faf );
 		
