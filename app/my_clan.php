@@ -108,7 +108,7 @@ class My_Clan extends Controller {
   
   private function get_clan_members_list_data( $f3, $clan_id ) {
 
-    $clan_members_list_view_mapper = new \DB\SQL\Mapper( $f3->get( 'DB_CLANS' ), 'Clan_Members_List_View' );
+    $clan_members_list_view_mapper = new \DB\SQL\Mapper( $f3->get( 'DB_CLANS' ), 'clan_members_list_view' );
     
     $clan_members_list_view_mapper_arr = $clan_members_list_view_mapper->find( array( 'clan_id = ?', $clan_id ) ); 
     

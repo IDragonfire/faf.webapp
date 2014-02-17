@@ -25,7 +25,7 @@ class Clans_List extends Controller {
 
     $db = $f3->get( 'DB_CLANS' );
     
-    $clans_list_page_view = $db->exec( 'SELECT * FROM Clans_List_Page_View');
+    $clans_list_page_view = $db->exec( 'SELECT * FROM clans_list_page_view');
 	
 	 // player is logged in but does not have a clan membership
 	$playerCanJoin = $player && !$players_clan_id;

@@ -23,7 +23,7 @@ class _Clan_Details extends \App\Controller {
       $clan_id = $f3->get( 'GET.clan_id' );
     }
     
-    $clan_details_view = new \DB\SQL\Mapper( $f3->get( 'DB_CLANS'), 'Clans_Details_Page_View' );
+    $clan_details_view = new \DB\SQL\Mapper( $f3->get( 'DB_CLANS'), 'clans_details_page_view' );
     
     $clan_details_view->load( array( ' clan_id = ? ', $clan_id ) );
     
