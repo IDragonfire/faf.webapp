@@ -34,15 +34,6 @@ CREATE TABLE `clan_invites` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `clan_invites`
---
-
-LOCK TABLES `clan_invites` WRITE;
-/*!40000 ALTER TABLE `clan_invites` DISABLE KEYS */;
-/*!40000 ALTER TABLE `clan_invites` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `clan_leader`
 --
 
@@ -57,15 +48,6 @@ CREATE TABLE `clan_leader` (
   PRIMARY KEY (`clan_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `clan_leader`
---
-
-LOCK TABLES `clan_leader` WRITE;
-/*!40000 ALTER TABLE `clan_leader` DISABLE KEYS */;
-/*!40000 ALTER TABLE `clan_leader` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `clan_members`
@@ -85,15 +67,6 @@ CREATE TABLE `clan_members` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `clan_members`
---
-
-LOCK TABLES `clan_members` WRITE;
-/*!40000 ALTER TABLE `clan_members` DISABLE KEYS */;
-/*!40000 ALTER TABLE `clan_members` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Temporary table structure for view `clan_members_list_view`
 --
 
@@ -107,6 +80,20 @@ SET character_set_client = utf8;
   `player_name` tinyint NOT NULL,
   `join_clan_date` tinyint NOT NULL,
   `clan_rank` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `clan_tags`
+--
+
+DROP TABLE IF EXISTS `clan_tags`;
+/*!50001 DROP VIEW IF EXISTS `clan_tags`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `clan_tags` (
+  `player_id` tinyint NOT NULL,
+  `clan_tag` tinyint NOT NULL
 ) ENGINE=MyISAM */;
 SET character_set_client = @saved_cs_client;
 
@@ -143,17 +130,8 @@ CREATE TABLE `clans_list` (
   `clan_tag` varchar(3) DEFAULT NULL,
   `clan_founder_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`clan_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `clans_list`
---
-
-LOCK TABLES `clans_list` WRITE;
-/*!40000 ALTER TABLE `clans_list` DISABLE KEYS */;
-/*!40000 ALTER TABLE `clans_list` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Temporary table structure for view `clans_list_page_view`
@@ -205,17 +183,8 @@ CREATE TABLE `messages` (
   `body` varchar(1024) DEFAULT NULL,
   `to_player_id` varchar(16) NOT NULL,
   PRIMARY KEY (`message_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `messages`
---
-
-LOCK TABLES `messages` WRITE;
-/*!40000 ALTER TABLE `messages` DISABLE KEYS */;
-/*!40000 ALTER TABLE `messages` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Temporary table structure for view `player_invites_page_view`
@@ -263,17 +232,8 @@ CREATE TABLE `players_list` (
   `player_name` varchar(50) NOT NULL,
   PRIMARY KEY (`player_id`),
   UNIQUE KEY `faf_id` (`faf_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=447 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=492 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `players_list`
---
-
-LOCK TABLES `players_list` WRITE;
-/*!40000 ALTER TABLE `players_list` DISABLE KEYS */;
-/*!40000 ALTER TABLE `players_list` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `recipients`
@@ -289,17 +249,8 @@ CREATE TABLE `recipients` (
   `entity_id` int(11) NOT NULL,
   PRIMARY KEY (`recipient_id`),
   KEY `message_id` (`message_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `recipients`
---
-
-LOCK TABLES `recipients` WRITE;
-/*!40000 ALTER TABLE `recipients` DISABLE KEYS */;
-/*!40000 ALTER TABLE `recipients` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `seen_messages`
@@ -320,15 +271,6 @@ CREATE TABLE `seen_messages` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `seen_messages`
---
-
-LOCK TABLES `seen_messages` WRITE;
-/*!40000 ALTER TABLE `seen_messages` DISABLE KEYS */;
-/*!40000 ALTER TABLE `seen_messages` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Final view structure for view `clan_members_list_view`
 --
 
@@ -343,6 +285,25 @@ UNLOCK TABLES;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 
 /*!50001 VIEW `clan_members_list_view` AS select `cm`.`clan_id` AS `clan_id`,`pl`.`player_id` AS `player_id`,`pl`.`player_name` AS `player_name`,`cm`.`join_clan_date` AS `join_clan_date`,`cm`.`clan_rank` AS `clan_rank` from (`players_list` `pl` join `clan_members` `cm` on((`cm`.`player_id` = `pl`.`player_id`))) where (`pl`.`status` = 1) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `clan_tags`
+--
+
+/*!50001 DROP TABLE IF EXISTS `clan_tags`*/;
+/*!50001 DROP VIEW IF EXISTS `clan_tags`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+
+/*!50001 VIEW `clan_tags` AS select `m`.`player_id` AS `player_id`,`c`.`clan_tag` AS `clan_tag` from (`clan_members` `m` left join `clans_list` `c` on((`m`.`clan_id` = `c`.`clan_id`))) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -451,4 +412,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-02-16 17:47:53
+-- Dump completed on 2014-02-17  9:23:05
