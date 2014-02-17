@@ -7144,3 +7144,50 @@ table.dataTable {
 #messages_list_container table thead {
   background-color: #3A3E41;
 }
+
+/*news styling*/
+#news{
+  margin-top: -20px;
+}
+
+#news h3{
+  display: block;
+  float: left;
+  margin-bottom: -1px;
+}
+
+#news-titles{
+  float: left;
+  display: inline;
+  width: auto;
+  height: 20px;
+  margin-left: 12px;
+}
+
+#news p.lead{
+  display: block;
+  float: left;
+  max-width: 500px;
+  width: auto;
+  height: 20px;
+  margin-left: 5px;
+  font-size: 20px;
+}
+
+#news p.date{
+  display: inline;
+  float: left;
+  height: 14px;
+  color: #8C8C8C;
+  font-size: 14px;
+  font-weight: 200;
+  margin-top: 7px;
+  padding-left: 10px;
+}
+
+#news p.msg{
+  display: block;
+  text-align: left;
+  margin-top: 30px;
+  margin-left: 40px;
+}
