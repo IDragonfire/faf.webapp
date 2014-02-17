@@ -6,6 +6,7 @@ class Controller {
 
   // hold current db
   protected $db;
+  protected $player_id = -1;
 
   function getClanId($f3) {
     $player  = $f3->get('logged_in_player');
@@ -40,6 +41,7 @@ class Controller {
         die( 'player record not found even though supposed to be logged in' );
       }
       $f3->set('logged_in_player', $player);
+      $this->player_id = $player->player_id;
     }
     
     // login URL as a param

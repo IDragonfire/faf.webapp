@@ -22,6 +22,15 @@ class Clan_Invites extends \DB\SQL\Mapper {
     }
 	
 	function addInvite($player_id, $clan_id, $mode = self::INVITE_USER_REQUEST) {
+        if($player_id < 0) {
+            return FALSE;
+        }
+        // check if clan exists
+        $clans = new \Model\Clans_List($this->db);
+        $clans->load(array('clan_id = ?', $clan_id));
+        if($clans->dry()) {
+            return False;
+        }
 		$this->player_id = $player_id;
 		$this->clan_id = $clan_id;
 		$this->user_request = $mode;
