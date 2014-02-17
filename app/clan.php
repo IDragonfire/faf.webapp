@@ -19,7 +19,7 @@ class Clan extends Controller {
 
         $f3->set('clan_name', $clans->clan_name);
         $f3->set('clan_id', $clans->clan_id);
-        $f3->set('clanless', ($this->getClanId($f3) < 0)  ? 'true' : 'false');
+        $f3->set('clanless', ($this->player_id > 0 && $this->getClanId($f3) < 0)  ? 'true' : 'false');
 
         // set to nav menu shows correct selected item
         $f3->set( 'selected_page', 'clans_list' );

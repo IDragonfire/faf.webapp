@@ -10,7 +10,10 @@ class Controller {
 
   function getClanId($f3) {
     $player  = $f3->get('logged_in_player');
-    $result  = $f3->get( 'DB_CLANS' )->exec('SELECT clan_id FROM clan_members WHERE player_id = ?', $player->player_id);
+    if($this->player_id < 0) {
+      return -1;
+    }
+    $result  = $f3->get( 'DB_CLANS' )->exec('SELECT clan_id FROM clan_members WHERE player_id = ?', $this->player_id);
     return (count($result) == 0) ? -1 : $result[0]['clan_id'];
   }
 
