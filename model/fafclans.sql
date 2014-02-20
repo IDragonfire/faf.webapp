@@ -151,6 +151,45 @@ SET character_set_client = utf8;
 SET character_set_client = @saved_cs_client;
 
 --
+-- Temporary table structure for view `faf_lobby_login_view`
+--
+
+DROP TABLE IF EXISTS `faf_lobby_login_view`;
+/*!50001 DROP VIEW IF EXISTS `faf_lobby_login_view`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `faf_lobby_login_view` (
+  `id` tinyint NOT NULL,
+  `login` tinyint NOT NULL,
+  `password` tinyint NOT NULL,
+  `email` tinyint NOT NULL,
+  `validated` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Table structure for table `login`
+--
+
+DROP TABLE IF EXISTS `login`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `login` (
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+  `login` varchar(20) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL,
+  `password` char(64) NOT NULL,
+  `email` char(64) CHARACTER SET latin1 COLLATE latin1_bin DEFAULT NULL,
+  `ip` varchar(15) CHARACTER SET latin1 COLLATE latin1_bin DEFAULT NULL,
+  `uniqueId` varchar(45) DEFAULT NULL,
+  `validated` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unique_login` (`login`),
+  UNIQUE KEY `unique_email` (`email`),
+  UNIQUE KEY `uniqueId` (`uniqueId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='login';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Temporary table structure for view `membership_request_page_view`
 --
 
@@ -232,7 +271,7 @@ CREATE TABLE `players_list` (
   `player_name` varchar(50) NOT NULL,
   PRIMARY KEY (`player_id`),
   UNIQUE KEY `faf_id` (`faf_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=492 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=493 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -347,6 +386,25 @@ CREATE TABLE `seen_messages` (
 /*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
+-- Final view structure for view `faf_lobby_login_view`
+--
+
+/*!50001 DROP TABLE IF EXISTS `faf_lobby_login_view`*/;
+/*!50001 DROP VIEW IF EXISTS `faf_lobby_login_view`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+
+/*!50001 VIEW `faf_lobby_login_view` AS select `faf_lobby`.`login`.`id` AS `id`,`faf_lobby`.`login`.`login` AS `login`,`faf_lobby`.`login`.`password` AS `password`,`faf_lobby`.`login`.`email` AS `email`,`faf_lobby`.`login`.`validated` AS `validated` from `faf_lobby`.`login` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
 -- Final view structure for view `membership_request_page_view`
 --
 
@@ -412,4 +470,4 @@ CREATE TABLE `seen_messages` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-02-17  9:23:05
+-- Dump completed on 2014-02-20 17:53:52
