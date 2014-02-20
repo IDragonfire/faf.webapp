@@ -4,7 +4,8 @@ namespace App\Component;
 class Join_Request extends \App\Controller {
     
     function get($f3) {   
-    	if($this->player_id < 0) {
+		$player = $f3->get('logged_in_player');
+    	if($player->player_id < 0) {
     		echo 'you are not logged in';
     		die();
     	}
@@ -15,7 +16,7 @@ class Join_Request extends \App\Controller {
     	}
     	$clan_id = $f3->get('GET.clan_id');
         $invites = new \Model\Clan_Invites( $f3->get( 'DB_CLANS' ) );
-		$invites->addInvite($this->player_id, $clan_id );
+		$invites->addInvite($player->player_id, $clan_id );
 		$f3->reroute('/clan_' . $clan_id);
 	}
 }

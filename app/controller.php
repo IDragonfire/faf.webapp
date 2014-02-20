@@ -4,16 +4,12 @@ namespace App;
 
 class Controller {
 
-  // hold current db
-  protected $db;
-  protected $player_id = -1;
-
   function getClanId($f3) {
-    $player  = $f3->get('logged_in_player');
-    if($this->player_id < 0) {
-      return -1;
+    $player = $f3->get('logged_in_player');
+    if($player->player_id < 0) {
+      return -2;
     }
-    $result  = $f3->get( 'DB_CLANS' )->exec('SELECT clan_id FROM clan_members WHERE player_id = ?', $this->player_id);
+    $result  = $f3->get( 'DB_CLANS' )->exec('SELECT clan_id FROM clan_members WHERE player_id = ?', $player->player_id);
     return (count($result) == 0) ? -1 : $result[0]['clan_id'];
   }
 
@@ -44,10 +40,9 @@ class Controller {
         die( 'player record not found even though supposed to be logged in' );
       }
       $f3->set('logged_in_player', $player);
-      $this->player_id = $player->player_id;
     }
     
-    // login URL as a param
+    // login UR( as a param
     $f3->set( 'login_url', 'http://' . $f3->get( 'HOST' ) . $f3->get( 'BASE' ) . '/login' );
     
     // setup menu items
@@ -64,8 +59,6 @@ class Controller {
     }
     
     $f3->set( 'nav_menu', $nav_menu );
-    // set global values
-    $this->db = $f3->get( 'DB_CLANS' );
 	}
 
 	function afterroute() {

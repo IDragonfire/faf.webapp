@@ -20,7 +20,7 @@ class _Invite_Player extends \App\Controller {
 
 		// if player has no permission
 		$perm = new \Model\Permission($db);
-		if(!$perm->hasPerm($this->player_id, \Model\Permission::MY_CLAN_INVITE_PLAYER)) {
+		if(!$perm->hasPerm($f3->get('logged_in_player')->player_id, \Model\Permission::MY_CLAN_INVITE_PLAYER)) {
 			echo 'no perm';
 			die();
 		}
