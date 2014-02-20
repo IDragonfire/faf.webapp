@@ -18,7 +18,7 @@ class _Membership_Request extends \App\Controller {
             ' clan_id = ? ',
             $clan_id
         ));
-        var_dump($clan_id);
+
         $f3->set('membership_requests', $result);
         
         if ($f3_request_info) {

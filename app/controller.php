@@ -55,7 +55,7 @@ class Controller {
     {
       $nav_menu['my_clan']      = array( 'text_name' => 'My Clan' );
       $nav_menu['create_clan']  = array( 'text_name' => 'Create Clan' );
-	  $nav_menu['notifications']  = array( 'text_name' => 'Notifications' );
+	    $nav_menu['notifications']  = array( 'text_name' => 'Notifications' );
     }
     
     $f3->set( 'nav_menu', $nav_menu );
