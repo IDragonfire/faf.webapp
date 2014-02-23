@@ -67,7 +67,7 @@ class Controller {
     
     // default to the home/news template if none specifically set
     if( !$f3->get( 'main_content_template' ) ) {
-      $f3->set( 'main_content_template', '_home_news.htm' );
+      $f3->set( 'main_content_template', 'home_news.htm' );
       $f3->set( 'selected_page', 'home' ); 
     }
 	

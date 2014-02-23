@@ -10,7 +10,7 @@ class Home extends Controller {
     $f3->set( 'selected_page', 'home' );
 
     // page content
-    $f3->set('main_content_template', '_home_news.htm'); 
+    $f3->set('main_content_template', 'home_news.htm'); 
 
 	}
 
