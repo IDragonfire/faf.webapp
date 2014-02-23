@@ -14,8 +14,6 @@ class _Edit_Action extends \App\Controller {
         if(!$perm->hasPerm($f3->get('logged_in_player')->player_id, \Model\Permission::MY_CLAN_EDIT_DETAILS)) {
             $this->error('no perm');
         }
-
-		# TODO; check also on creation, make one unit
 		if($pk == 'clan_tag') {
 			$clan = new \Model\Clans_List($db);
 			$errors = $clan->checkClanTag($value);
@@ -28,7 +26,6 @@ class _Edit_Action extends \App\Controller {
 			$clan->save();
 			die();
 		}
-		# TODO: check also on creation, make one unit
 		if($pk == 'clan_name') {
 			$clan = new \Model\Clans_List($db);
 			$errors = $clan->checkClanName($value);
@@ -37,6 +34,17 @@ class _Edit_Action extends \App\Controller {
 			}
 			$clan->load( array( ' clan_id = ? ', $this->getClanId($f3) ) );
 			$clan->clan_name = $value;
+			$clan->save();
+			die();
+		}
+		if($pk == 'clan_desc') {
+			$clan = new \Model\Clans_List($db);
+			$errors = $clan->checkClanName($value);
+			if(count($errors) > 0) {
+				$this->error(implode($errors, '; '));
+			}
+			$clan->load( array( ' clan_id = ? ', $this->getClanId($f3) ) );
+			$clan->clan_desc = $value;
 			$clan->save();
 			die();
 		}
