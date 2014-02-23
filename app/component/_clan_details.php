@@ -47,13 +47,13 @@ class _Clan_Details extends \App\Controller {
 
       // component called as AJAX    
   		$template=new \Template;
-  	  echo $template->render( '_clan_details.htm' );
+  	  echo $template->render( 'clan_details.htm' );
   	  die();
     }
     else
     {
       // component called internally
-      $f3->set( 'clan_details_component_template', '_clan_details.htm' );
+      $f3->set( 'clan_details_component_template', 'clan_details.htm' );
     }
   
   }
