@@ -37,7 +37,7 @@ class My_Clan extends Controller {
 
 
     // page content
-    $f3->set('main_content_template', '_my_clan.htm');  
+    $f3->set('main_content_template', 'my_clan.htm');  
     
     $this->get_clan_members_list_data( $f3, $clan['clan_id'] );
     
