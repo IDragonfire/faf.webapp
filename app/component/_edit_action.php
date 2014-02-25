@@ -39,10 +39,6 @@ class _Edit_Action extends \App\Controller {
 		}
 		if($pk == 'clan_desc') {
 			$clan = new \Model\Clans_List($db);
-			$errors = $clan->checkClanName($value);
-			if(count($errors) > 0) {
-				$this->error(implode($errors, '; '));
-			}
 			$clan->load( array( ' clan_id = ? ', $this->getClanId($f3) ) );
 			$clan->clan_desc = $value;
 			$clan->save();
