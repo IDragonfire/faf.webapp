@@ -25,7 +25,7 @@ class Clans_List extends \DB\SQL\Mapper {
 		$errors[] = 'Maximum 40 characters!';
 	}
 
-	if(!preg_match('/^[A-Za-z \-\_\=\:\$\@\€]+$/', $newClanName)) {
+	if(!preg_match('/^[\w \-\_\=\:\$\@\€]+$/', $newClanName)) {
 		$errors[] = 'Only alpha numeric letters and -_=:$@€ are allowed!';
 	}
 
@@ -50,7 +50,7 @@ class Clans_List extends \DB\SQL\Mapper {
 		$errors[] = 'Minimum 1 character!';
 	}
 
-	if(!preg_match('/^[A-Za-z\-\_\=\:\$\@\€]+$/', $newClanTag)) {
+	if(!preg_match('/^[\w\-\_\=\:\$\@\€]+$/', $newClanTag)) {
 		$errors[] = 'Only alpha numeric letters and -_=:$@€ are allowed!';
 	}
 
