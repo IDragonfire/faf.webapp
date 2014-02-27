@@ -19,6 +19,7 @@ div.dataTables_info {
 div.dataTables_paginate {
 	float: right;
 	margin: 0;
+	width: 393px;
 }
 
 table.table {
