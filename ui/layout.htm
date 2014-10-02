@@ -68,14 +68,7 @@
         <ul class="nav">
         <repeat group="{{ @nav_menu }}" key="{{ @path }}" value="{{ @menu_item }}">
           <li <check if="{{ @path == @selected_page }}"> class="active" </check>><a href="{{ @path }}">{{ @menu_item.text_name }}</a></li>
-        </repeat>
-<!--
-          <li <check if="{{ @selected_page == 'home'         }}"> class="active" </check>><a href="/">Home / News</a></li>
-          <li <check if="{{ @selected_page == 'my_clan'      }}"> class="active" </check>><a href="#">My Clan</a></li>
-          <li <check if="{{ @selected_page == 'clans_list'   }}"> class="active" </check>><a href="clans_list">Clans List</a></li>
-          <li <check if="{{ @selected_page == 'players_list' }}"> class="active" </check>><a href="players_list">Players List</a></li>          
-          <li <check if="{{ @selected_page == 'create_clan'  }}"> class="active" </check>><a href="create_clan">Create Clan</a></li> 
--->      
+        </repeat>  
         </ul>
         
         <check if="{{ isset(@logged_in_username) }}">
