@@ -14,7 +14,8 @@ class FAF_Login extends \DB\SQL\Mapper {
     // Specialized query
     function authenticate_user( $username, $password ) {
     
-    	$this->load(array('login=?', $username));
+        $username = strtolower($username);
+    	$this->load_user( $username );
     	
     	if( $this->dry() ) {
     		_log( 'Username not found in faf.login table' );
@@ -29,7 +30,7 @@ class FAF_Login extends \DB\SQL\Mapper {
     		return false;
     	}
     	
-    	$this->load( array( 'login = ?', $username ) );
+    	$this->load_user( $username );
     	
     	return true;
     }
@@ -40,7 +41,7 @@ class FAF_Login extends \DB\SQL\Mapper {
     
     public function load_user( $username )
     {
-    	$this->load( array( 'login = ?', $username ) );
+    	$this->load( array( 'LOWER(login) = ?', $username ) );
     }
 
 }
