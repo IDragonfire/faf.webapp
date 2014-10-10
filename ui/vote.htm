@@ -1,0 +1,41 @@
+<h3>Vote System</h3>
+<div>{{ @vote_text  | raw }}</div>
+<fieldset>
+	<repeat group="{{ @vote_options }}" value="{{ @option }}">
+			<label for="vote_option_{{ @option.id }}">
+			<input type="radio" name="vote_option" id="vote_option_{{ @option.id }}" value="{{@option.id }}" class="heckbox">{{ @option.text }}</label>
+	</repeat>
+</fieldset>
+<p>
+	<button id="submit_vote" class="btn btn-large" data-toggle-extended="modal" disabled>Submit</button>          
+</p>
+
+<!-- Vote Confirm Dialog - initially hidden -->
+<div id="vote_modal" class="modal modal-override-clansListPageModal hide " tabindex="-1" >
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">X</button>
+		<h3>Confirm your Vote</h3>
+	</div>
+	<div class="modal-body">
+
+		<div class="row well" id="vote_modal_body">
+
+			vote  details ajax response goes here
+
+		</div>
+
+	</div>
+	<div class="modal-footer">
+		<button class="btn" data-dismiss="modal" >Close</button>
+	</div>
+</div>
+
+<!-- configure and initialise the datatable -->
+<script type="text/javascript">
+$(document).ready(function() {
+	$('#submit_vote').removeAttr('disabled');
+	$('#submit_vote').click(function(){
+		$('#vote_modal').modal();
+	});
+});
+</script>
