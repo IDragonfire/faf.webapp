@@ -1,6 +1,6 @@
 <h3>Vote System</h3>
 <div>{{ @vote_text  | raw }}</div>
-<fieldset>
+<fieldset id="vote_options">
 	<repeat group="{{ @vote_options }}" value="{{ @option }}">
 			<label for="vote_option_{{ @option.id }}">
 			<input type="radio" name="vote_option" id="vote_option_{{ @option.id }}" value="{{@option.id }}" class="heckbox">{{ @option.text }}</label>
@@ -17,24 +17,34 @@
 		<h3>Confirm your Vote</h3>
 	</div>
 	<div class="modal-body">
-
-		<div class="row well" id="vote_modal_body">
-
-			vote  details ajax response goes here
-
+		<div class="row well">
+			{{ @vote_text  | raw }}
 		</div>
-
+		<div class="row well" id="vote_modal_body">
+			vote  details ajax response goes here
+		</div>
 	</div>
 	<div class="modal-footer">
-		<button class="btn" data-dismiss="modal" >Close</button>
+		<button class="btn" data-dismiss="modal" >Confirm</button>
+		<button class="btn" data-dismiss="modal" >Abort</button>
 	</div>
 </div>
 
 <!-- configure and initialise the datatable -->
 <script type="text/javascript">
+var vote_options = new Array();
+<repeat group="{{ @vote_options }}" value="{{ @option }}">
+vote_options[{{ @option.id }}] = '{{ @option.text }}';
+</repeat> 
+
 $(document).ready(function() {
-	$('#submit_vote').removeAttr('disabled');
+	$('#vote_options input').click(function(){
+		$('#submit_vote').removeAttr('disabled');
+	});
+	
 	$('#submit_vote').click(function(){
+		var option = $( "#vote_options input:radio[name=vote_option]:checked" ).val();
+		$('#vote_modal_body').html(vote_options[option]);
 		$('#vote_modal').modal();
 	});
 });
