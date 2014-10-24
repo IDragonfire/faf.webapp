@@ -17,9 +17,15 @@ class Vote extends Controller {
         }
 
 
+        $vote_id = $f3->get('PARAMS.voteid');
+
         $db = $f3->get( 'DB_CLANS' );
         $votes = new \Model\Votes( $db );
-        $vote = $votes->load('close IS NULL', array('order' => 'start DESC'));
+        $vote = $votes->load(array('id = ?', $vote_id), array('limit' => '1'));
+
+         if($votes->dry()) {
+            $f3->reroute('/votes_list');
+        }
 
         $parser = new \Parsedown();
         $f3->set('vote_text',  $parser->text($vote->text));

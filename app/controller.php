@@ -48,7 +48,7 @@ class Controller {
     // setup menu items
     $nav_menu = array();
     $nav_menu['home']         = array( 'text_name' => 'Home / News' );
-    $nav_menu['vote']         = array( 'text_name' => 'Vote' );
+    $nav_menu['votes_list']         = array( 'text_name' => 'Vote' );
     $nav_menu['clans_list']   = array( 'text_name' => 'Clans List' );
     $nav_menu['players_list'] = array( 'text_name' => 'Players List' );
     

@@ -27,6 +27,7 @@ $f3->route('GET /logout',
 // RESTful application controllers
 $f3->map('/','App\Home');
 $f3->route('GET /clan_@clanid','App\Clan->get');
+$f3->route('GET /vote_@voteid','App\Vote->get');
 $f3->map('/component/@controller','App\component\@controller');
 $f3->map('/@controller','App\@controller');
 
