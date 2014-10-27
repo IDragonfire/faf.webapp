@@ -15,12 +15,14 @@ class Votes_List extends Controller {
             $this->template_error($f3, 'Please log in'); 
             return;
         }
-    
-        $list_mapper =  $f3->get( 'DB_CLANS' )->exec( 'SELECT * FROM votes');
-    
+        $current_player_id = $f3->get( 'logged_in_player' )->player_id;
+        $list_mapper =  $f3->get( 'DB_CLANS' )->exec( 
+            'SELECT * FROM fafclans.votes l LEFT JOIN vote_user v ON l.id = v.vote_id AND v.user_id = ? WHERE vote_id is NULL;',
+            $current_player_id);
+
         $f3->set( 'list_arr', $list_mapper );
 
-         // page content
+        // page content
         $f3->set('main_content_template', 'votes_list.htm'); 
 
     }
