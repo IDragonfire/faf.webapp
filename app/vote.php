@@ -29,6 +29,7 @@ class Vote extends Controller {
 
         $parser = new \Parsedown();
         $f3->set('vote_text',  $parser->text($vote->text));
+        $f3->set('vote_id',  $vote->id);
 
         $option_table = new \Model\Vote_Option( $db );
         $voptions = $option_table->getFormattedOptions($vote->id, $parser);

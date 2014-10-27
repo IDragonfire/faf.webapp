@@ -1,5 +1,5 @@
 <h3>Vote System</h3>
-<div>{{ @vote_text  | raw }}</div>
+<div>{{ @vote_text | raw }}</div>
 <fieldset id="vote_options">
 	<repeat group="{{ @vote_options }}" value="{{ @option }}">
 			<label for="vote_option_{{ @option.id }}">
@@ -25,7 +25,7 @@
 		</div>
 	</div>
 	<div class="modal-footer">
-		<button class="btn" data-dismiss="modal" >Confirm</button>
+		<button id="confirm_vote" class="btn" data-dismiss="modal" >Confirm</button>
 		<button class="btn" data-dismiss="modal" >Abort</button>
 	</div>
 </div>
@@ -47,5 +47,9 @@ $(document).ready(function() {
 		$('#vote_modal_body').html(vote_options[option]);
 		$('#vote_modal').modal();
 	});
+
+	$('#confirm_vote').click(function() {
+         window.location = 'component/vote_action?action=vote&id={{ @vote_id }}&option=' + $( "#vote_options input:radio[name=vote_option]:checked" ).val();
+    });
 });
 </script>
