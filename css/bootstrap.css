@@ -16,3 +16,11 @@
   color: #000;
 }
 
+.navbar-brand {
+  padding-top: 10px;
+}
+
+body { 
+  padding-top: 50px; 
+}
+
