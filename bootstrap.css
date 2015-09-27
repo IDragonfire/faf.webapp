@@ -1,0 +1,18 @@
+.navbar {
+  background-color: #333333;
+}
+
+.navbar-default .navbar-nav>li>a, .navbar-default .navbar-nav>li>a:visited {
+  color: #fff;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:visited {
+  background-color: #000;
+  color: #fff;
+}
+
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>.active>a:hover {
+  background-color: #fff;
+  color: #000;
+}
+
