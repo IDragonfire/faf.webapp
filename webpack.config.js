@@ -26,7 +26,8 @@ var config = {
   },
   module: {
     loaders: [babelLoader, sassLoader]
-  }
+  },
+  devServer: { inline: true }
 };
 
 module.exports = config;
