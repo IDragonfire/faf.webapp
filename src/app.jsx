@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 
 import {Router, Route, Link, hashHistory} from 'react-router';
 
-import Home from './Home.jsx';
+import ClanPage from './ClanPage.jsx';
 
 ReactDOM.render(
     <Router history={hashHistory }>
       <Route>
-        <Route path="/" component={Home} />
+        <Route path="/" component={ClanPage} />
       </Route>
     </Router>,
     document.getElementById('app')

@@ -1,20 +1,22 @@
 import React from 'react';
-import reqwest from 'reqwest';
+import { Api } from './api.js'
 
 export default class Home extends React.Component {
   constructor() {
     super();
-    reqwest({
-        url: "https://japi.test.faforever.com/data/clan?include=memberships,clanFounder",
-        method: 'GET',
-        type: 'json',
-        success: this.getData
-    });
+
+        //jsonApi.request('https://japi.test.faforever.com/data/clan/21?include=memberships,memberships.player', 'GET').then(this.getData);
+    
+    //  reqwest({
+    //     url: "https://japi.test.faforever.com/data/clan/21?include=memberships,memberships.player",
+    //     method: 'GET',
+    //     type: 'json',
+    //     success: this.getData
+    // });
   }
 
   getData(data) {
-    console.log(data.data[0]);
-    console.log(data.included);
+    console.log(data);
   }
   
   render() {
