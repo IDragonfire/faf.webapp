@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import {Router, Route, Link, hashHistory} from 'react-router';
 
 import ClanPage from './ClanPage.jsx';
+import './main.scss';
 
 ReactDOM.render(
     <Router history={hashHistory }>
