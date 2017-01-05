@@ -14,16 +14,30 @@ export default class ClanList extends React.Component {
   }
 
   componentDidMount() {
-   Api.all('clan').get({include: 'clanFounder,clanLeader'})
-   .then(this.setData.bind(this));
+    Api.all('clan').get({ include: 'clanFounder,clanLeader' })
+      .then(this.setData.bind(this));
+  }
+
+  componentDidUpdate() {
+    if(!this.state.list) {
+      return;
+    }
+    var dataSet = [];
+    for (let clan of this.state.list) {
+      var button = '<a href="#/clan/' + clan.id + '" class="btn btn-primary btn-xs">Open Clanpage</a>';
+      dataSet.push([clan.clanName, clan.clanTag, clan.clanLeader.login, clan.memberships.length, button])
+    }
+    $('#clanlist').DataTable({
+      data: dataSet
+    });
   }
 
   setData(data) {
-    if(data == null) {
+    if (data == null) {
       console.log('Api not available');
     }
     console.log(data);
-    this.setState({list: data});
+    this.setState({ list: data });
   }
 
   renderLoading() {
@@ -32,28 +46,38 @@ export default class ClanList extends React.Component {
 
   renderData() {
     const columns = [{
-        header: 'Id',
-        accessor: 'id' 
-      },{
-        header: 'Tag',
-        accessor: 'clanTag' 
-      },{
-        header: 'Name',
-        accessor: 'clanName' 
-      },{
-        header: 'Clan Leader',
-        accessor: 'clanLeader.login' 
-      }]
-    return <ReactTable data={this.state.list} columns={columns} />
+      header: 'Id',
+      accessor: 'id'
+    }, {
+      header: 'Tag',
+      accessor: 'clanTag'
+    }, {
+      header: 'Name',
+      accessor: 'clanName'
+    }, {
+      header: 'Clan Leader',
+      accessor: 'clanLeader.login'
+    }]
+    return <table id="clanlist" className="table table-striped table-bordered" cellSpacing="0" width="100%">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Tag</th>
+          <th>Leader</th>
+          <th>Members</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+    </table>
   }
 
   render2() {
-    if(this.state.list) {
+    if (this.state.list) {
       return this.renderData();
-    } 
-    return  this.renderLoading();
+    }
+    return this.renderLoading();
   }
-  
+
   render() {
     return (
       <Page title="Clans">{this.render2()}</Page>
