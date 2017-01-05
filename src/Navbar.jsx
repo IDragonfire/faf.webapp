@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router'
+
 
 export default class NavBar extends React.Component {
   render() {
@@ -18,9 +20,8 @@ export default class NavBar extends React.Component {
         </div>
         <div id="navbar" className="navbar-collapse collapse">
           <ul className="nav navbar-nav">
-            <li className="active"><a href="{{ url_for('index') }}">Home</a></li>
-            <li className="active"><a href="{{ url_for('clans') }}">Clans</a></li>
-            <li className="active"><a href="{{ url_for('members') }}">Members</a></li>
+            <li><Link to="/" activeClassName="active">Home</Link></li>
+            <li><Link to="/clans" activeClassName="active">Clans</Link></li>
           </ul>
           <ul className="nav navbar-nav navbar-right">
             <li><a href="#">My Clan</a></li>

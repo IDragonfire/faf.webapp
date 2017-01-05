@@ -3,8 +3,7 @@ import ReactDOM from 'react-dom';
 import { Api } from './api.js';
 import ReactTable from 'react-table';
 
-import NavBar from './NavBar.jsx';
-import Footer from './Footer.jsx'
+import Page from './Page.jsx';
 
 export default class ClanList extends React.Component {
   constructor(props) {
@@ -45,10 +44,7 @@ export default class ClanList extends React.Component {
         header: 'Clan Leader',
         accessor: 'clanLeader.login' 
       }]
-    return <div>
-             <h2>Clan List</h2>
-             <ReactTable data={this.state.list} columns={columns} />
-          </div>
+    return <ReactTable data={this.state.list} columns={columns} />
   }
 
   render2() {
@@ -60,10 +56,7 @@ export default class ClanList extends React.Component {
   
   render() {
     return (
-      <div>
-        <NavBar/>
-        <Footer/>
-      </div>
+      <Page title="Clans">{this.render2()}</Page>
     );
   }
 }

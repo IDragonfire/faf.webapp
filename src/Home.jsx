@@ -1,7 +1,6 @@
 import React from 'react';
 
-import NavBar from './NavBar.jsx';
-import Footer from './Footer.jsx'
+import Page from './Page.jsx';
 
 export default class Home extends React.Component {
     componentDidMount() {
@@ -16,10 +15,7 @@ export default class Home extends React.Component {
     }
     render() {
         return (
-            <div>
-                <NavBar />
-                <div className="container">
-                    <h1 id="title">Home</h1>
+            <Page title="Home">
                     <div className="jumbotron" id="header">
                         <center>
                             <div className="panel-transparent">
@@ -39,9 +35,7 @@ export default class Home extends React.Component {
                             </div>
                         </center>
                     </div>
-                </div>
-                <Footer />
-            </div>
+            </Page>
         );
     }
 }

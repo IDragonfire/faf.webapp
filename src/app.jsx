@@ -5,6 +5,7 @@ import {Router, Route, Link, hashHistory} from 'react-router';
 
 import Home from './Home.jsx';
 import ClanPage from './ClanPage.jsx';
+import ClanList from './ClanList.jsx';
 import './table.scss';
 import './main.scss';
 
@@ -13,6 +14,7 @@ ReactDOM.render(
     <Router history={hashHistory }>
       <Route>
         <Route path="/" component={Home} />
+        <Route path="/clans" component={ClanList} />
         <Route path="/clan/:clanid" component={ClanPage} />
       </Route>
     </Router>,
