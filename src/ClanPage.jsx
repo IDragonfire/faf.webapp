@@ -16,10 +16,6 @@ export default class ClanPage extends React.Component {
    .then(this.setData.bind(this));
   }
 
-  exf(d) {
-    console.log(d);
-  }
-
   setData(data) {
     if(data == null) {
       console.log('No clan found');
