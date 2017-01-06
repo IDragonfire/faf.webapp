@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 import Page from './Page.jsx';
 
@@ -23,9 +24,9 @@ export default class Home extends React.Component {
                                 <h2>Forged Alliance Forever</h2>
                             </div>
                             <div className="row" style={{ "marginTop": "15px" }}>
-                                <a href="#" className="btn btn-default btn-lg">
+                                <Link to="/action/create_clan" className="btn btn-default btn-lg">
                                     <i className="fa fa-plus-circle"></i> Create Clan
-                                </a>
+                                </Link>
                                 <a href="#" type="button" className="btn btn-default btn-lg">
                                     <i className="fa fa-users"></i> Invite Players
                                 </a>
