@@ -2,6 +2,7 @@ import React from 'react';
 import { Link,hashHistory } from 'react-router';
 
 import Page from './Page.jsx';
+import { Api } from './api.js';
 
 export default class Home extends React.Component {
     componentDidMount() {
@@ -15,8 +16,13 @@ export default class Home extends React.Component {
         });
         if(this.props.params.token) {
             localStorage.setItem("token", this.props.params.token);
+            Api.headers['Authorization'] = `Bearer ${localStorage.getItem("token")}`
             hashHistory.push("");
         }
+       Api.headers['Authorization'] = `Bearer ${localStorage.getItem("token")}`
+       Api.one('player', 82526).get().then(function(data) {
+           console.log(data);
+       });
     }
     render() {
         return (

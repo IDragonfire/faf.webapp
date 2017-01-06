@@ -12,6 +12,7 @@ export default class NavBar extends React.Component {
   }
 
   render() {
+    console.log(localStorage.getItem("token"));
     return (
       <nav className="navbar navbar-default navbar-fixed-top">
       <div className="container">

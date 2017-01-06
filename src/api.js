@@ -29,6 +29,7 @@ jsonApi.define('clan', {
 
 jsonApi.define('player', {
   login: '',
+  eMail: ''
 });
 
 jsonApi.define('clan_membership', {
