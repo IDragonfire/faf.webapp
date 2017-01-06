@@ -15,6 +15,7 @@ ReactDOM.render(
     <Router history={hashHistory }>
       <Route>
         <Route path="/" component={Home} />
+        <Route path="/access_token=:token&token_type=*" component={Home} />
         <Route path="/clans" component={ClanList} />
         <Route path="/clan/:clanid" component={ClanPage} />
         <Route path="/action/create_clan" component={CreateClan} />

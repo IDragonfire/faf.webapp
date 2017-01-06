@@ -36,7 +36,6 @@ export default class ClanList extends React.Component {
     if (data == null) {
       console.log('Api not available');
     }
-    console.log(data);
     this.setState({ list: data });
   }
 

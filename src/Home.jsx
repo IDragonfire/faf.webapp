@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link,hashHistory } from 'react-router';
 
 import Page from './Page.jsx';
 
@@ -13,6 +13,10 @@ export default class Home extends React.Component {
                 duration: 5000 // Effect duration
             })
         });
+        if(this.props.params.token) {
+            localStorage.setItem("token", this.props.params.token);
+            hashHistory.push("");
+        }
     }
     render() {
         return (

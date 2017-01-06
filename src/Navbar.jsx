@@ -1,7 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router';
+import OAuth from 'oauth';
 
 export default class NavBar extends React.Component {
+  login() {
+    let clientId = '83891c0c-feab-42e1-9ca7-515f94f808ef';
+    let url = 'https://japi.test.faforever.com';
+    let redirect_uri = 'http://localhost:8080';
+
+    window.location = `${url}/oauth/authorize?response_type=token&client_id=${clientId}&redirect_uri=${redirect_uri}`;
+  }
+
   render() {
     return (
       <nav className="navbar navbar-default navbar-fixed-top">
@@ -24,7 +33,7 @@ export default class NavBar extends React.Component {
           </ul>
           <ul className="nav navbar-nav navbar-right">
             <li><a href="#">My Clan</a></li>
-            <li><p className="navbar-text">Logged in as: MyName</p></li>
+            <li><p className="navbar-text" onClick={this.login.bind(this)}>Login</p></li>
           </ul>
         </div>
       </div>
