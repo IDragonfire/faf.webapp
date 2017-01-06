@@ -37,10 +37,10 @@ export default class ClanPage extends React.Component {
   renderClanData() {
     let d = new Date(this.state.clan.createDate);
     return <div className="well bs-component">
-      <InputPair label="Tag" value={this.state.clan.clanTag} />
-      <InputPair label="Leader" value={this.state.clan.clanLeader.login} />
-      <InputPair label="Founder" value={this.state.clan.clanFounder.login} />
-      <InputPair label="Created At:" value={d.toISOString().slice(0, 10)} />
+      <InputPair disabled={true} label="Tag" value={this.state.clan.clanTag} />
+      <InputPair disabled={true} label="Leader" value={this.state.clan.clanLeader.login} />
+      <InputPair disabled={true} label="Founder" value={this.state.clan.clanFounder.login} />
+      <InputPair disabled={true} label="Created At:" value={d.toISOString().slice(0, 10)} />
       <textarea disabled className="form-control">{this.state.clan.clanDesc}</textarea>
     </div>
   }
