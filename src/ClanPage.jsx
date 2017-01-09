@@ -14,15 +14,14 @@ export default class ClanPage extends React.Component {
   }
 
   componentDidMount() {
-    Api.one('clan', this.props.params.clanid).get({ include: 'memberships,memberships.player,clanFounder,clanLeader' })
-      .then(this.setData.bind(this));
+    Api.one('clan', this.props.params.clanid).get({ include: 'members,founder,leader' })
+      .then(this.setData.bind(this)).catch(error => console.error(error));
   }
 
   setData(data) {
     if (data == null) {
       console.log('No clan found');
     }
-    console.log(data);
     this.setState({ clan: data });
   }
 
@@ -35,13 +34,13 @@ export default class ClanPage extends React.Component {
   }
 
   renderClanData() {
-    let d = new Date(this.state.clan.createDate);
+    let d = new Date(this.state.clan.createTime);
     return <div className="well bs-component">
-      <InputPair disabled={true} label="Tag" value={this.state.clan.clanTag} />
-      <InputPair disabled={true} label="Leader" value={this.state.clan.clanLeader.login} />
-      <InputPair disabled={true} label="Founder" value={this.state.clan.clanFounder.login} />
+      <InputPair disabled={true} label="Tag" value={this.state.clan.tag} />
+      <InputPair disabled={true} label="Leader" value={this.state.clan.leader.login} />
+      <InputPair disabled={true} label="Founder" value={this.state.clan.founder.login} />
       <InputPair disabled={true} label="Created At:" value={d.toISOString().slice(0, 10)} />
-      <textarea disabled className="form-control">{this.state.clan.clanDesc}</textarea>
+      <textarea disabled className="form-control">{this.state.clan.description}</textarea>
     </div>
   }
 
@@ -70,22 +69,10 @@ export default class ClanPage extends React.Component {
     </div>
   }
 
-  render2() {
-    if (this.state.clan) {
-      return this.renderClan();
-    }
-  }
-
-  getClanName() {
-    if (this.state.clan) {
-      return "Clan: " + this.state.clan.clanName;
-    }
-    return 'Loading ...';
-  }
-
   render() {
-    return (
-      <Page title={this.getClanName()}>{this.render2()}</Page>
-    );
+    if (this.state.clan) {
+      return <Page title={"Clan: " + this.state.clan.name}>{this.renderClan()}</Page>
+    }
+    return <Page title="Loading..." />;
   }
 }

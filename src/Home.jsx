@@ -20,9 +20,9 @@ export default class Home extends React.Component {
             hashHistory.push("");
         }
        Api.headers['Authorization'] = `Bearer ${localStorage.getItem("token")}`
-       Api.one('player', 82526).get().then(function(data) {
+       Api.one('player', 1).get().then(function(data) {
            console.log(data);
-       });
+       }).catch(error => console.error(error));
     }
     render() {
         return (
