@@ -1,7 +1,8 @@
+ // eslint-disable-next-line no-unused-vars
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import {Router, Route, Link, hashHistory} from 'react-router';
+import {Router, Route, hashHistory} from 'react-router';
 
 import Home from './Home.jsx';
 import ClanPage from './ClanPage.jsx';

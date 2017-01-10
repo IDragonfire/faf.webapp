@@ -1,7 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { Api } from './api.jsx';
-import ReactTable from 'react-table';
 
 import Page from './Page.jsx';
 
@@ -27,6 +25,7 @@ export default class ClanList extends React.Component {
             var button = '<a href="#/clan/' + clan.id + '" class="btn btn-primary btn-xs">Open Clanpage</a>';
             dataSet.push([clan.name, clan.tag, clan.leader.login, clan.memberships.length, button]);
         }
+        // eslint-disable-next-line no-undef
         $('#clanlist').DataTable({
             data: dataSet
         });
@@ -44,19 +43,6 @@ export default class ClanList extends React.Component {
     }
 
     renderData() {
-        const columns = [{
-            header: 'Id',
-            accessor: 'id'
-        }, {
-            header: 'Tag',
-            accessor: 'clanTag'
-        }, {
-            header: 'Name',
-            accessor: 'clanName'
-        }, {
-            header: 'Clan Leader',
-            accessor: 'clanLeader.login'
-        }];
         return <table id="clanlist" className="table table-striped table-bordered" cellSpacing="0" width="100%">
       <thead>
         <tr>

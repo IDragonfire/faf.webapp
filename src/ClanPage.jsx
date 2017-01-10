@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { Api } from './api.jsx';
 import Utils from './utils.jsx';
 
@@ -28,6 +27,7 @@ export default class ClanPage extends React.Component {
             let button = '<a href="#" class="btn btn-primary btn-xs">Kick Member</a><a href="#" class="btn btn-primary btn-xs">Make Founder</a>';
             dataSet.push([membership.player.login, Utils.formatTimestamp(membership.createTime), button]);
         }
+         // eslint-disable-next-line no-undef
         $('#clan_members').DataTable({
             data: dataSet
         });

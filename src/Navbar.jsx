@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router';
-import OAuth from 'oauth';
 
 export default class NavBar extends React.Component {
     login() {

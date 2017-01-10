@@ -6,13 +6,12 @@ import { Api } from './api.jsx';
 
 export default class Home extends React.Component {
     componentDidMount() {
-        $(document).ready(function () {
-            $('#header').bgswitcher({
-                images: ['/images/spider.jpg', '/images/zar.jpg', '/images/bombers.jpg', '/images/explosion.jpg', '/images/sera.jpg'],
-                interval: 5000 + 5000,
-                shuffle: true,
-                duration: 5000 // Effect duration
-            });
+        // eslint-disable-next-line no-undef
+        $('#header').bgswitcher({
+            images: ['/images/spider.jpg', '/images/zar.jpg', '/images/bombers.jpg', '/images/explosion.jpg', '/images/sera.jpg'],
+            interval: 5000 + 5000,
+            shuffle: true,
+            duration: 5000 // Effect duration
         });
         if(this.props.params.token) {
             localStorage.setItem('token', this.props.params.token);
@@ -23,6 +22,7 @@ export default class Home extends React.Component {
         Api.one('player', 1).get().then(function(data) {
             console.log(data);
         }).catch(error => console.error(error));
+        
     }
     render() {
         return (
