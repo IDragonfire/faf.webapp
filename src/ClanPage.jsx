@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Api } from './api.js';
+import Utils from './utils.js';
 
 import Page from './Page.jsx';
 import InputPair from './InputPair.jsx';
@@ -24,9 +25,8 @@ export default class ClanPage extends React.Component {
     }
     var dataSet = [];
     for (let membership of this.state.clan.memberships) {
-      let d = new Date(membership.createTime);
       let button = '<a href="#" class="btn btn-primary btn-xs">Kick Member</a><a href="#" class="btn btn-primary btn-xs">Make Founder</a>';
-      dataSet.push([membership.player.login, d.toISOString().slice(0, 10), button])
+      dataSet.push([membership.player.login, Utils.formatTimestamp(membership.createTime), button])
     }
     $('#clan_members').DataTable({
       data: dataSet
@@ -49,12 +49,11 @@ export default class ClanPage extends React.Component {
   }
 
   renderClanData() {
-    let d = new Date(this.state.clan.createTime);
     return <div className="well bs-component">
       <InputPair disabled={true} label="Tag" value={this.state.clan.tag} />
       <InputPair disabled={true} label="Leader" value={this.state.clan.leader.login} />
       <InputPair disabled={true} label="Founder" value={this.state.clan.founder.login} />
-      <InputPair disabled={true} label="Created At:" value={d.toISOString().slice(0, 10)} />
+      <InputPair disabled={true} label="Created At:" value={Utils.formatTimestamp(this.state.clan.createTime)} />
       <textarea disabled className="form-control" value={this.state.clan.description || ''} />
     </div>
   }

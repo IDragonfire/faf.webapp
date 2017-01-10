@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { hashHistory } from 'react-router';
 
 import { Api } from './api.js';
+import Utils from './utils.js';
 
 import Page from './Page.jsx';
 import InputPair from './InputPair.jsx';
@@ -38,13 +39,12 @@ export default class CreateClan extends React.Component {
     }
 
     renderClanData() {
-        let d = new Date();
         return <div className="well bs-component">
             <InputPair label="Tag" value={this.state.tag} onChange={this.onTagChange.bind(this)} />
             <InputPair label="Name" value={this.state.name} onChange={this.onNameChange.bind(this)} />
             <InputPair disabled={true} label="Leader" value="You" />
             <InputPair disabled={true} label="Founder" value="You" />
-            <InputPair disabled={true} label="Created At:" value={d.toISOString().slice(0, 10)} />
+            <InputPair disabled={true} label="Created At:" value={Utils.formatTimestamp(null)} />
             <textarea className="form-control" value={this.state.description} onChange={this.onDescChange.bind(this)} />
             <button onClick={this.submitData.bind(this)} className="btn btn-default btn-lg">Create New Clan</button>
         </div>
