@@ -17,25 +17,25 @@ export default class CreateClan extends React.Component {
             tag: '',
             name: '',
             description: ''
-        }
+        };
     }
 
     onTagChange(event) {
-        let newValue = event.target.value
+        let newValue = event.target.value;
         if (newValue.length <= 3) {
             this.setState({ tag: newValue });
         }
     }
 
     onNameChange(event) {
-        let newValue = event.target.value
+        let newValue = event.target.value;
         if (newValue.length <= 40) {
             this.setState({ name: event.target.value });
         }
     }
 
     onDescChange(event) {
-        this.setState({ description: event.target.value })
+        this.setState({ description: event.target.value });
     }
 
     renderClanData() {
@@ -47,16 +47,16 @@ export default class CreateClan extends React.Component {
             <InputPair disabled={true} label="Created At:" value={Utils.formatTimestamp(null)} />
             <textarea className="form-control" value={this.state.description} onChange={this.onDescChange.bind(this)} />
             <button onClick={this.submitData.bind(this)} className="btn btn-default btn-lg">Create New Clan</button>
-        </div>
+        </div>;
     }
 
     submitData() {
         console.log(this.state);
-        let params = `tag=${encodeURIComponent(this.state.tag)}&name=${encodeURIComponent(this.state.name)}`
-        params += `&description=${encodeURIComponent(this.state.description)}`
+        let params = `tag=${encodeURIComponent(this.state.tag)}&name=${encodeURIComponent(this.state.name)}`;
+        params += `&description=${encodeURIComponent(this.state.description)}`;
         axios.post(`http://localhost:5000/clans/create?${params}`, 
         null, 
-        {headers: { Authorization: `Bearer ${localStorage.getItem("token")}`}})
+        {headers: { Authorization: `Bearer ${localStorage.getItem('token')}`}})
         .then(function (response) {
             hashHistory.push(`/clan/${response.data.id}`);
         })

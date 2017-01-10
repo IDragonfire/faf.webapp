@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "FA Forever Clan App",
   "scripts": {
-    "start": "node_modules/.bin/webpack-dev-server --linline --content-base www"
+    "start": "node_modules/.bin/webpack-dev-server --linline --content-base www",
+    "test": "node_modules/.bin/eslint .eslintrc.js --fix --ext jsx src"
   },
   "devDependencies": {
     "babel-core": "^6.18.2",

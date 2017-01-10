@@ -12,17 +12,17 @@ export default class Home extends React.Component {
                 interval: 5000 + 5000,
                 shuffle: true,
                 duration: 5000 // Effect duration
-            })
+            });
         });
         if(this.props.params.token) {
-            localStorage.setItem("token", this.props.params.token);
-            Api.headers['Authorization'] = `Bearer ${localStorage.getItem("token")}`
-            hashHistory.push("");
+            localStorage.setItem('token', this.props.params.token);
+            Api.headers['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
+            hashHistory.push('');
         }
-       Api.headers['Authorization'] = `Bearer ${localStorage.getItem("token")}`
-       Api.one('player', 1).get().then(function(data) {
-           console.log(data);
-       }).catch(error => console.error(error));
+        Api.headers['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
+        Api.one('player', 1).get().then(function(data) {
+            console.log(data);
+        }).catch(error => console.error(error));
     }
     render() {
         return (
@@ -33,7 +33,7 @@ export default class Home extends React.Component {
                                 <h1>Clan Management</h1>
                                 <h2>Forged Alliance Forever</h2>
                             </div>
-                            <div className="row" style={{ "marginTop": "15px" }}>
+                            <div className="row" style={{ 'marginTop': '15px' }}>
                                 <Link to="/action/create_clan" className="btn btn-default btn-lg">
                                     <i className="fa fa-plus-circle"></i> Create Clan
                                 </Link>

@@ -3,17 +3,17 @@ import { Link } from 'react-router';
 import OAuth from 'oauth';
 
 export default class NavBar extends React.Component {
-  login() {
-    let clientId = '83891c0c-feab-42e1-9ca7-515f94f808ef';
+    login() {
+        let clientId = '83891c0c-feab-42e1-9ca7-515f94f808ef';
     //let url = 'https://japi.test.faforever.com';
-    let url = 'http://localhost:5000';
-    let redirect_uri = 'http://localhost:8080';
+        let url = 'http://localhost:5000';
+        let redirect_uri = 'http://localhost:8080';
 
-    window.location = `${url}/oauth/authorize?response_type=token&client_id=${clientId}&redirect_uri=${redirect_uri}`;
-  }
+        window.location = `${url}/oauth/authorize?response_type=token&client_id=${clientId}&redirect_uri=${redirect_uri}`;
+    }
 
-  render() {
-    return (
+    render() {
+        return (
       <nav className="navbar navbar-default navbar-fixed-top">
       <div className="container">
         <div className="navbar-header">
@@ -39,6 +39,6 @@ export default class NavBar extends React.Component {
         </div>
       </div>
     </nav>
-    );
-  }
+        );
+    }
 }
