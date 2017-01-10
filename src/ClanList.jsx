@@ -14,7 +14,7 @@ export default class ClanList extends React.Component {
   }
 
   componentDidMount() {
-    Api.all('clan').get({ include: 'founder,leader' })
+    Api.all('clan').get({ include: 'founder,leader,memberships' })
       .then(this.setData.bind(this)).catch(error => console.error(error));
   }
 
@@ -25,7 +25,7 @@ export default class ClanList extends React.Component {
     var dataSet = [];
     for (let clan of this.state.list) {
       var button = '<a href="#/clan/' + clan.id + '" class="btn btn-primary btn-xs">Open Clanpage</a>';
-      dataSet.push([clan.name, clan.tag, clan.leader.login, clan.members.length, button])
+      dataSet.push([clan.name, clan.tag, clan.leader.login, clan.memberships.length, button])
     }
     $('#clanlist').DataTable({
       data: dataSet

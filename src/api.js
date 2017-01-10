@@ -10,10 +10,10 @@ jsonApi.headers['Accept'] = 'application/json';
 jsonApi.define('clan', {
   description: '',
   name: '',
-  tag : '',
+  tag: '',
   tagcolor: null,
   createTime: null,
-  founder : { 
+  founder: {
     jsonApi: 'hasOne',
     type: 'player'
   },
@@ -21,8 +21,21 @@ jsonApi.define('clan', {
     jsonApi: 'hasOne',
     type: 'player'
   },
-  members: {
+  memberships: {
     jsonApi: 'hasMany',
+    type: 'clan_membership'
+  }
+});
+
+jsonApi.define('clan_membership', {
+  createTime: null,
+  updateTime: null,
+  clan: {
+    jsonApi: 'hasOne',
+    type: 'clan'
+  },
+  player: {
+    jsonApi: 'hasOne',
     type: 'player'
   }
 });
@@ -35,5 +48,5 @@ jsonApi.define('player', {
 const Api = jsonApi;
 
 export {
-    Api
+  Api
 }

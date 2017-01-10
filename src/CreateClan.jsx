@@ -45,7 +45,7 @@ export default class CreateClan extends React.Component {
             <InputPair disabled={true} label="Leader" value="You" />
             <InputPair disabled={true} label="Founder" value="You" />
             <InputPair disabled={true} label="Created At:" value={d.toISOString().slice(0, 10)} />
-            <textarea className="form-control" defaultValue={this.state.description} onChange={this.onDescChange.bind(this)} />
+            <textarea className="form-control" value={this.state.description} onChange={this.onDescChange.bind(this)} />
             <button onClick={this.submitData.bind(this)} className="btn btn-default btn-lg">Create New Clan</button>
         </div>
     }

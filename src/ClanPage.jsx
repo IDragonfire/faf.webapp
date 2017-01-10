@@ -14,8 +14,23 @@ export default class ClanPage extends React.Component {
   }
 
   componentDidMount() {
-    Api.one('clan', this.props.params.clanid).get({ include: 'members,founder,leader' })
+    Api.one('clan', this.props.params.clanid).get({ include: 'memberships,memberships.player,founder,leader' })
       .then(this.setData.bind(this)).catch(error => console.error(error));
+  }
+
+  componentDidUpdate() {
+    if (!this.state.clan) {
+      return;
+    }
+    var dataSet = [];
+    for (let membership of this.state.clan.memberships) {
+      let d = new Date(membership.createTime);
+      let button = '<a href="#" class="btn btn-primary btn-xs">Kick Member</a><a href="#" class="btn btn-primary btn-xs">Make Founder</a>';
+      dataSet.push([membership.player.login, d.toISOString().slice(0, 10), button])
+    }
+    $('#clan_members').DataTable({
+      data: dataSet
+    });
   }
 
   setData(data) {
@@ -40,21 +55,11 @@ export default class ClanPage extends React.Component {
       <InputPair disabled={true} label="Leader" value={this.state.clan.leader.login} />
       <InputPair disabled={true} label="Founder" value={this.state.clan.founder.login} />
       <InputPair disabled={true} label="Created At:" value={d.toISOString().slice(0, 10)} />
-      <textarea disabled className="form-control">{this.state.clan.description}</textarea>
+      <textarea disabled className="form-control" value={this.state.clan.description || ''} />
     </div>
   }
 
   renderClanMembers() {
-    const columns = [{
-      header: 'Id',
-      accessor: 'id'
-    }, {
-      header: 'Member Since',
-      accessor: 'joinClanDate'
-    }, {
-      header: 'Player',
-      accessor: 'player.login'
-    }]
     return <div className="well">
       <h2>Clan Members</h2>
       <table id="clan_members" className="table table-striped table-bordered" cellSpacing="0" width="100%">
