@@ -2,7 +2,7 @@ import React from 'react';
 import { Link,hashHistory } from 'react-router';
 
 import Page from './Page.jsx';
-import { Api } from './api.js';
+import { Api } from './api.jsx';
 
 export default class Home extends React.Component {
     componentDidMount() {

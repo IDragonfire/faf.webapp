@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Api } from './api.js';
+import { Api } from './api.jsx';
 import ReactTable from 'react-table';
 
 import Page from './Page.jsx';

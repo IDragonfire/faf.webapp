@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Api } from './api.js';
-import Utils from './utils.js';
+import { Api } from './api.jsx';
+import Utils from './utils.jsx';
 
 import Page from './Page.jsx';
 import InputPair from './InputPair.jsx';
